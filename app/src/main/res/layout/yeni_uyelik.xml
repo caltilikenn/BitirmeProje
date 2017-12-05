@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="73dp"
+            android:layout_weight="0.12"
+            android:text="FollowSelf"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="50dp" />
+
+        <EditText
+            android:id="@+id/et1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/et2"
+            android:layout_alignLeft="@+id/et2"
+            android:layout_alignStart="@+id/et2"
+            android:layout_gravity="center"
+            android:layout_marginBottom="53dp"
+            android:layout_weight="0.07"
+            android:ems="10"
+            android:hint="E-Mail Adresinizi Yazınız"
+            android:inputType="textEmailAddress"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.07"
+            android:ems="10"
+            android:hint="Şifrenizi Yazınız"
+            android:inputType="textPassword"
+            android:textSize="20dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/btn1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="ÜYE OL"
+            android:layout_below="@+id/et1"
+            android:layout_centerHorizontal="true"
+            />
+
+        <ImageButton
+            android:id="@+id/liste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            app:srcCompat="@mipmap/heart" />
+
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

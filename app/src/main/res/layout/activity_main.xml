@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context="followself.com.bitirmeprojesi.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:ignore="MissingConstraints">
+
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginBottom="37dp"
+            android:layout_weight="0.12"
+            android:text="FollowSelf"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="50dp"
+            android:layout_above="@+id/et1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:id="@+id/et1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/et2"
+            android:layout_alignLeft="@+id/et2"
+            android:layout_alignStart="@+id/et2"
+            android:layout_gravity="center"
+            android:layout_marginBottom="53dp"
+            android:layout_weight="0.07"
+            android:ems="10"
+            android:hint="E-Mail"
+            android:inputType="textEmailAddress"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_weight="0.07"
+            android:ems="10"
+            android:hint="Şifre"
+            android:inputType="textPassword"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/btn1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/et2"
+            android:layout_alignStart="@+id/et2"
+            android:layout_below="@+id/et2"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="Yeni Üyelik"
+            android:onClick="yeniUyelik"/>
+
+        <Button
+            android:id="@+id/btn2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/et2"
+            android:layout_alignRight="@+id/et2"
+            android:layout_alignTop="@+id/btn1"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Giriş Yap"
+            android:onClick="anaSayfa"/>
+
+        <TextView
+            android:id="@+id/txt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="70dp"
+            android:text="Şifrenizi mi unuttunuz?"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
+
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
