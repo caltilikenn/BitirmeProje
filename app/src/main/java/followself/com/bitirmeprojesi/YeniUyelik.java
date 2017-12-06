@@ -22,8 +22,10 @@ public class YeniUyelik extends AppCompatActivity {
         setContentView(R.layout.yeni_uyelik);
 
         TextView txt1 = (TextView) findViewById(R.id.txt1);
+        final TextView txt2 = (TextView) findViewById(R.id.txt2);
         final EditText et1 = (EditText) findViewById(R.id.et1);
         final EditText et2 = (EditText) findViewById(R.id.et2);
+        final EditText et3 = (EditText) findViewById(R.id.et3);
         Button btn1 = (Button) findViewById(R.id.btn1);
         RelativeLayout  rel1 = (RelativeLayout) findViewById(R.id.rel1);
 
@@ -38,20 +40,27 @@ public class YeniUyelik extends AppCompatActivity {
 
                 final String email = et1.getText().toString();
                 final String sifre = et2.getText().toString();
-
-                if(email.isEmpty() || sifre.isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Alanların tamamı doldurulmalıdır",Toast.LENGTH_LONG).show();
-                    return;
-                }
+                final String sifreOnay = et3.getText().toString();
 
                 UyelikBilgi ub = new UyelikBilgi(email,sifre);
                 Database db = new Database(getApplicationContext());
 
-                if(!android.util.Patterns.EMAIL_ADDRESS.matcher(et1.getText().toString()).matches()) {
-                    Toast.makeText(getApplicationContext(), "Lütfen Geçerli bir email adresi girin", Toast.LENGTH_LONG).show();
+                if(email.isEmpty() || sifre.isEmpty() || sifreOnay.isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz",Toast.LENGTH_LONG).show();
+                    return;
                 }
+
+                if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    Toast.makeText(getApplicationContext(), "Lütfen Geçerli bir email adresi girin", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(!(sifre.equals(sifreOnay))){
+                    txt2.setText("Girdiğiniz şifreler eşleşmiyor");
+                }
+
                 else {
-                    if (!db.checkUser(et1.getText().toString().trim())) {
+                    if (!db.checkUser(email.trim())) {
                         db.insert(ub);
                         Toast.makeText(getApplicationContext(), "Üyelik işleminiz tamamlandı", Toast.LENGTH_LONG).show();
                         Intent basaDon = new Intent(getApplicationContext(), MainActivity.class);
