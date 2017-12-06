@@ -3,9 +3,8 @@ package followself.com.bitirmeprojesi;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.EditText;
-
-import java.util.ArrayList;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import java.util.List;
 
 public class DatabaseList extends AppCompatActivity {
@@ -14,18 +13,11 @@ public class DatabaseList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.database_list);
 
-      //Listeleme işlemi
-        final EditText et1=(EditText)findViewById(R.id.et1);
-      Database db = new Database(getApplicationContext());
-        List<UyelikBilgi> list = new ArrayList<UyelikBilgi>();
-        list=db.showList();
-        StringBuilder sb = new StringBuilder();
+        final ListView lv = (ListView)findViewById(R.id.lv);
+        Database db = new Database(DatabaseList.this);
+        List<String> list = db.showList();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(DatabaseList.this,android.R.layout.simple_list_item_1,android.R.id.text1,list);
+        lv.setAdapter(adapter);
 
-        for(UyelikBilgi ub: list){
-            String icerik="";
-            icerik="ID: " + ub.getId() + " EMAIL: " + ub.getEmail() + " SIFRE: " + ub.getSifre() + "\n";
-            sb.append(icerik);
-        }
-        et1.setText(sb);
     }
 }

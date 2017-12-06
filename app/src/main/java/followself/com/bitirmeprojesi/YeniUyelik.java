@@ -46,10 +46,11 @@ public class YeniUyelik extends AppCompatActivity {
 
                 UyelikBilgi ub = new UyelikBilgi(email,sifre);
                 Database db = new Database(getApplicationContext());
-                long id = db.insert(ub);
 
-                if (id>0) {
-                    Toast.makeText(getApplicationContext(), "Üyelik işleminiz tamamlandı ID="+id, Toast.LENGTH_LONG).show();
+
+                if (!db.checkUser(et1.getText().toString().trim())) {
+                    db.insert(ub);
+                    Toast.makeText(getApplicationContext(), "Üyelik işleminiz tamamlandı", Toast.LENGTH_LONG).show();
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "Üyelik işleminiz başarısız", Toast.LENGTH_LONG).show();

@@ -1,23 +1,23 @@
 package followself.com.bitirmeprojesi;
 
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Database extends SQLiteOpenHelper{
+public class Database extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME="FOLLOWSELF";
-    private static final int DATABASE_VERSION =1;
-    private static final String USERS_TABLE="USERS";
-    private static final String USERS_ID="ID";
-    private static final String USERS_EMAIL="EMAIL";
-    private static final String USERS_SIFRE="SIFRE";
+    private static final String DATABASE_NAME = "FOLLOWSELF";
+    private static final int DATABASE_VERSION = 1;
+    private static final String USERS_TABLE = "USERS";
+    private static final String USERS_ID = "ID";
+    private static final String USERS_EMAIL = "EMAIL";
+    private static final String USERS_SIFRE = "SIFRE";
 
     public Database(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -25,8 +25,8 @@ public class Database extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " +USERS_TABLE+ "("+USERS_ID+ " INTEGER PRIMARY KEY,"+USERS_EMAIL+" TEXT NOT NULL,"
-                                                 +USERS_SIFRE+ " TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE " + USERS_TABLE + "(" + USERS_ID + " INTEGER PRIMARY KEY," + USERS_EMAIL + " TEXT NOT NULL,"
+                + USERS_SIFRE + " TEXT NOT NULL)");
     }
 
     @Override
@@ -35,38 +35,59 @@ public class Database extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public long insert(UyelikBilgi ub){
+    public void insert(UyelikBilgi ub) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(USERS_EMAIL,ub.getEmail());
-        contentValues.put(USERS_SIFRE,ub.getSifre());
+        contentValues.put(USERS_EMAIL, ub.getEmail());
+        contentValues.put(USERS_SIFRE, ub.getSifre());
 
-        long id = db.insert(USERS_TABLE,null,contentValues);
+        db.insert(USERS_TABLE, null, contentValues);
         db.close();
-        return id;
 
     }
 
-    public List<UyelikBilgi> showList() {
-        List<UyelikBilgi> list = new ArrayList<UyelikBilgi>();
+    public List<String> showList() {
+        List<String> list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {USERS_ID, USERS_EMAIL, USERS_SIFRE};
+        Cursor c = db.query(USERS_TABLE, columns, null, null, null, null, null);
 
-        Cursor c = db.rawQuery("SELECT * FROM " + USERS_TABLE, null);
-        int noID = c.getColumnIndex("ID");
-        int noEmail = c.getColumnIndex("EMAIL");
-        int noSifre = c.getColumnIndex("SIFRE");
-
-        try{
-            while(c.moveToNext()){
-                UyelikBilgi ub = new UyelikBilgi(c.getString(noEmail),c.getString(noSifre));
-                ub.setId(c.getInt(noID));
-                list.add(ub);
-            }
+        while (c.moveToNext()) {
+            list.add(c.getInt(0) + " - " + c.getString(1) + " - " + c.getString(2));
         }
-        finally {
+
+        return list;
+    }
+
+    public boolean checkUser(String email) {
+        String[] columns = {USERS_ID};
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_EMAIL + " = ?";
+        String[] selectionArgs = {email};
+        Cursor c = db.query(USERS_TABLE, columns, selection, selectionArgs, null, null, null);
+        int cursorCount = c.getCount();
         c.close();
         db.close();
+
+        if (cursorCount > 0) {
+            return true;
         }
-        return list;
+        else
+        return false;
+    }
+
+    public boolean checkUser(String email, String sifre) {
+        String[] columns = {USERS_ID};
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_EMAIL + " = ?" + " AND " + USERS_SIFRE + " = ?";
+        String[] selectionArgs = {email, sifre};
+        Cursor c = db.query(USERS_TABLE, columns, selection, selectionArgs, null, null, null);
+        int cursorCount = c.getCount();
+        c.close();
+        db.close();
+        if (cursorCount > 0) {
+            return true;
+        }
+        return false;
     }
 }
