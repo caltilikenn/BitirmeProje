@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,17 +36,24 @@ public class MainActivity extends AppCompatActivity {
         rel1 = (RelativeLayout) findViewById(R.id.rel1);
     }
 
-        //Yeni üyelik sayfasına yönlendir
+    //Yeni üyelik sayfasına yönlendir
     public void yeniUyelik(View view) {
         Intent intent = new Intent(MainActivity.this, YeniUyelik.class);
         startActivity(intent);
     }
 
-       //Anasayfaya yönlendir.
+    //Anasayfaya yönlendir.
     public void anaSayfa(View view) {
-        Intent intent = new Intent(MainActivity.this, YeniUyelik.class);
-        //startActivity(intent);
+
+        Database db = new Database(getApplicationContext());
+
+        if (db.checkUser(et1.getText().toString().trim(), et2.getText().toString().trim())) {
+            Intent intent = new Intent(MainActivity.this, Anasayfa.class);
+            startActivity(intent);
+            Toast.makeText(getApplicationContext(), "Hoşgeldiniz", Toast.LENGTH_LONG).show();
+        } else
+            Toast.makeText(getApplicationContext(), "Hatalı kullanıcı adı ya da şifre", Toast.LENGTH_LONG).show();
+
     }
 
-  }
-
+}
