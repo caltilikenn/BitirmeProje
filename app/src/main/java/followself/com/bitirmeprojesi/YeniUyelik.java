@@ -47,17 +47,20 @@ public class YeniUyelik extends AppCompatActivity {
                 UyelikBilgi ub = new UyelikBilgi(email,sifre);
                 Database db = new Database(getApplicationContext());
 
-
-                if (!db.checkUser(et1.getText().toString().trim())) {
-                    db.insert(ub);
-                    Toast.makeText(getApplicationContext(), "Üyelik işleminiz tamamlandı", Toast.LENGTH_LONG).show();
+                if(!android.util.Patterns.EMAIL_ADDRESS.matcher(et1.getText().toString()).matches()) {
+                    Toast.makeText(getApplicationContext(), "Lütfen Geçerli bir email adresi girin", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Toast.makeText(getApplicationContext(), "Üyelik işleminiz başarısız", Toast.LENGTH_LONG).show();
+                    if (!db.checkUser(et1.getText().toString().trim())) {
+                        db.insert(ub);
+                        Toast.makeText(getApplicationContext(), "Üyelik işleminiz tamamlandı", Toast.LENGTH_LONG).show();
+                        Intent basaDon = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(basaDon);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Üyelik işleminiz başarısız", Toast.LENGTH_LONG).show();
+                    }
                 }
 
-                Intent basaDon = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(basaDon);
 
                 }
             });
