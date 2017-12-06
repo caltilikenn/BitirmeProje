@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-       //Anasayfaya yönlendir
+       //Anasayfaya yönlendir.
     public void anaSayfa(View view) {
         Intent intent = new Intent(MainActivity.this, YeniUyelik.class);
         //startActivity(intent);
