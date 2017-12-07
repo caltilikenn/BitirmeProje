@@ -78,7 +78,7 @@ public class YeniUyelik extends AppCompatActivity {
         liste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent listele = new Intent(getApplicationContext(),DatabaseList.class);
+                Intent listele = new Intent(getApplicationContext(),YonetimPaneli.class);
                 startActivity(listele);
             }
         });
