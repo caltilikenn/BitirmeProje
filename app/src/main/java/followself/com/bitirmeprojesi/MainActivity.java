@@ -46,14 +46,33 @@ public class MainActivity extends AppCompatActivity {
     public void anaSayfa(View view) {
 
         Database db = new Database(getApplicationContext());
+        String email = et1.getText().toString().trim();
+        String sifre = et2.getText().toString().trim();
 
-        if (db.checkUser(et1.getText().toString().trim(), et2.getText().toString().trim())) {
-            Intent intent = new Intent(MainActivity.this, Anasayfa.class);
-            startActivity(intent);
-            Toast.makeText(getApplicationContext(), "Hoşgeldiniz", Toast.LENGTH_LONG).show();
-        } else
-            Toast.makeText(getApplicationContext(), "Hatalı kullanıcı adı ya da şifre", Toast.LENGTH_LONG).show();
 
+        if (email.equals("ce.kenancaltilioglu@gmail.com") || email.equals("sedasenell@gmail.com")) {
+            if (db.checkUser(email, sifre)) {
+                Intent intent = new Intent(MainActivity.this, YonetimPaneli.class);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Yönetici paneline hoşgeldiniz", Toast.LENGTH_LONG).show();
+                et1.setText("");
+                et2.setText("");
+            } else
+                Toast.makeText(getApplicationContext(), "Hatalı kullanıcı adı ya da şifre", Toast.LENGTH_LONG).show();
+                et1.setText("");
+                et2.setText("");
+        }
+        else {
+            if (db.checkUser(email, sifre)) {
+                Intent intent = new Intent(MainActivity.this, Anasayfa.class);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Hoşgeldiniz", Toast.LENGTH_LONG).show();
+                et1.setText("");
+                et2.setText("");
+            } else
+                Toast.makeText(getApplicationContext(), "Hatalı kullanıcı adı ya da şifre", Toast.LENGTH_LONG).show();
+                et1.setText("");
+                et2.setText("");
+        }
     }
-
 }

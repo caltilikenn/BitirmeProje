@@ -29,9 +29,6 @@ public class YeniUyelik extends AppCompatActivity {
         Button btn1 = (Button) findViewById(R.id.btn1);
         RelativeLayout  rel1 = (RelativeLayout) findViewById(R.id.rel1);
 
-        //Geçici olarak listelemeye bakmak için kullanıyorum
-        ImageButton liste = (ImageButton)findViewById(R.id.liste);
-
         //Yeni kullanıcı oluşturma kısmı
         btn1.setOnClickListener(new View.OnClickListener() {
 
@@ -47,11 +44,25 @@ public class YeniUyelik extends AppCompatActivity {
 
                 if(email.isEmpty() || sifre.isEmpty() || sifreOnay.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz",Toast.LENGTH_LONG).show();
+                    et1.setText("");
+                    et2.setText("");
+                    et3.setText("");
                     return;
                 }
 
                 if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     Toast.makeText(getApplicationContext(), "Lütfen Geçerli bir email adresi girin", Toast.LENGTH_LONG).show();
+                    et1.setText("");
+                    et2.setText("");
+                    et3.setText("");
+                    return;
+                }
+
+                if(!(sifre.length()>=6 & sifre.length()<=10)){
+                    Toast.makeText(getApplicationContext(),"Şifreniz en az 6 en fazla 10 karakter içerebilir", Toast.LENGTH_LONG).show();
+                    et1.setText("");
+                    et2.setText("");
+                    et3.setText("");
                     return;
                 }
 
@@ -65,24 +76,19 @@ public class YeniUyelik extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Üyelik işleminiz tamamlandı", Toast.LENGTH_LONG).show();
                         Intent basaDon = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(basaDon);
+                        et1.setText("");
+                        et2.setText("");
+                        et3.setText("");
                     } else {
                         Toast.makeText(getApplicationContext(), "Üyelik işleminiz başarısız", Toast.LENGTH_LONG).show();
+                        et1.setText("");
+                        et2.setText("");
+                        et3.setText("");
                     }
                 }
 
 
                 }
             });
-
-        //veritabanındaki bilgileri göstermek için
-        liste.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent listele = new Intent(getApplicationContext(),YonetimPaneli.class);
-                startActivity(listele);
-            }
-        });
-
-
     }
 }

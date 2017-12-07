@@ -78,20 +78,11 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/liste"
+            android:layout_below="@+id/txt2"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="12dp"
+            android:layout_marginTop="18dp"
             android:backgroundTint="@android:color/holo_green_dark"
             android:text="ÜYE OL" />
-
-        <ImageButton
-            android:id="@+id/liste"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            app:srcCompat="@mipmap/heart" />
 
         <TextView
             android:id="@+id/txt2"
@@ -104,7 +95,6 @@
             android:textColor="@android:color/holo_red_dark"
             android:textSize="12dp"
             android:textStyle="bold|italic" />
-
 
     </RelativeLayout>
 
