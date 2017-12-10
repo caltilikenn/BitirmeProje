@@ -94,6 +94,8 @@
             android:layout_below="@+id/btn1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="72dp"
+            android:focusableInTouchMode="false"
+            android:onClick="sifreYolla"
             android:text="Şifrenizi mi unuttunuz?"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"

@@ -31,7 +31,7 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS" + USERS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + USERS_TABLE);
         onCreate(db);
     }
 
@@ -71,9 +71,8 @@ public class Database extends SQLiteOpenHelper {
 
         if (cursorCount > 0) {
             return true;
-        }
-        else
-        return false;
+        } else
+            return false;
     }
 
     public boolean checkUser(String email, String sifre) {
@@ -89,5 +88,18 @@ public class Database extends SQLiteOpenHelper {
             return true;
         }
         return false;
+    }
+
+    public String sifreGoster(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {USERS_SIFRE};
+        String selection = USERS_EMAIL + "=?";
+        String[] selectionArgs = {email};
+        Cursor c = db.query(USERS_TABLE, columns, selection, selectionArgs, null, null, null);
+        String sifre = null;
+        while (c.moveToNext()) {
+            sifre = c.getString(0);
+        }
+        return sifre;
     }
 }

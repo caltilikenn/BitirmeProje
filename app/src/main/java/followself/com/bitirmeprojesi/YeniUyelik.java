@@ -31,11 +31,10 @@ public class YeniUyelik extends AppCompatActivity {
 
         //Yeni kullanıcı oluşturma kısmı
         btn1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-            @Override
-            public void onClick(View view) {
-
-                final String email = et1.getText().toString();
+                        final String email = et1.getText().toString();
                 final String sifre = et2.getText().toString();
                 final String sifreOnay = et3.getText().toString();
 
@@ -51,7 +50,7 @@ public class YeniUyelik extends AppCompatActivity {
                 }
 
                 if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    Toast.makeText(getApplicationContext(), "Lütfen Geçerli bir email adresi girin", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Lütfen Geçerli bir email adresi giriniz", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
                     et3.setText("");
