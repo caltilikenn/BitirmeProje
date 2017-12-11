@@ -15,6 +15,8 @@ public class Database extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "FOLLOWSELF";
     private static final int DATABASE_VERSION = 1;
     private static final String USERS_TABLE = "USERS";
+    private static final String USERS_ADSOYAD = "AD_SOYAD";
+    private static final String USERS_DTARIHI = "DOGUM_TARIHI";
     private static final String USERS_ID = "ID";
     private static final String USERS_EMAIL = "EMAIL";
     private static final String USERS_SIFRE = "SIFRE";
@@ -25,7 +27,7 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + USERS_TABLE + "(" + USERS_ID + " INTEGER PRIMARY KEY," + USERS_EMAIL + " TEXT NOT NULL,"
+        db.execSQL("CREATE TABLE " + USERS_TABLE + "(" + USERS_ID + " INTEGER PRIMARY KEY," + USERS_ADSOYAD + " TEXT NOT NULL," + USERS_DTARIHI + " TEXT NOT NULL," + USERS_EMAIL + " TEXT NOT NULL,"
                 + USERS_SIFRE + " TEXT NOT NULL)");
     }
 
@@ -38,6 +40,8 @@ public class Database extends SQLiteOpenHelper {
     public void insert(UyelikBilgi ub) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ADSOYAD, ub.getAd());
+        contentValues.put(USERS_DTARIHI, ub.getDtarihi());
         contentValues.put(USERS_EMAIL, ub.getEmail());
         contentValues.put(USERS_SIFRE, ub.getSifre());
 
@@ -49,11 +53,11 @@ public class Database extends SQLiteOpenHelper {
     public List<String> showList() {
         List<String> list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {USERS_ID, USERS_EMAIL, USERS_SIFRE};
+        String[] columns = {USERS_ID, USERS_ADSOYAD, USERS_DTARIHI, USERS_EMAIL, USERS_SIFRE};
         Cursor c = db.query(USERS_TABLE, columns, null, null, null, null, null);
 
         while (c.moveToNext()) {
-            list.add(c.getInt(0) + " - " + c.getString(1) + " - " + c.getString(2));
+            list.add(c.getInt(0) + " - " + c.getString(1) + " - " + c.getString(2) + " - " + c.getString(3) + " - " + c.getString(4));
         }
 
         return list;
@@ -101,5 +105,18 @@ public class Database extends SQLiteOpenHelper {
             sifre = c.getString(0);
         }
         return sifre;
+    }
+
+    public String isimGoster(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {USERS_ADSOYAD};
+        String selection = USERS_EMAIL + "=?";
+        String[] selectionArgs = {email};
+        Cursor c = db.query(USERS_TABLE, columns, selection, selectionArgs, null, null, null);
+        String ad = null;
+        while (c.moveToNext()) {
+            ad = c.getString(0);
+        }
+        return ad;
     }
 }

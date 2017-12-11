@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         else {
             if (db.checkUser(email, sifre)) {
                 Intent intent = new Intent(MainActivity.this, Anasayfa.class);
+                intent.putExtra("email",db.isimGoster(email));
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),"Hoşgeldiniz", Toast.LENGTH_LONG).show();
                 et1.setText("");

@@ -26,26 +26,31 @@ public class YeniUyelik extends AppCompatActivity {
         final EditText et1 = (EditText) findViewById(R.id.et1);
         final EditText et2 = (EditText) findViewById(R.id.et2);
         final EditText et3 = (EditText) findViewById(R.id.et3);
+        final EditText et4 = (EditText) findViewById(R.id.et4);
+        final EditText et5 = (EditText) findViewById(R.id.et5);
         Button btn1 = (Button) findViewById(R.id.btn1);
         RelativeLayout  rel1 = (RelativeLayout) findViewById(R.id.rel1);
 
         //Yeni kullanıcı oluşturma kısmı
         btn1.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View view){
+                        final String ad = et1.getText().toString();
+                        final String dtarihi = et2.getText().toString();
+                        final String email = et3.getText().toString();
+                        final String sifre = et4.getText().toString();
+                        final String sifreOnay = et5.getText().toString();
 
-                        final String email = et1.getText().toString();
-                final String sifre = et2.getText().toString();
-                final String sifreOnay = et3.getText().toString();
-
-                UyelikBilgi ub = new UyelikBilgi(email,sifre);
+                UyelikBilgi ub = new UyelikBilgi(ad,dtarihi,email,sifre);
                 Database db = new Database(getApplicationContext());
 
-                if(email.isEmpty() || sifre.isEmpty() || sifreOnay.isEmpty()){
+                if(ad.isEmpty() || dtarihi.isEmpty() || email.isEmpty() || sifre.isEmpty() || sifreOnay.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz",Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
                     et3.setText("");
+                    et4.setText("");
+                    et5.setText("");
                     return;
                 }
 
@@ -54,6 +59,8 @@ public class YeniUyelik extends AppCompatActivity {
                     et1.setText("");
                     et2.setText("");
                     et3.setText("");
+                    et4.setText("");
+                    et5.setText("");
                     return;
                 }
 
@@ -62,6 +69,8 @@ public class YeniUyelik extends AppCompatActivity {
                     et1.setText("");
                     et2.setText("");
                     et3.setText("");
+                    et4.setText("");
+                    et5.setText("");
                     return;
                 }
 
@@ -78,16 +87,19 @@ public class YeniUyelik extends AppCompatActivity {
                         et1.setText("");
                         et2.setText("");
                         et3.setText("");
-                    } else {
+                        et4.setText("");
+                        et5.setText("");
+                    }
+                    else {
                         Toast.makeText(getApplicationContext(), "Üyelik işleminiz başarısız", Toast.LENGTH_LONG).show();
                         et1.setText("");
                         et2.setText("");
                         et3.setText("");
+                        et4.setText("");
+                        et5.setText("");
                     }
                 }
-
-
-                }
+                    }
             });
     }
 }

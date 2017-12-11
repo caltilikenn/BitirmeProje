@@ -30,26 +30,60 @@
 
         <EditText
             android:id="@+id/et1"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/et2"
+            android:layout_alignEnd="@+id/et2"
             android:layout_alignLeft="@+id/et2"
+            android:layout_alignRight="@+id/et2"
             android:layout_alignStart="@+id/et2"
-            android:layout_gravity="center"
-            android:layout_weight="0.07"
+            android:layout_below="@+id/txt1"
+            android:layout_marginTop="25dp"
             android:ems="10"
-            android:hint="E-Mail Adresinizi Yazınız"
-            android:inputType="textEmailAddress"
+            android:fontFamily="serif"
+            android:hint="Adınız ve Soyadınız"
+            android:inputType="textPersonName"
             android:textSize="20dp"
-            android:textStyle="italic"
-            android:fontFamily="serif" />
+            android:textStyle="italic" />
 
         <EditText
             android:id="@+id/et2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/et3"
+            android:layout_alignLeft="@+id/et3"
+            android:layout_alignRight="@+id/et3"
+            android:layout_alignStart="@+id/et3"
+            android:layout_below="@+id/et1"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="Doğum tarihiniz (GG-AA-YYYY)"
+            android:inputType="date"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+        <EditText
+            android:id="@+id/et3"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/et4"
+            android:layout_alignStart="@+id/et4"
+            android:layout_below="@+id/et2"
+            android:layout_gravity="center"
+            android:layout_weight="0.07"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="E-Mail Adresinizi Yazınız"
+            android:inputType="textEmailAddress"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+        <EditText
+            android:id="@+id/et4"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/et5"
+            android:layout_alignStart="@+id/et5"
+            android:layout_below="@+id/et3"
             android:layout_gravity="center"
             android:layout_weight="0.07"
             android:ems="10"
@@ -60,12 +94,11 @@
             android:textStyle="italic" />
 
         <EditText
-            android:id="@+id/et3"
+            android:id="@+id/et5"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/et2"
-            android:layout_alignStart="@+id/et2"
-            android:layout_below="@+id/et2"
+            android:layout_below="@+id/et4"
+            android:layout_centerHorizontal="true"
             android:ems="10"
             android:fontFamily="serif"
             android:hint="Şifrenizi Onaylayınız"
@@ -80,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txt2"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="13dp"
             android:backgroundTint="@android:color/holo_green_dark"
             android:text="ÜYE OL" />
 
@@ -88,7 +121,7 @@
             android:id="@+id/txt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/et3"
+            android:layout_below="@+id/et5"
             android:layout_centerHorizontal="true"
             android:fontFamily="serif"
             android:text=""
