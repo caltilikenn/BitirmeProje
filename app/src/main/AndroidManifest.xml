@@ -14,46 +14,44 @@
         android:roundIcon="@mipmap/heart"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".YeniUyelik">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Anasayfa">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".YeniUyelik"></activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Anasayfa"></activity>
+
         <activity
             android:name=".YonetimPaneli"
             android:label="Üye Listesi">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
-        <activity
-            android:name=".SifremiUnuttum">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".SifremiUnuttum"></activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".Profil"
+                  android:label="Profil">
+        </activity>
+
+        <activity android:name=".HesapAyarlari"
+                  android:label="Hesap Ayarları">
+        </activity>
+
+        <activity android:name=".Olcumler"
+                  android:label="Ölçümler">
+        </activity>
+
+        <activity android:name=".SaglikGecmisi"
+                  android:label="Sağlık Geçmişi">
+        </activity>
+
+        <activity android:name=".Belgeler"
+                  android:label="Belgeler">
         </activity>
 
     </application>
-
 </manifest>

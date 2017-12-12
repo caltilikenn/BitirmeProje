@@ -46,9 +46,6 @@ public class YeniUyelik extends AppCompatActivity {
 
                 if(ad.isEmpty() || dtarihi.isEmpty() || email.isEmpty() || sifre.isEmpty() || sifreOnay.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz",Toast.LENGTH_LONG).show();
-                    et1.setText("");
-                    et2.setText("");
-                    et3.setText("");
                     et4.setText("");
                     et5.setText("");
                     return;
@@ -56,9 +53,6 @@ public class YeniUyelik extends AppCompatActivity {
 
                 if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     Toast.makeText(getApplicationContext(), "Lütfen Geçerli bir email adresi giriniz", Toast.LENGTH_LONG).show();
-                    et1.setText("");
-                    et2.setText("");
-                    et3.setText("");
                     et4.setText("");
                     et5.setText("");
                     return;
@@ -66,9 +60,6 @@ public class YeniUyelik extends AppCompatActivity {
 
                 if(!(sifre.length()>=6 & sifre.length()<=10)){
                     Toast.makeText(getApplicationContext(),"Şifreniz en az 6 en fazla 10 karakter içerebilir", Toast.LENGTH_LONG).show();
-                    et1.setText("");
-                    et2.setText("");
-                    et3.setText("");
                     et4.setText("");
                     et5.setText("");
                     return;
@@ -80,7 +71,7 @@ public class YeniUyelik extends AppCompatActivity {
 
                 else {
                     if (!db.checkUser(email.trim())) {
-                        db.insert(ub);
+                        db.kullaniciEkle(ub);
                         Toast.makeText(getApplicationContext(), "Üyelik işleminiz tamamlandı", Toast.LENGTH_LONG).show();
                         Intent basaDon = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(basaDon);

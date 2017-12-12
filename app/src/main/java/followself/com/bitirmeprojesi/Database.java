@@ -37,7 +37,7 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insert(UyelikBilgi ub) {
+    public void kullaniciEkle(UyelikBilgi ub) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(USERS_ADSOYAD, ub.getAd());
@@ -47,10 +47,25 @@ public class Database extends SQLiteOpenHelper {
 
         db.insert(USERS_TABLE, null, contentValues);
         db.close();
-
     }
 
-    public List<String> showList() {
+    public void kullaniciSil(UyelikBilgi ub){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] id = {String.valueOf(ub.getId())};
+        db.delete(USERS_TABLE, USERS_ID + "=?", id );
+        db.close();
+    }
+
+    public void sifreDegistir(UyelikBilgi ub){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] id = {String.valueOf(ub.getId())};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_SIFRE, ub.getSifre());
+        db.update(USERS_TABLE, contentValues, USERS_ID + " = ?", id);
+        db.close();
+    }
+
+    public List<String> showUserList() {
         List<String> list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {USERS_ID, USERS_ADSOYAD, USERS_DTARIHI, USERS_EMAIL, USERS_SIFRE};
@@ -120,3 +135,4 @@ public class Database extends SQLiteOpenHelper {
         return ad;
     }
 }
+//-------------------------------------------------------------------------------------------------------------------------------
