@@ -17,7 +17,7 @@ public class Anasayfa extends AppCompatActivity {
         setContentView(R.layout.anasayfa);
         Intent intent = getIntent();
         String ad = intent.getStringExtra("ad");
-        int id = intent.getIntExtra("id",0);
+        String id = intent.getStringExtra("id");
 
         txt1=(TextView) findViewById(R.id.txt1);
         txt1.setText(ad);
