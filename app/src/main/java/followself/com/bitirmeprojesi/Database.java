@@ -217,14 +217,14 @@ public class Database extends SQLiteOpenHelper {
         return ad;
     }
 
-    public int idYolla(String email) {
+    public String idYolla(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {USERS_ID};
         String[] selectionArgs = {email};
         Cursor c = db.query(USERS_TABLE, columns, email, selectionArgs, null, null, null);
-        Integer id = 0;
+        String id = null;
         while (c.moveToFirst()) {
-            id = c.getInt(0);
+            id = c.getColumnName(0);
         }
         c.close();
         db.close();
