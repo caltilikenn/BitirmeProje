@@ -66,9 +66,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             if (db.checkUser(email, sifre)) {
+                int id = Integer.parseInt(db.idYolla(email));
                 Intent intent = new Intent(MainActivity.this, Anasayfa.class);
                 intent.putExtra("ad",db.isimGoster(email));
-                intent.putExtra("id",db.idYolla(email));
+                intent.putExtra("id",id);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),"Hoşgeldiniz", Toast.LENGTH_LONG).show();
                 et1.setText("");

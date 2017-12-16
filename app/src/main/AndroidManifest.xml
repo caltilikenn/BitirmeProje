@@ -25,24 +25,25 @@
         <activity android:name=".Anasayfa" />
         <activity
             android:name=".YonetimPaneli"
-            android:label="Üye Listesi"></activity>
+            android:label="Üye Listesi" />
         <activity android:name=".SifremiUnuttum" />
         <activity
             android:name=".Profil"
-            android:label="Profil"></activity>
+            android:label="Profil" />
         <activity
             android:name=".HesapAyarlari"
-            android:label="Hesap Ayarları"></activity>
+            android:label="Hesap Ayarları" />
         <activity
             android:name=".Olcumler"
-            android:label="Ölçümler"></activity>
+            android:label="Ölçümler" />
         <activity
             android:name=".SaglikGecmisi"
-            android:label="Sağlık Geçmişi"></activity>
+            android:label="Sağlık Geçmişi" />
         <activity
             android:name=".Belgeler"
-            android:label="Belgeler"></activity>
-        <activity android:name=".Boy"></activity>
+            android:label="Belgeler" />
+        <activity android:name=".Boy" />
+        <activity android:name=".BoyList"></activity>
     </application>
 
 </manifest>

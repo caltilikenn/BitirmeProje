@@ -105,10 +105,10 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + USERS_TABLE + "(" + USERS_ID + " INTEGER PRIMARY KEY," + USERS_ADSOYAD + " TEXT NOT NULL," + USERS_DTARIHI + " TEXT NOT NULL,"
                 + USERS_EMAIL + " TEXT NOT NULL," + USERS_SIFRE + " TEXT NOT NULL)");
 
-     /*   db.execSQL("CREATE TABLE " + BOY_TABLE + "(" + USERS_ID + " INTEGER," + BOY_CM + " INTEGER NOT NULL," + TARIH + " TEXT,"
-                + "PRIMARY KEY("+ USERS_ID + "," + TARIH + "), FOREIGN KEY(" + USERS_ID + " ) REFERENCES " + USERS_TABLE + "(" + USERS_ID + ") ON DELETE CASCADE)");
+     /*   db.execSQL("CREATE TABLE " +BOY_TABLE+ "(" + USERS_ID + " INTEGER," + BOY_CM + " INTEGER NOT NULL," + TARIH + " TEXT, PRIMARY KEY(" + USERS_ID + "," + TARIH + "), " +
+                        "FOREIGN KEY(" + USERS_ID + ") REFERENCES " + USERS_TABLE + "(" + USERS_ID + ") ON DELETE CASCADE)"); */
 
-    */}
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
@@ -123,7 +123,6 @@ public class Database extends SQLiteOpenHelper {
         contentValues.put(USERS_DTARIHI, ub.getDtarihi());
         contentValues.put(USERS_EMAIL, ub.getEmail());
         contentValues.put(USERS_SIFRE, ub.getSifre());
-
         db.insert(USERS_TABLE, null, contentValues);
         db.close();
     }
@@ -220,30 +219,42 @@ public class Database extends SQLiteOpenHelper {
     public String idYolla(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {USERS_ID};
+        String selection = USERS_EMAIL + "=?";
         String[] selectionArgs = {email};
-        Cursor c = db.query(USERS_TABLE, columns, email, selectionArgs, null, null, null);
+        Cursor c = db.query(USERS_TABLE, columns, selection, selectionArgs, null, null, null);
         String id = null;
-        while (c.moveToFirst()) {
-            id = c.getColumnName(0);
+        while (c.moveToNext()) {
+            id = c.getString(0);
         }
         c.close();
         db.close();
         return id;
     }
 
-
     //-----------------------------------------------------------------------------------------------------------------
 
-    public void boyEkle(Boy b) {
+ /*   public void boyEkle(Boy b) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(USERS_ID, b.getId());
         contentValues.put(BOY_CM, b.getBoy());
         contentValues.put(TARIH, b.getTarih());
-
         db.insert(BOY_TABLE, null, contentValues);
         db.close();
     }
+
+    public List<String> showBoy() {
+        List<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {BOY_CM,TARIH};
+        Cursor c = db.query(BOY_TABLE, columns, null, null, null, null, null);
+
+        while (c.moveToNext()) {
+            list.add(c.getInt(0) + " - " + c.getString(1));
+        }
+        return list;
+    }
+    */
 }
 
 
