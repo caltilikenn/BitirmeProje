@@ -105,8 +105,8 @@ public class Database extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + USERS_TABLE + "(" + USERS_ID + " INTEGER PRIMARY KEY," + USERS_ADSOYAD + " TEXT NOT NULL," + USERS_DTARIHI + " TEXT NOT NULL,"
                 + USERS_EMAIL + " TEXT NOT NULL," + USERS_SIFRE + " TEXT NOT NULL)");
 
-     /*   db.execSQL("CREATE TABLE " +BOY_TABLE+ "(" + USERS_ID + " INTEGER," + BOY_CM + " INTEGER NOT NULL," + TARIH + " TEXT, PRIMARY KEY(" + USERS_ID + "," + TARIH + "), " +
-                        "FOREIGN KEY(" + USERS_ID + ") REFERENCES " + USERS_TABLE + "(" + USERS_ID + ") ON DELETE CASCADE)"); */
+        db.execSQL("CREATE TABLE " +BOY_TABLE+ "(" + USERS_ID + " INTEGER," + BOY_CM + " INTEGER NOT NULL," + TARIH + " TEXT, PRIMARY KEY(" + USERS_ID + "," + TARIH + "), " +
+                        "FOREIGN KEY(" + USERS_ID + ") REFERENCES " + USERS_TABLE + "(" + USERS_ID + ") ON DELETE CASCADE)");
 
     }
 
@@ -233,7 +233,7 @@ public class Database extends SQLiteOpenHelper {
 
     //-----------------------------------------------------------------------------------------------------------------
 
- /*   public void boyEkle(Boy b) {
+    public void boyEkle(BoyBilgi b) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(USERS_ID, b.getId());
@@ -243,18 +243,19 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
-    public List<String> showBoy() {
+    public List<String> showBoy(int id) {
         List<String> list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " =?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
         String[] columns = {BOY_CM,TARIH};
-        Cursor c = db.query(BOY_TABLE, columns, null, null, null, null, null);
-
+        Cursor c = db.query(BOY_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
             list.add(c.getInt(0) + " - " + c.getString(1));
         }
         return list;
     }
-    */
+
 }
 
 

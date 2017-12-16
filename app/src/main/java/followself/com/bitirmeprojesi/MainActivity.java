@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("ad",db.isimGoster(email));
                 intent.putExtra("id",id);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(),"Hoşgeldiniz", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Hoşgeldiniz "+db.isimGoster(email), Toast.LENGTH_LONG).show();
                 et1.setText("");
                 et2.setText("");
             } else

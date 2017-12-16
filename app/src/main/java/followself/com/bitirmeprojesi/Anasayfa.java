@@ -24,7 +24,6 @@ public class Anasayfa extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),""+id,Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getApplicationContext(),Boy.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
