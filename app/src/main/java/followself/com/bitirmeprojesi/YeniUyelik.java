@@ -82,7 +82,7 @@ public class YeniUyelik extends AppCompatActivity {
                         et5.setText("");
                     }
                     else {
-                        Toast.makeText(getApplicationContext(), "Üyelik işleminiz başarısız", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Sistemde bu e-mail adresi zaten kayıtlı", Toast.LENGTH_LONG).show();
                         et1.setText("");
                         et2.setText("");
                         et3.setText("");

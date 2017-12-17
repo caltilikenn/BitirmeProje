@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 
 public class Anasayfa extends AppCompatActivity {
@@ -16,6 +16,7 @@ public class Anasayfa extends AppCompatActivity {
         setContentView(R.layout.anasayfa);
         TextView txt1=(TextView) findViewById(R.id.txt1);
         Button btn1=(Button) findViewById(R.id.btn1);
+        Button btn2=(Button) findViewById(R.id.btn2);
 
         Intent intent = getIntent();
         String ad = intent.getStringExtra("ad");
@@ -24,7 +25,16 @@ public class Anasayfa extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),Boy.class);
+                Intent intent = new Intent(getApplicationContext(),Olcumler.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),HesapAyarlari.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
             }

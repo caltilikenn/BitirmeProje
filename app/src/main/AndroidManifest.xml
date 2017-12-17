@@ -21,31 +21,45 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".YeniUyelik" />
-        <activity android:name=".Anasayfa" />
+
+        <activity android:name=".Anasayfa"
+                  android:label="Anasayfa"  />
         <activity
             android:name=".YonetimPaneli"
             android:label="Üye Listesi" />
+
         <activity android:name=".SifremiUnuttum" />
+
         <activity
             android:name=".Profil"
             android:label="Profil" />
         <activity
             android:name=".HesapAyarlari"
             android:label="Hesap Ayarları" />
+
         <activity
             android:name=".Olcumler"
             android:label="Ölçümler" />
+
         <activity
             android:name=".SaglikGecmisi"
             android:label="Sağlık Geçmişi" />
+
         <activity
             android:name=".Belgeler"
             android:label="Belgeler" />
-        <activity android:name=".Boy" />
-        <activity android:name=".BoyList" />
-        <activity android:name=".SifreDegistir" />
-        <activity android:name=".HesabiSil"></activity>
+
+        <activity android:name=".Boy"
+                  android:label="Boy"  />
+
+        <activity android:name=".BoyList"
+                  android:label="Boy Bilgisi Listesi"  />
+
+        <activity android:name=".SifreDegistir"
+                  android:label="Şifre Yenileme"  />
+
     </application>
 
 </manifest>
