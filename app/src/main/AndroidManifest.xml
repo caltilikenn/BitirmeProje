@@ -43,7 +43,9 @@
             android:name=".Belgeler"
             android:label="Belgeler" />
         <activity android:name=".Boy" />
-        <activity android:name=".BoyList"></activity>
+        <activity android:name=".BoyList" />
+        <activity android:name=".SifreDegistir" />
+        <activity android:name=".HesabiSil"></activity>
     </application>
 
 </manifest>

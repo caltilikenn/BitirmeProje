@@ -127,19 +127,19 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void kullaniciSil(UyelikBilgi ub) {
+    public void kullaniciSil(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String[] id = {String.valueOf(ub.getId())};
-        db.delete(USERS_TABLE, USERS_ID + "=?", id);
+        String[] select = {String.valueOf(id)};
+        db.delete(USERS_TABLE, USERS_ID + "=?", select);
         db.close();
     }
 
-    public void sifreDegistir(UyelikBilgi ub) {
+    public void sifreDegistir(int id, String sifre) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String[] id = {String.valueOf(ub.getId())};
+        String[] selection = {String.valueOf(id)};
         ContentValues contentValues = new ContentValues();
-        contentValues.put(USERS_SIFRE, ub.getSifre());
-        db.update(USERS_TABLE, contentValues, USERS_ID + " = ?", id);
+        contentValues.put(USERS_SIFRE, sifre);
+        db.update(USERS_TABLE, contentValues, USERS_ID + " = ?", selection);
         db.close();
     }
 
@@ -150,7 +150,7 @@ public class Database extends SQLiteOpenHelper {
         Cursor c = db.query(USERS_TABLE, columns, null, null, null, null, null);
 
         while (c.moveToNext()) {
-            list.add(c.getInt(0) + " - " + c.getString(1) + " - " + c.getString(2) + " - " + c.getString(3) + " - " + c.getString(4));
+            list.add(c.getInt(0) + " | " + c.getString(1) + " | " + c.getString(2) + " | " + c.getString(3) + " | " + c.getString(4));
         }
         return list;
     }
@@ -251,7 +251,7 @@ public class Database extends SQLiteOpenHelper {
         String[] columns = {BOY_CM,TARIH};
         Cursor c = db.query(BOY_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add(c.getInt(0) + " - " + c.getString(1));
+            list.add(c.getInt(0) + " cm | " + c.getString(1));
         }
         return list;
     }
