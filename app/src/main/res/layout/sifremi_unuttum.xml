@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="73dp"
+            android:layout_weight="0.12"
+            android:text="FollowSelf"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="50dp" />
+
+        <EditText
+            android:id="@+id/et1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt2"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="17dp"
+            android:layout_weight="0.07"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="E-Mail Adresinizi Yazınız"
+            android:inputType="textEmailAddress"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/btn1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="27dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="GÖSTER" />
+
+        <TextView
+            android:id="@+id/txt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/et1"
+            android:layout_alignLeft="@+id/et1"
+            android:layout_alignRight="@+id/et1"
+            android:layout_alignStart="@+id/et1"
+            android:layout_below="@+id/txt1"
+            android:layout_marginTop="24dp"
+            android:fontFamily="serif"
+            android:text="Şifrenizi yollamamız için lütfen e-mail adresinizi giriniz"
+            android:textStyle="bold|italic" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
