@@ -127,16 +127,16 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void kullaniciSil(int id) {
+    public void kullaniciSil(long id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String[] select = {String.valueOf(id)};
-        db.delete(USERS_TABLE, USERS_ID + "=?", select);
+        String[] select = {String.valueOf(id).trim()};
+        db.delete(USERS_TABLE, USERS_ID + " = ?", select);
         db.close();
     }
 
     public void sifreDegistir(int id, String sifre) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String[] selection = {String.valueOf(id)};
+        String[] selection = {String.valueOf(id).trim()};
         ContentValues contentValues = new ContentValues();
         contentValues.put(USERS_SIFRE, sifre);
         db.update(USERS_TABLE, contentValues, USERS_ID + " = ?", selection);
@@ -229,6 +229,22 @@ public class Database extends SQLiteOpenHelper {
         c.close();
         db.close();
         return id;
+    }
+
+    public boolean checkPassword(int id,String sifre) {
+        String[] columns = {USERS_ID};
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + USERS_SIFRE + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim(),sifre};
+        Cursor c = db.query(USERS_TABLE, columns, selection, selectionArgs, null, null, null);
+        int cursorCount = c.getCount();
+        c.close();
+        db.close();
+
+        if (cursorCount > 0) {
+            return true;
+        } else
+            return false;
     }
 
     //-----------------------------------------------------------------------------------------------------------------
