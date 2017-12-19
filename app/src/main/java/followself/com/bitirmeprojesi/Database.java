@@ -160,7 +160,7 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void kullaniciSil(long id) {
+    public void kullaniciSil(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String[] select = {String.valueOf(id).trim()};
         db.delete(USERS_TABLE, USERS_ID + " = ?", select);
