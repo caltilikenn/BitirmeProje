@@ -24,10 +24,9 @@ public class Boy extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int boy1 =0;
+                int boy1;
                 final String boy = et1.getText().toString();
                 String tarih = et2.getText().toString();
-
 
                 if (boy.isEmpty() || tarih.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz", Toast.LENGTH_LONG).show();

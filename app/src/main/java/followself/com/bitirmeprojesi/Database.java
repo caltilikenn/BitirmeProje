@@ -292,15 +292,35 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void boyGuncelle(int id, int boy, String eskiTarih, String yeniTarih) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim(),eskiTarih};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, id);
+        contentValues.put(BOY_CM, boy);
+        contentValues.put(TARIH, yeniTarih);
+        db.update(BOY_TABLE, contentValues, selection, selectionArgs);
+        db.close();
+    }
+
+    public void boySil(int id, String tarih) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim(),tarih};
+        db.delete(BOY_TABLE, selection, selectionArgs);
+        db.close();
+    }
+
     public List<String> showBoy(int id) {
         List<String> list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " =?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {BOY_CM,TARIH};
+        String[] columns = {USERS_ID,BOY_CM,TARIH};
         Cursor c = db.query(BOY_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add(c.getInt(0) + " cm | " + c.getString(1));
+            list.add(c.getInt(0) + "                    " + c.getInt(1) + "cm                    " + c.getString(2));
         }
         return list;
     }
