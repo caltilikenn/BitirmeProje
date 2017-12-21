@@ -115,11 +115,11 @@ public class Database extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE EGZERSIZ(ID INTEGER, TUR TEXT, SURE INTEGER, MESAFE INTEGER, ADIM_SAYISI INTEGER, YAKILAN_KALORI INTEGER, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
-        db.execSQL("CREATE TABLE KAN_BASINCI(ID INTEGER, SISTOLIK REAL, DIYASTOLIK REAL, NABIZ INTEGER, KALP_ATIS_DUZENI TEXT, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
+        db.execSQL("CREATE TABLE KAN_BASINCI(ID INTEGER, SISTOLIK INTEGER, DIYASTOLIK INTEGER, NABIZ INTEGER, KALP_ATIS_DUZENI TEXT, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
-        db.execSQL("CREATE TABLE KAN_SEKERI(ID INTEGER, OLCUM_DEGERI REAL, OLCUM_ZAMANI TEXT, OLCUM_TURU TEXT, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
+        db.execSQL("CREATE TABLE KAN_SEKERI(ID INTEGER, OLCUM_DEGERI INTEGER, OLCUM_ZAMANI TEXT, OLCUM_TURU TEXT, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
-        db.execSQL("CREATE TABLE KOLESTEROL(ID INTEGER, LDL INTEGER, HDL INTEGER, TRIGLISERIT INTEGER, TOPLAM_KOLESTEROL INTEGER, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
+        db.execSQL("CREATE TABLE KOLESTEROL(ID INTEGER, LDL INTEGER, HDL INTEGER, TRIGLISERIT INTEGER, TOPLAM_KOLESTEROL REAL, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
         db.execSQL("CREATE TABLE VUCUT_OLCULERI(ID INTEGER, OLCUM_ALANI TEXT, BOYUT INTEGER, TARIH TEXT NOT NULL, PRIMARY KEY(ID,TARIH), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
@@ -437,7 +437,7 @@ public class Database extends SQLiteOpenHelper {
         db.close();
 }
 
-    public void kanBasinciGuncelle(int id, float sistolik, float diyastolik, int nabiz, String duzen, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
+    public void kanBasinciGuncelle(int id, int sistolik, int diyastolik, int nabiz, String duzen, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
         SQLiteDatabase db = this.getWritableDatabase();
         String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
         String[] selectionArgs = {String.valueOf(id).trim(),eskiTarih,eskiSaat};
@@ -469,7 +469,7 @@ public class Database extends SQLiteOpenHelper {
         String[] columns = {USERS_ID,KAN_BASINCI_SISTOLIK,KAN_BASINCI_DIYASTOLIK,KAN_BASINCI_NABIZ,KAN_BASINCI_DUZEN,TARIH,SAAT};
         Cursor c = db.query(KAN_BASINCI_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID="+c.getInt(0) + " " + c.getFloat(1) + "mmHg " + c.getFloat(2) + "mmHg " + c.getInt(3) + " " + c.getString(4) + " " + c.getString(5) + " " + c.getString(6));
+            list.add("ID="+c.getInt(0) + " " + c.getInt(1) + "mmHg " + c.getInt(2) + "mmHg " + c.getInt(3) + " " + c.getString(4) + " " + c.getString(5) + " " + c.getString(6));
         }
         return list;
     }
@@ -487,7 +487,7 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void kanSekeriGuncelle(int id, float olcum, String zaman, String tur, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
+    public void kanSekeriGuncelle(int id, int olcum, String zaman, String tur, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
         SQLiteDatabase db = this.getWritableDatabase();
         String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
         String[] selectionArgs = {String.valueOf(id).trim(),eskiTarih,eskiSaat};
@@ -518,11 +518,62 @@ public class Database extends SQLiteOpenHelper {
         String[] columns = {USERS_ID,KAN_SEKERI_OLCUM,KAN_SEKERI_ZAMAN,KAN_SEKERI_TUR,TARIH,SAAT};
         Cursor c = db.query(KAN_SEKERI_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID="+c.getInt(0) + " " + c.getFloat(1) + "mg/dL " + c.getString(2) + " " + c.getString(3) + " " + c.getString(4) + " " + c.getString(5));
+            list.add("ID="+c.getInt(0) + " " + c.getInt(1) + "mg/dL " + c.getString(2) + " " + c.getString(3) + " " + c.getString(4) + " " + c.getString(5));
         }
         return list;
     }
+//------------------------------------------------------------------------------------------------------------------------------
 
+    public void kolesterolEkle(KolesterolBilgi kol) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, kol.getId());
+        contentValues.put(KOLESTEROL_LDL, kol.getLdl());
+        contentValues.put(KOLESTEROL_HDL, kol.getHdl());
+        contentValues.put(KOLESTEROL_TRIGLISERIT, kol.getTrigliserit());
+        contentValues.put(KOLESTEROL_TOPLAM, kol.getToplam());
+        contentValues.put(TARIH, kol.getTarih());
+        contentValues.put(SAAT, kol.getSaat());
+        db.insert(KOLESTEROL_TABLE, null, contentValues);
+        db.close();
+    }
+
+    public void kolesterolGuncelle(int id, int ldl, int hdl, int trigliserit, int toplam, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String[] selectionArgs = {String.valueOf(id).trim(),eskiTarih,eskiSaat};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, id);
+        contentValues.put(KOLESTEROL_LDL, ldl);
+        contentValues.put(KOLESTEROL_HDL, hdl);
+        contentValues.put(KOLESTEROL_TRIGLISERIT, trigliserit);
+        contentValues.put(KOLESTEROL_TOPLAM, toplam);
+        contentValues.put(TARIH, yeniTarih);
+        contentValues.put(SAAT, yeniSaat);
+        db.update(KOLESTEROL_TABLE, contentValues, selection, selectionArgs);
+        db.close();
+    }
+
+    public void kolesterolSil(int id, String tarih, String saat) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String[] selectionArgs = {String.valueOf(id).trim(),tarih,saat};
+        db.delete(KOLESTEROL_TABLE, selection, selectionArgs);
+        db.close();
+    }
+
+    public List<String> showKolesterol(int id) {
+        List<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " =?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
+        String[] columns = {USERS_ID,KOLESTEROL_LDL,KOLESTEROL_HDL,KOLESTEROL_TRIGLISERIT,KOLESTEROL_TOPLAM,TARIH,SAAT};
+        Cursor c = db.query(KOLESTEROL_TABLE, columns, selection, selectionArgs, null, null, null);
+        while (c.moveToNext()) {
+            list.add("ID="+c.getInt(0) + " " + c.getInt(1) + "mg/dL " + c.getInt(2) + "mg/dL " + c.getInt(3) + "mg/dL " + c.getInt(4) + "mg/dL " + c.getString(5) + " " + c.getString(6));
+        }
+        return list;
+    }
 }
 
 

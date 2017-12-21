@@ -2,13 +2,13 @@ package followself.com.bitirmeprojesi;
 
 public class KanSekeriBilgi {
     private int id;
-    private float olcum;
+    private int olcum;
     private String zaman;
     private String tur;
     private String tarih;
     private String saat;
 
-    public KanSekeriBilgi(int id, float olcum, String zaman, String tur, String tarih, String saat){
+    public KanSekeriBilgi(int id, int olcum, String zaman, String tur, String tarih, String saat){
         this.id=id;
         this.olcum=olcum;
         this.zaman=zaman;
@@ -19,7 +19,7 @@ public class KanSekeriBilgi {
 
     public int getId() { return id; }
 
-    public float getOlcum() { return olcum; }
+    public int getOlcum() { return olcum; }
 
     public String getZaman() { return zaman; }
 
@@ -31,7 +31,7 @@ public class KanSekeriBilgi {
 
     public void setId(int id) { this.id = id; }
 
-    public void setOlcum(float olcum) { this.olcum = olcum; }
+    public void setOlcum(int olcum) { this.olcum = olcum; }
 
     public void setZaman(String zaman) { this.zaman = zaman; }
 

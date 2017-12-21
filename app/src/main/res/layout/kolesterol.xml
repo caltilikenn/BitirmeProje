@@ -34,7 +34,7 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Sistolik(büyük sayı,mmHg)"
+                android:hint="LDL(mg/dL)"
                 android:inputType="number"
                 android:textSize="20dp"
                 android:textStyle="italic" />
@@ -51,7 +51,7 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Diyastolik(küçük sayı,mmHg)"
+                android:hint="HDL(mg/dL)"
                 android:inputType="number"
                 android:textSize="20dp"
                 android:textStyle="italic" />
@@ -67,7 +67,7 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Nabız(kalp atışı/dk)"
+                android:hint="Trigliserit(mg/dL)"
                 android:inputType="number"
                 android:textSize="20dp"
                 android:textStyle="italic" />
@@ -83,8 +83,8 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Kalp Atışı Düzenli mi?(Evet/Hayır)"
-                android:inputType="text"
+                android:hint="Toplam Kolesterol(mg/dL)"
+                android:inputType="number"
                 android:textSize="18dp"
                 android:textStyle="italic" />
 

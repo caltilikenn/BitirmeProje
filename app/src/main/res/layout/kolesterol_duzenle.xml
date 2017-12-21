@@ -34,8 +34,7 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Sistolik(büyük sayı,mmHg)"
-                android:inputType="number"
+                android:inputType="text"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -51,7 +50,6 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Diyastolik(küçük sayı,mmHg)"
                 android:inputType="number"
                 android:textSize="20dp"
                 android:textStyle="italic" />
@@ -67,7 +65,6 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Nabız(kalp atışı/dk)"
                 android:inputType="number"
                 android:textSize="20dp"
                 android:textStyle="italic" />
@@ -83,9 +80,8 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Kalp Atışı Düzenli mi?(Evet/Hayır)"
-                android:inputType="text"
-                android:textSize="18dp"
+                android:inputType="number"
+                android:textSize="20dp"
                 android:textStyle="italic" />
 
             <EditText
@@ -99,8 +95,7 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Tarih(GG-AA-YYYY)"
-                android:inputType="date"
+                android:inputType="number"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -115,8 +110,7 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Saat(SS:DD)"
-                android:inputType="time"
+                android:inputType="date"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -130,7 +124,7 @@
                 android:layout_below="@+id/et6"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@android:color/holo_green_dark"
-                android:text="Kaydet" />
+                android:text="Güncelle" />
 
             <Button
                 android:id="@+id/btn2"
@@ -141,8 +135,8 @@
                 android:layout_alignBottom="@+id/btn1"
                 android:layout_alignEnd="@+id/et2"
                 android:layout_alignRight="@+id/et2"
-                android:backgroundTint="@color/colorAccent"
-                android:text="Listele" />
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:text="Sil" />
 
             <Button
                 android:id="@+id/btn3"
@@ -154,6 +148,49 @@
                 android:layout_marginTop="26dp"
                 android:backgroundTint="@android:color/holo_blue_dark"
                 android:text="Geri" />
+
+            <TextView
+                android:id="@+id/txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et1"
+                android:layout_alignBottom="@+id/et1"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="LDL:"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/txt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et2"
+                android:layout_alignBottom="@+id/et2"
+                android:text="HDL:"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/txt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et3"
+                android:layout_alignBottom="@+id/et3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="Trigliserit:"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/txt4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et4"
+                android:layout_alignBottom="@+id/et4"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="Toplam:"
+                android:textSize="10sp" />
+
 
         </RelativeLayout>
     </ScrollView>

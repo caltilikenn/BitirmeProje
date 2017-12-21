@@ -86,10 +86,18 @@
         <activity
             android:name=".KanSekeri"
             android:label="Kan Şekeri" />
-        <activity android:name=".KanSekeriList"
-                  android:label="Kan Şekeri Bilgisi Listesi"/>
-        <activity android:name=".KanSekeriDuzenle"
-                  android:label="Kan Şekeri Bilgisi Düzenleme"/>
+        <activity
+            android:name=".KanSekeriList"
+            android:label="Kan Şekeri Bilgisi Listesi" />
+        <activity
+            android:name=".KanSekeriDuzenle"
+            android:label="Kan Şekeri Bilgisi Düzenleme" />
+        <activity android:name=".Kolesterol"
+                  android:label="Kolesterol"/>
+        <activity android:name=".KolesterolList"
+                  android:label="Kolesterol Bilgisi Listesi"/>
+        <activity android:name=".KolesterolDuzenle"
+                  android:label="Kolestrol Bilgisi Düzenleme"/>
     </application>
 
 </manifest>

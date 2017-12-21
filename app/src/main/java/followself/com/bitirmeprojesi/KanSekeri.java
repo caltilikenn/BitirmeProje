@@ -28,7 +28,7 @@ public class KanSekeri extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                float olcum1;
+                int olcum1;
 
                 String olcum = et1.getText().toString();
                 String zaman = et2.getText().toString();
@@ -40,7 +40,7 @@ public class KanSekeri extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
                     return;
                 } else
-                    olcum1 = Float.parseFloat(olcum.trim());
+                    olcum1 = Integer.parseInt(olcum.trim());
                     KanSekeriBilgi ks = new KanSekeriBilgi(id, olcum1, zaman, tur, tarih, saat);
                     Database db = new Database(getApplicationContext());
                     db.kanSekeriEkle(ks);

@@ -35,7 +35,7 @@
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="Kan Şekeri Değeriniz(mg/dL)"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 

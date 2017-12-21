@@ -39,7 +39,7 @@ public class KanSekeriList extends AppCompatActivity {
                 String[] array1 = array[0].split("ID=");
                 String[] array2 = array[1].split("mg/dL");
                 int id = Integer.parseInt(array1[1]);
-                float olcum = Float.parseFloat(array2[0]);
+                int olcum = Integer.parseInt(array2[0]);
                 String zaman = array[2]+" "+array[3];
                 String tur = array[4];
                 String tarih = array[5];

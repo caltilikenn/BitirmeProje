@@ -2,14 +2,14 @@ package followself.com.bitirmeprojesi;
 
 public class KanBasinciBilgi {
     private int id;
-    private float sistolik;
-    private float diyastolik;
+    private int sistolik;
+    private int diyastolik;
     private int nabiz;
     private String duzen;
     private String tarih;
     private String saat;
 
-    public KanBasinciBilgi(int id, float sistolik, float diyastolik, int nabiz, String duzen, String tarih, String saat){
+    public KanBasinciBilgi(int id, int sistolik, int diyastolik, int nabiz, String duzen, String tarih, String saat){
         this.id=id;
         this.sistolik=sistolik;
         this.diyastolik=diyastolik;
@@ -21,9 +21,9 @@ public class KanBasinciBilgi {
 
     public int getId() { return id; }
 
-    public float getSistolik() { return sistolik; }
+    public int getSistolik() { return sistolik; }
 
-    public float getDiyastolik() { return diyastolik; }
+    public int getDiyastolik() { return diyastolik; }
 
     public int getNabiz() { return nabiz; }
 
@@ -35,9 +35,9 @@ public class KanBasinciBilgi {
 
     public void setId(int id) { this.id = id; }
 
-    public void setSistolik(float sistolik) { this.sistolik = sistolik; }
+    public void setSistolik(int sistolik) { this.sistolik = sistolik; }
 
-    public void setDiyastolik(float diyastolik) { this.diyastolik = diyastolik; }
+    public void setDiyastolik(int diyastolik) { this.diyastolik = diyastolik; }
 
     public void setNabiz(int nabiz) { this.nabiz = nabiz; }
 

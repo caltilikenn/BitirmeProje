@@ -14,21 +14,21 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class KanBasinciList extends AppCompatActivity {
+public class KolesterolList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kan_basinci_list);
+        setContentView(R.layout.kolesterol_list);
         Button btn1 = (Button) findViewById(R.id.btn1);
 
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
 
         final ListView lv = (ListView)findViewById(R.id.lv);
-        Database db = new Database(KanBasinciList.this);
-        List<String> list = db.showKanBasinci(id);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(KanBasinciList.this,android.R.layout.simple_list_item_1,android.R.id.text1,list);
+        Database db = new Database(KolesterolList.this);
+        List<String> list = db.showKolesterol(id);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(KolesterolList.this,android.R.layout.simple_list_item_1,android.R.id.text1,list);
         lv.setAdapter(adapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -37,22 +37,24 @@ public class KanBasinciList extends AppCompatActivity {
                 String txt = adapterView.getItemAtPosition(i).toString();
                 String[] array = txt.split(" ");
                 String[] array1 = array[0].split("ID=");
-                String[] array2 = array[1].split("mmHg");
-                String[] array3 = array[2].split("mmHg");
+                String[] array2 = array[1].split("mg/dL");
+                String[] array3 = array[2].split("mg/dL");
+                String[] array4 = array[3].split("mg/dL");
+                String[] array5 = array[4].split("mg/dL");
                 int id = Integer.parseInt(array1[1]);
-                int sistolik = Integer.parseInt(array2[0]);
-                int diyastolik = Integer.parseInt(array3[0]);
-                int nabiz = Integer.parseInt(array[3]);
-                String duzen = array[4];
+                int ldl = Integer.parseInt(array2[0]);
+                int hdl = Integer.parseInt(array3[0]);
+                int trigliserit = Integer.parseInt(array4[0]);
+                int toplam = Integer.parseInt(array5[0]);
                 String tarih = array[5];
                 String saat = array[6];
 
-                Intent intent = new Intent(getApplicationContext(), KanBasinciDuzenle.class);
+                Intent intent = new Intent(getApplicationContext(), KolesterolDuzenle.class);
                 intent.putExtra("id", id);
-                intent.putExtra("sistolik",sistolik);
-                intent.putExtra("diyastolik",diyastolik);
-                intent.putExtra("nabiz",nabiz);
-                intent.putExtra("duzen",duzen);
+                intent.putExtra("ldl",ldl);
+                intent.putExtra("hdl",hdl);
+                intent.putExtra("trigliserit",trigliserit);
+                intent.putExtra("toplam",toplam);
                 intent.putExtra("tarih", tarih);
                 intent.putExtra("saat", saat);
                 startActivity(intent);
@@ -62,7 +64,7 @@ public class KanBasinciList extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), KanBasinci.class);
+                Intent intent = new Intent(getApplicationContext(), Kolesterol.class);
                 intent.putExtra("id", id);
                 startActivity(intent);
             }

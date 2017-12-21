@@ -25,7 +25,7 @@ public class KanSekeriDuzenle extends AppCompatActivity {
         Button btn3 = (Button) findViewById(R.id.btn3);
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
-        final float olcum = intent.getFloatExtra("olcum",0);
+        final int olcum = intent.getIntExtra("olcum",0);
         final String zaman = intent.getStringExtra("zaman");
         final String tur = intent.getStringExtra("tur");
         final String tarih = intent.getStringExtra("tarih");
@@ -50,7 +50,7 @@ public class KanSekeriDuzenle extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    float yeniOlcum1 = Float.parseFloat(yeniOlcum);
+                    int yeniOlcum1 = Integer.parseInt(yeniOlcum);
                     db.kanSekeriGuncelle(id,yeniOlcum1,yeniZaman,yeniTur,tarih,yeniTarih,saat,yeniSaat);
                     Toast.makeText(getApplicationContext(),"Kaydınız Güncellendi",Toast.LENGTH_LONG).show();
                     et1.setText("");

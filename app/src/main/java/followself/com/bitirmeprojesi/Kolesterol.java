@@ -8,12 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class KanBasinci extends AppCompatActivity {
+public class Kolesterol extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kan_basinci);
+        setContentView(R.layout.kolesterol);
         final EditText et1 = (EditText) findViewById(R.id.et1);
         final EditText et2 = (EditText) findViewById(R.id.et2);
         final EditText et3 = (EditText) findViewById(R.id.et3);
@@ -29,28 +29,30 @@ public class KanBasinci extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int sistolik1;
-                int diyastolik1;
-                int nabiz1;
+                int ldl1;
+                int hdl1;
+                int trigliserit1;
+                int toplam1;
 
-                String sistolik = et1.getText().toString();
-                String diyastolik = et2.getText().toString();
-                String nabiz = et3.getText().toString();
-                String duzen = et4.getText().toString();
+                String ldl = et1.getText().toString();
+                String hdl = et2.getText().toString();
+                String trigliserit = et3.getText().toString();
+                String toplam = et4.getText().toString();
                 String tarih = et5.getText().toString();
                 String saat = et6.getText().toString();
 
 
-                if (sistolik.isEmpty() || diyastolik.isEmpty() || nabiz.isEmpty() || duzen.isEmpty() || tarih.isEmpty() || saat.isEmpty()) {
+                if (ldl.isEmpty() || hdl.isEmpty() || trigliserit.isEmpty() || toplam.isEmpty() || tarih.isEmpty() || saat.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
                     return;
                 } else
-                    sistolik1 = Integer.parseInt(sistolik.trim());
-                    diyastolik1 = Integer.parseInt(diyastolik.trim());
-                    nabiz1 = Integer.parseInt(nabiz.trim());
-                    KanBasinciBilgi kb = new KanBasinciBilgi(id, sistolik1, diyastolik1, nabiz1, duzen, tarih, saat);
+                    ldl1 = Integer.parseInt(ldl.trim());
+                    hdl1 = Integer.parseInt(hdl.trim());
+                    trigliserit1 = Integer.parseInt(trigliserit.trim());
+                    toplam1 = Integer.parseInt(toplam.trim());
+                    KolesterolBilgi kol = new KolesterolBilgi(id, ldl1, hdl1, trigliserit1, toplam1, tarih, saat);
                     Database db = new Database(getApplicationContext());
-                    db.kanBasinciEkle(kb);
+                    db.kolesterolEkle(kol);
                     Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
@@ -58,7 +60,7 @@ public class KanBasinci extends AppCompatActivity {
                     et4.setText("");
                     et5.setText("");
                     et6.setText("");
-                    Intent intent = new Intent(getApplicationContext(), KanBasinci.class);
+                    Intent intent = new Intent(getApplicationContext(), Kolesterol.class);
                     intent.putExtra("id",id);
                     startActivity(intent);
             }
@@ -67,7 +69,7 @@ public class KanBasinci extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), KanBasinciList.class);
+                Intent intent = new Intent(getApplicationContext(), KolesterolList.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
             }
