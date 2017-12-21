@@ -47,24 +47,24 @@ public class Egzersiz extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
                     return;
                 } else
-                    sure1 = Integer.parseInt(sure);
-                    mesafe1 = Integer.parseInt(mesafe);
-                    adim1 = Integer.parseInt(adim);
-                    kalori1 = Integer.parseInt(kalori);
-                EgzersizBilgi eb = new EgzersizBilgi(id, tur, sure1, mesafe1, adim1, kalori1, tarih, saat);
-                Database db = new Database(getApplicationContext());
-                db.egzersizEkle(eb);
-                Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
-                et1.setText("");
-                et2.setText("");
-                et3.setText("");
-                et4.setText("");
-                et5.setText("");
-                et6.setText("");
-                et7.setText("");
-                Intent intent = new Intent(getApplicationContext(), Egzersiz.class);
-                intent.putExtra("id",id);
-                startActivity(intent);
+                    sure1 = Integer.parseInt(sure.trim());
+                    mesafe1 = Integer.parseInt(mesafe.trim());
+                    adim1 = Integer.parseInt(adim.trim());
+                    kalori1 = Integer.parseInt(kalori.trim());
+                    EgzersizBilgi eb = new EgzersizBilgi(id, tur, sure1, mesafe1, adim1, kalori1, tarih, saat);
+                    Database db = new Database(getApplicationContext());
+                    db.egzersizEkle(eb);
+                    Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
+                    et1.setText("");
+                    et2.setText("");
+                    et3.setText("");
+                    et4.setText("");
+                    et5.setText("");
+                    et6.setText("");
+                    et7.setText("");
+                    Intent intent = new Intent(getApplicationContext(), Egzersiz.class);
+                    intent.putExtra("id",id);
+                    startActivity(intent);
             }
         });
 

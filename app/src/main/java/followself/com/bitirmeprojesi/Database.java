@@ -115,7 +115,7 @@ public class Database extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE EGZERSIZ(ID INTEGER, TUR TEXT, SURE INTEGER, MESAFE INTEGER, ADIM_SAYISI INTEGER, YAKILAN_KALORI INTEGER, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
-        db.execSQL("CREATE TABLE KAN_BASINCI(ID INTEGER, SISTOLIK INTEGER, DIYASTOLIK INTEGER, NABIZ INTEGER, KALP_ATIS_DUZENI TEXT, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
+        db.execSQL("CREATE TABLE KAN_BASINCI(ID INTEGER, SISTOLIK REAL, DIYASTOLIK REAL, NABIZ INTEGER, KALP_ATIS_DUZENI TEXT, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
         db.execSQL("CREATE TABLE KAN_SEKERI(ID INTEGER, OLCUM_DEGERI INTEGER, OLCUM_ZAMANI TEXT, OLCUM_TURU TEXT, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
@@ -370,19 +370,19 @@ public class Database extends SQLiteOpenHelper {
         return list;
     }
 //------------------------------------------------------------------------------------------------------------------------------
-public void egzersizEkle(EgzersizBilgi eb) {
-    SQLiteDatabase db = this.getWritableDatabase();
-    ContentValues contentValues = new ContentValues();
-    contentValues.put(USERS_ID, eb.getId());
-    contentValues.put(EGZERSIZ_TUR, eb.getTur());
-    contentValues.put(EGZERSIZ_SURE, eb.getSure());
-    contentValues.put(EGZERSIZ_KM, eb.getMesafe());
-    contentValues.put(EGZERSIZ_ADIM, eb.getAdim());
-    contentValues.put(EGZERSIZ_KALORI, eb.getKalori());
-    contentValues.put(TARIH, eb.getTarih());
-    contentValues.put(SAAT, eb.getSaat());
-    db.insert(EGZERSIZ_TABLE, null, contentValues);
-    db.close();
+    public void egzersizEkle(EgzersizBilgi eb) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, eb.getId());
+        contentValues.put(EGZERSIZ_TUR, eb.getTur());
+        contentValues.put(EGZERSIZ_SURE, eb.getSure());
+        contentValues.put(EGZERSIZ_KM, eb.getMesafe());
+        contentValues.put(EGZERSIZ_ADIM, eb.getAdim());
+        contentValues.put(EGZERSIZ_KALORI, eb.getKalori());
+        contentValues.put(TARIH, eb.getTarih());
+        contentValues.put(SAAT, eb.getSaat());
+        db.insert(EGZERSIZ_TABLE, null, contentValues);
+        db.close();
 }
 
     public void egzersizGuncelle(int id, String tur, int sure, int mesafe, int adim, int kalori, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
@@ -419,6 +419,57 @@ public void egzersizEkle(EgzersizBilgi eb) {
         Cursor c = db.query(EGZERSIZ_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
             list.add("ID="+c.getInt(0) + " " + c.getString(1) + " " + c.getInt(2) + "dk " + c.getInt(3) + "m " + c.getInt(4) + "adım " + c.getInt(5) + "cal " + c.getString(6) + " " + c.getString(7));
+        }
+        return list;
+    }
+//------------------------------------------------------------------------------------------------------------------------------
+    public void kanBasinciEkle(KanBasinciBilgi kb) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, kb.getId());
+        contentValues.put(KAN_BASINCI_SISTOLIK, kb.getSistolik());
+        contentValues.put(KAN_BASINCI_DIYASTOLIK, kb.getDiyastolik());
+        contentValues.put(KAN_BASINCI_NABIZ, kb.getNabiz());
+        contentValues.put(KAN_BASINCI_DUZEN, kb.getDuzen());
+        contentValues.put(TARIH, kb.getTarih());
+        contentValues.put(SAAT, kb.getSaat());
+        db.insert(KAN_BASINCI_TABLE, null, contentValues);
+        db.close();
+}
+
+    public void kanBasinciGuncelle(int id, float sistolik, float diyastolik, int nabiz, String duzen, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String[] selectionArgs = {String.valueOf(id).trim(),eskiTarih,eskiSaat};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, id);
+        contentValues.put(KAN_BASINCI_SISTOLIK, sistolik);
+        contentValues.put(KAN_BASINCI_DIYASTOLIK, diyastolik);
+        contentValues.put(KAN_BASINCI_NABIZ, nabiz);
+        contentValues.put(KAN_BASINCI_DUZEN, duzen);
+        contentValues.put(TARIH, yeniTarih);
+        contentValues.put(SAAT, yeniSaat);
+        db.update(KAN_BASINCI_TABLE, contentValues, selection, selectionArgs);
+        db.close();
+    }
+
+    public void kanBasinciSil(int id, String tarih, String saat) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String[] selectionArgs = {String.valueOf(id).trim(),tarih,saat};
+        db.delete(KAN_BASINCI_TABLE, selection, selectionArgs);
+        db.close();
+    }
+
+    public List<String> showKanBasinci(int id) {
+        List<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " =?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
+        String[] columns = {USERS_ID,KAN_BASINCI_SISTOLIK,KAN_BASINCI_DIYASTOLIK,KAN_BASINCI_NABIZ,KAN_BASINCI_DUZEN,TARIH,SAAT};
+        Cursor c = db.query(KAN_BASINCI_TABLE, columns, selection, selectionArgs, null, null, null);
+        while (c.moveToNext()) {
+            list.add("ID="+c.getInt(0) + " " + c.getFloat(1) + "mmHg " + c.getFloat(2) + "mmHg " + c.getInt(3) + " " + c.getString(4) + " " + c.getString(5) + " " + c.getString(6));
         }
         return list;
     }

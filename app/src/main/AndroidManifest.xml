@@ -65,13 +65,21 @@
         <activity
             android:name=".KiloList"
             android:label="Kilo Bilgisi Listesi" />
-        <activity android:name=".Egzersiz"
-                  android:label="Egzersiz"  />
-        <activity android:name=".EgzersizDuzenle"
-                  android:label="Egzersiz Bilgisi Düzenleme"  />
+        <activity
+            android:name=".Egzersiz"
+            android:label="Egzersiz" />
+        <activity
+            android:name=".EgzersizDuzenle"
+            android:label="Egzersiz Bilgisi Düzenleme" />
         <activity
             android:name=".EgzersizList"
             android:label="Egzersiz Bilgisi Listesi" />
+        <activity android:name=".KanBasinci"
+                  android:label="Kan Basıncı"/>
+        <activity android:name=".KanBasinciList"
+                  android:label="Kan Basıncı Bilgisi Listesi"/>
+        <activity android:name=".KanBasinciDuzenle"
+                  android:label="Kan Basıncı Bilgisi Düzenleme" />
     </application>
 
 </manifest>

@@ -8,14 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Boy extends AppCompatActivity {
+public class KanBasinci extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.boy);
+        setContentView(R.layout.kan_basinci);
         final EditText et1 = (EditText) findViewById(R.id.et1);
         final EditText et2 = (EditText) findViewById(R.id.et2);
+        final EditText et3 = (EditText) findViewById(R.id.et3);
+        final EditText et4 = (EditText) findViewById(R.id.et4);
+        final EditText et5 = (EditText) findViewById(R.id.et5);
+        final EditText et6 = (EditText) findViewById(R.id.et6);
         Button btn1 = (Button) findViewById(R.id.btn1);
         Button btn2 = (Button) findViewById(R.id.btn2);
         Button btn3 = (Button) findViewById(R.id.btn3);
@@ -25,22 +29,36 @@ public class Boy extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int boy1;
-                final String boy = et1.getText().toString();
-                String tarih = et2.getText().toString();
+                float sistolik1;
+                float diyastolik1;
+                int nabiz1;
 
-                if (boy.isEmpty() || tarih.isEmpty()) {
-                    Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz", Toast.LENGTH_LONG).show();
+                String sistolik = et1.getText().toString();
+                String diyastolik = et2.getText().toString();
+                String nabiz = et3.getText().toString();
+                String duzen = et4.getText().toString();
+                String tarih = et5.getText().toString();
+                String saat = et6.getText().toString();
+
+
+                if (sistolik.isEmpty() || diyastolik.isEmpty() || nabiz.isEmpty() || duzen.isEmpty() || tarih.isEmpty() || saat.isEmpty()) {
+                    Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
                     return;
                 } else
-                    boy1 = Integer.parseInt(boy.trim());
-                    BoyBilgi b = new BoyBilgi(id, boy1, tarih);
+                    sistolik1 = Float.parseFloat(sistolik.trim());
+                    diyastolik1 = Float.parseFloat(diyastolik.trim());
+                    nabiz1 = Integer.parseInt(nabiz.trim());
+                    KanBasinciBilgi kb = new KanBasinciBilgi(id, sistolik1, diyastolik1, nabiz1, duzen, tarih, saat);
                     Database db = new Database(getApplicationContext());
-                    db.boyEkle(b);
+                    db.kanBasinciEkle(kb);
                     Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
-                    Intent intent = new Intent(getApplicationContext(), Boy.class);
+                    et3.setText("");
+                    et4.setText("");
+                    et5.setText("");
+                    et6.setText("");
+                    Intent intent = new Intent(getApplicationContext(), KanBasinci.class);
                     intent.putExtra("id",id);
                     startActivity(intent);
             }
@@ -49,7 +67,7 @@ public class Boy extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BoyList.class);
+                Intent intent = new Intent(getApplicationContext(), KanBasinciList.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
             }
@@ -59,7 +77,7 @@ public class Boy extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Olcumler.class);
-                intent.putExtra("id",id);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });

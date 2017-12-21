@@ -16,6 +16,7 @@ public class Olcumler extends AppCompatActivity {
         Button btn2=(Button) findViewById(R.id.btn2);
         Button btn3=(Button) findViewById(R.id.btn3);
         Button btn4=(Button) findViewById(R.id.btn4);
+        Button btn5=(Button) findViewById(R.id.btn5);
 
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
@@ -48,6 +49,15 @@ public class Olcumler extends AppCompatActivity {
         });
 
         btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),KanBasinci.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
+
+        btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Anasayfa.class);

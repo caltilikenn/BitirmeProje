@@ -35,10 +35,10 @@ public class Kilo extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz", Toast.LENGTH_LONG).show();
                     return;
                 } else
-                    kilo1 = Integer.parseInt(kilo);
+                    kilo1 = Integer.parseInt(kilo.trim());
                     KiloBilgi k = new KiloBilgi(id, kilo1, tarih, saat);
                     Database db = new Database(getApplicationContext());
-                        db.kiloEkle(k);
+                    db.kiloEkle(k);
                     Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
