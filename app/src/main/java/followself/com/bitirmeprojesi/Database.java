@@ -117,7 +117,7 @@ public class Database extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE KAN_BASINCI(ID INTEGER, SISTOLIK REAL, DIYASTOLIK REAL, NABIZ INTEGER, KALP_ATIS_DUZENI TEXT, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
-        db.execSQL("CREATE TABLE KAN_SEKERI(ID INTEGER, OLCUM_DEGERI INTEGER, OLCUM_ZAMANI TEXT, OLCUM_TURU TEXT, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
+        db.execSQL("CREATE TABLE KAN_SEKERI(ID INTEGER, OLCUM_DEGERI REAL, OLCUM_ZAMANI TEXT, OLCUM_TURU TEXT, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
         db.execSQL("CREATE TABLE KOLESTEROL(ID INTEGER, LDL INTEGER, HDL INTEGER, TRIGLISERIT INTEGER, TOPLAM_KOLESTEROL INTEGER, TARIH TEXT NOT NULL, SAAT TEXT NOT NULL, PRIMARY KEY(ID,TARIH,SAAT), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
@@ -470,6 +470,55 @@ public class Database extends SQLiteOpenHelper {
         Cursor c = db.query(KAN_BASINCI_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
             list.add("ID="+c.getInt(0) + " " + c.getFloat(1) + "mmHg " + c.getFloat(2) + "mmHg " + c.getInt(3) + " " + c.getString(4) + " " + c.getString(5) + " " + c.getString(6));
+        }
+        return list;
+    }
+//------------------------------------------------------------------------------------------------------------------------------
+    public void kanSekeriEkle(KanSekeriBilgi ks) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, ks.getId());
+        contentValues.put(KAN_SEKERI_OLCUM, ks.getOlcum());
+        contentValues.put(KAN_SEKERI_ZAMAN, ks.getZaman());
+        contentValues.put(KAN_SEKERI_TUR, ks.getTur());
+        contentValues.put(TARIH, ks.getTarih());
+        contentValues.put(SAAT, ks.getSaat());
+        db.insert(KAN_SEKERI_TABLE, null, contentValues);
+        db.close();
+    }
+
+    public void kanSekeriGuncelle(int id, float olcum, String zaman, String tur, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String[] selectionArgs = {String.valueOf(id).trim(),eskiTarih,eskiSaat};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, id);
+        contentValues.put(KAN_SEKERI_OLCUM, olcum);
+        contentValues.put(KAN_SEKERI_ZAMAN, zaman);
+        contentValues.put(KAN_SEKERI_TUR, tur);
+        contentValues.put(TARIH, yeniTarih);
+        contentValues.put(SAAT, yeniSaat);
+        db.update(KAN_SEKERI_TABLE, contentValues, selection, selectionArgs);
+        db.close();
+    }
+
+    public void kanSekeriSil(int id, String tarih, String saat) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String[] selectionArgs = {String.valueOf(id).trim(),tarih,saat};
+        db.delete(KAN_SEKERI_TABLE, selection, selectionArgs);
+        db.close();
+    }
+
+    public List<String> showKanSekeri(int id) {
+        List<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " =?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
+        String[] columns = {USERS_ID,KAN_SEKERI_OLCUM,KAN_SEKERI_ZAMAN,KAN_SEKERI_TUR,TARIH,SAAT};
+        Cursor c = db.query(KAN_SEKERI_TABLE, columns, selection, selectionArgs, null, null, null);
+        while (c.moveToNext()) {
+            list.add("ID="+c.getInt(0) + " " + c.getFloat(1) + "mg/dL " + c.getString(2) + " " + c.getString(3) + " " + c.getString(4) + " " + c.getString(5));
         }
         return list;
     }

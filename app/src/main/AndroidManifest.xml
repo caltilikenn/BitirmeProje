@@ -74,12 +74,22 @@
         <activity
             android:name=".EgzersizList"
             android:label="Egzersiz Bilgisi Listesi" />
-        <activity android:name=".KanBasinci"
-                  android:label="Kan Basıncı"/>
-        <activity android:name=".KanBasinciList"
-                  android:label="Kan Basıncı Bilgisi Listesi"/>
-        <activity android:name=".KanBasinciDuzenle"
-                  android:label="Kan Basıncı Bilgisi Düzenleme" />
+        <activity
+            android:name=".KanBasinci"
+            android:label="Kan Basıncı" />
+        <activity
+            android:name=".KanBasinciList"
+            android:label="Kan Basıncı Bilgisi Listesi" />
+        <activity
+            android:name=".KanBasinciDuzenle"
+            android:label="Kan Basıncı Bilgisi Düzenleme" />
+        <activity
+            android:name=".KanSekeri"
+            android:label="Kan Şekeri" />
+        <activity android:name=".KanSekeriList"
+                  android:label="Kan Şekeri Bilgisi Listesi"/>
+        <activity android:name=".KanSekeriDuzenle"
+                  android:label="Kan Şekeri Bilgisi Düzenleme"/>
     </application>
 
 </manifest>
