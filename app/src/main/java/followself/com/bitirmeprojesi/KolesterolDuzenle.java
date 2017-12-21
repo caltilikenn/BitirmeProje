@@ -81,7 +81,7 @@ public class KolesterolDuzenle extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Database db = new Database(KolesterolDuzenle.this);
-                db.kanBasinciSil(id,tarih,saat);
+                db.kolesterolSil(id,tarih,saat);
                 Toast.makeText(getApplicationContext(),"Kaydınız Silindi",Toast.LENGTH_LONG).show();
                 et1.setText("");
                 et2.setText("");

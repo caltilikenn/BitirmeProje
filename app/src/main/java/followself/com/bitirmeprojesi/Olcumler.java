@@ -18,6 +18,7 @@ public class Olcumler extends AppCompatActivity {
         Button btn4=(Button) findViewById(R.id.btn4);
         Button btn5=(Button) findViewById(R.id.btn5);
         Button btn6=(Button) findViewById(R.id.btn6);
+        Button btn7=(Button) findViewById(R.id.btn7);
 
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
@@ -68,6 +69,15 @@ public class Olcumler extends AppCompatActivity {
         });
 
         btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Kolesterol.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
+
+        btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Anasayfa.class);
