@@ -19,6 +19,7 @@ public class SifreDegistir extends AppCompatActivity {
         final EditText et3 = (EditText) findViewById(R.id.et3);
         Button btn1=(Button) findViewById(R.id.btn1);
         Button btn2=(Button) findViewById(R.id.btn2);
+        Button btn3=(Button) findViewById(R.id.btn3);
 
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
@@ -82,6 +83,15 @@ public class SifreDegistir extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Anasayfa.class);
                 intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HesapAyarlari.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });

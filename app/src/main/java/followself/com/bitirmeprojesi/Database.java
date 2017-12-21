@@ -320,7 +320,105 @@ public class Database extends SQLiteOpenHelper {
         String[] columns = {USERS_ID,BOY_CM,TARIH};
         Cursor c = db.query(BOY_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add(c.getInt(0) + "                    " + c.getInt(1) + "cm                    " + c.getString(2));
+            list.add("ID="+c.getInt(0) + "                    " + c.getInt(1) + "cm                    " + c.getString(2));
+        }
+        return list;
+    }
+//------------------------------------------------------------------------------------------------------------------------------
+    public void kiloEkle(KiloBilgi k) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, k.getId());
+        contentValues.put(KILO_KG, k.getKilo());
+        contentValues.put(TARIH, k.getTarih());
+        contentValues.put(SAAT, k.getSaat());
+        db.insert(KILO_TABLE, null, contentValues);
+        db.close();
+    }
+
+    public void kiloGuncelle(int id, int kilo, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String[] selectionArgs = {String.valueOf(id).trim(),eskiTarih,eskiSaat};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, id);
+        contentValues.put(KILO_KG, kilo);
+        contentValues.put(TARIH, yeniTarih);
+        contentValues.put(SAAT, yeniSaat);
+        db.update(KILO_TABLE, contentValues, selection, selectionArgs);
+        db.close();
+    }
+
+    public void kiloSil(int id, String tarih, String saat) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String[] selectionArgs = {String.valueOf(id).trim(),tarih,saat};
+        db.delete(KILO_TABLE, selection, selectionArgs);
+        db.close();
+    }
+
+    public List<String> showKilo(int id) {
+        List<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " =?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
+        String[] columns = {USERS_ID,KILO_KG,TARIH,SAAT};
+        Cursor c = db.query(KILO_TABLE, columns, selection, selectionArgs, null, null, null);
+        while (c.moveToNext()) {
+            list.add("ID="+c.getInt(0) + "            " + c.getInt(1) + "kg            " + c.getString(2) + "            " + c.getString(3));
+        }
+        return list;
+    }
+//------------------------------------------------------------------------------------------------------------------------------
+public void egzersizEkle(EgzersizBilgi eb) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    ContentValues contentValues = new ContentValues();
+    contentValues.put(USERS_ID, eb.getId());
+    contentValues.put(EGZERSIZ_TUR, eb.getTur());
+    contentValues.put(EGZERSIZ_SURE, eb.getSure());
+    contentValues.put(EGZERSIZ_KM, eb.getMesafe());
+    contentValues.put(EGZERSIZ_ADIM, eb.getAdim());
+    contentValues.put(EGZERSIZ_KALORI, eb.getKalori());
+    contentValues.put(TARIH, eb.getTarih());
+    contentValues.put(SAAT, eb.getSaat());
+    db.insert(EGZERSIZ_TABLE, null, contentValues);
+    db.close();
+}
+
+    public void egzersizGuncelle(int id, String tur, int sure, int mesafe, int adim, int kalori, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String[] selectionArgs = {String.valueOf(id).trim(),eskiTarih,eskiSaat};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, id);
+        contentValues.put(EGZERSIZ_TUR, tur);
+        contentValues.put(EGZERSIZ_SURE, sure);
+        contentValues.put(EGZERSIZ_KM, mesafe);
+        contentValues.put(EGZERSIZ_ADIM, adim);
+        contentValues.put(EGZERSIZ_KALORI, kalori);
+        contentValues.put(TARIH, yeniTarih);
+        contentValues.put(SAAT, yeniSaat);
+        db.update(EGZERSIZ_TABLE, contentValues, selection, selectionArgs);
+        db.close();
+    }
+
+    public void egzersizSil(int id, String tarih, String saat) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String[] selectionArgs = {String.valueOf(id).trim(),tarih,saat};
+        db.delete(EGZERSIZ_TABLE, selection, selectionArgs);
+        db.close();
+    }
+
+    public List<String> showEgzersiz(int id) {
+        List<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " =?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
+        String[] columns = {USERS_ID,EGZERSIZ_TUR,EGZERSIZ_SURE,EGZERSIZ_KM,EGZERSIZ_ADIM,EGZERSIZ_KALORI,TARIH,SAAT};
+        Cursor c = db.query(EGZERSIZ_TABLE, columns, selection, selectionArgs, null, null, null);
+        while (c.moveToNext()) {
+            list.add("ID="+c.getInt(0) + " " + c.getString(1) + " " + c.getInt(2) + "dk " + c.getInt(3) + "m " + c.getInt(4) + "adım " + c.getInt(5) + "cal " + c.getString(6) + " " + c.getString(7));
         }
         return list;
     }

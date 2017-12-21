@@ -8,14 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Boy extends AppCompatActivity {
+public class Kilo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.boy);
+        setContentView(R.layout.kilo);
         final EditText et1 = (EditText) findViewById(R.id.et1);
         final EditText et2 = (EditText) findViewById(R.id.et2);
+        final EditText et3 = (EditText) findViewById(R.id.et3);
         Button btn1 = (Button) findViewById(R.id.btn1);
         Button btn2 = (Button) findViewById(R.id.btn2);
         Button btn3 = (Button) findViewById(R.id.btn3);
@@ -25,22 +26,24 @@ public class Boy extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int boy1;
-                final String boy = et1.getText().toString();
+                int kilo1;
+                final String kilo = et1.getText().toString();
                 String tarih = et2.getText().toString();
+                String saat = et3.getText().toString();
 
-                if (boy.isEmpty() || tarih.isEmpty()) {
+                if (kilo.isEmpty() || tarih.isEmpty() || saat.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz", Toast.LENGTH_LONG).show();
                     return;
                 } else
-                    boy1 = Integer.parseInt(boy);
-                    BoyBilgi b = new BoyBilgi(id, boy1, tarih);
+                    kilo1 = Integer.parseInt(kilo);
+                    KiloBilgi k = new KiloBilgi(id, kilo1, tarih, saat);
                     Database db = new Database(getApplicationContext());
-                    db.boyEkle(b);
+                        db.kiloEkle(k);
                     Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
-                    Intent intent = new Intent(getApplicationContext(), Boy.class);
+                    et3.setText("");
+                    Intent intent = new Intent(getApplicationContext(), Kilo.class);
                     intent.putExtra("id",id);
                     startActivity(intent);
             }
@@ -49,7 +52,7 @@ public class Boy extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BoyList.class);
+                Intent intent = new Intent(getApplicationContext(), KiloList.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
             }
@@ -59,7 +62,7 @@ public class Boy extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Olcumler.class);
-                intent.putExtra("id",id);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });

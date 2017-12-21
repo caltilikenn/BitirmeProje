@@ -53,9 +53,25 @@
         <activity
             android:name=".SifreDegistir"
             android:label="Şifre Yenileme" />
-        <activity android:name=".BoyDuzenle"
-                  android:label="Boy Bilgisi Düzenleme"/>
-
+        <activity
+            android:name=".BoyDuzenle"
+            android:label="Boy Bilgisi Düzenleme" />
+        <activity
+            android:name=".Kilo"
+            android:label="Kilo" />
+        <activity
+            android:name=".KiloDuzenle"
+            android:label="Kilo Bilgisi Düzenleme" />
+        <activity
+            android:name=".KiloList"
+            android:label="Kilo Bilgisi Listesi" />
+        <activity android:name=".Egzersiz"
+                  android:label="Egzersiz"  />
+        <activity android:name=".EgzersizDuzenle"
+                  android:label="Egzersiz Bilgisi Düzenleme"  />
+        <activity
+            android:name=".EgzersizList"
+            android:label="Egzersiz Bilgisi Listesi" />
     </application>
 
 </manifest>

@@ -21,7 +21,6 @@ public class SifremiUnuttum extends AppCompatActivity {
         final TextView txt2 = (TextView) findViewById(R.id.txt2);
         final EditText et1 = (EditText) findViewById(R.id.et1);
         Button btn1 = (Button) findViewById(R.id.btn1);
-        RelativeLayout rel1 = (RelativeLayout) findViewById(R.id.rel1);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override

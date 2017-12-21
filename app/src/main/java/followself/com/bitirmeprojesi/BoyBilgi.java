@@ -18,10 +18,10 @@ public class BoyBilgi {
 
     public String getTarih() { return tarih; }
 
+    public void setId(int id) { this.id = id; }
+
     public void setBoy(int boy) { this.boy=boy; }
 
     public void setTarih(String tarih) { this.tarih=tarih; }
-
-    public void setId(int id) { this.id = id; }
 
 }

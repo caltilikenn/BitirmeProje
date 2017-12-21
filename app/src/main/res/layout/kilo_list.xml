@@ -30,6 +30,7 @@
         android:layout_below="@+id/lv"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="8dp"
+        android:layout_marginStart="132dp"
         android:layout_marginTop="4dp"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:text="Geri"
@@ -37,9 +38,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lv"
         app:layout_constraintVertical_bias="0.111"
-        android:layout_gravity="center" />
+        android:layout_marginLeft="132dp" />
 
     </RelativeLayout>
-
 
 </android.support.constraint.ConstraintLayout>

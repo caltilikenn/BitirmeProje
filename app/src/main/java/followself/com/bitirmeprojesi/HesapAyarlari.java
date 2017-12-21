@@ -18,6 +18,7 @@ public class HesapAyarlari extends AppCompatActivity {
         setContentView(R.layout.hesap_ayarlari);
         Button btn1=(Button) findViewById(R.id.btn1);
         Button btn2=(Button) findViewById(R.id.btn2);
+        Button btn3=(Button) findViewById(R.id.btn3);
 
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
@@ -53,6 +54,15 @@ public class HesapAyarlari extends AppCompatActivity {
                     }
                 });
                 builder.show();
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Anasayfa.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
             }
         });
     }

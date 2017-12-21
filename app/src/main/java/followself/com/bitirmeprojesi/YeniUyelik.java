@@ -29,7 +29,6 @@ public class YeniUyelik extends AppCompatActivity {
         final EditText et4 = (EditText) findViewById(R.id.et4);
         final EditText et5 = (EditText) findViewById(R.id.et5);
         Button btn1 = (Button) findViewById(R.id.btn1);
-        RelativeLayout  rel1 = (RelativeLayout) findViewById(R.id.rel1);
 
         //Yeni kullanıcı oluşturma kısmı
         btn1.setOnClickListener(new View.OnClickListener() {

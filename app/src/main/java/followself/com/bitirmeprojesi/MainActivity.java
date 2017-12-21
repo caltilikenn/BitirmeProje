@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     TextView txt2;
     Button btn1;
     Button btn2;
-    RelativeLayout rel1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
         txt2 = (TextView) findViewById(R.id.txt2);
-        rel1 = (RelativeLayout) findViewById(R.id.rel1);
-
         txt2.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
     }
 

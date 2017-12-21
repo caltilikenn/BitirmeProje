@@ -13,6 +13,9 @@ public class Olcumler extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.olcumler);
         Button btn1=(Button) findViewById(R.id.btn1);
+        Button btn2=(Button) findViewById(R.id.btn2);
+        Button btn3=(Button) findViewById(R.id.btn3);
+        Button btn4=(Button) findViewById(R.id.btn4);
 
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
@@ -22,6 +25,33 @@ public class Olcumler extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Boy.class);
                 intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Kilo.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Egzersiz.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Anasayfa.class);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
