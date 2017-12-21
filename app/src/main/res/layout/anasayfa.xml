@@ -15,6 +15,19 @@
         tools:layout_editor_absoluteY="0dp">
 
 
+        <TextView
+            android:id="@+id/txt1"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="22dp"
+            android:fontFamily="serif"
+            android:textColor="@android:color/holo_purple"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
+
         <Button
             android:id="@+id/btn1"
             style="@style/Widget.AppCompat.Button.Colored"
@@ -24,8 +37,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/txt1"
             android:layout_marginTop="27dp"
-            android:backgroundTint="@android:color/holo_blue_light"
-            android:text="Ölçümler" />
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="Profil" />
 
         <Button
             android:id="@+id/btn2"
@@ -35,22 +48,47 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/btn1"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@android:color/holo_blue_light"
-            android:text="Hesap Ayarları" />
+            android:layout_marginTop="27dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="Ölçümler" />
 
-        <TextView
-            android:id="@+id/txt1"
-            android:layout_width="200dp"
+        <Button
+            android:id="@+id/btn3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="50dp"
-            android:fontFamily="serif"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="20dp"
-            android:textStyle="bold|italic" />
+            android:layout_below="@+id/btn2"
+            android:layout_marginTop="27dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="Sağlık Geçmişi" />
+
+        <Button
+            android:id="@+id/btn4"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/btn3"
+            android:layout_marginTop="27dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="Hesap Ayarları" />
+
+        <Button
+            android:id="@+id/btn5"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/btn4"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Çıkış Yap" />
+
+
 
     </RelativeLayout>
 
