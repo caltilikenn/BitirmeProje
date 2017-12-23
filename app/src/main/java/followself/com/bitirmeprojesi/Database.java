@@ -76,8 +76,9 @@ public class Database extends SQLiteOpenHelper {
 
     private static final String BAGISIKLIKLAR_TABLE = "BAGISIKLIKLAR";
     private static final String BAGISIKLIKLAR_AD = "ASI_ADI";
-    private static final String BAGISIKLIKLAR_TARIH = "ALINMA_TARIHI";
     private static final String BAGISIKLIKLAR_ETKI = "OLUMSUZ_ETKILER";
+    private static final String BAGISIKLIKLAR_TARIH = "ALINMA_TARIHI";
+
 
     private static final String ALERJILER_TABLE = "ALERJILER";
     private static final String ALERJILER_AD = "AD";
@@ -125,7 +126,7 @@ public class Database extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE ILACLAR(ID INTEGER, AD TEXT, ETKINLIK INTEGER, DOZAJ TEXT, ALINMA_SEKLI TEXT, ALINMA_SIKLIGI TEXT, ALINMA_NEDENI TEXT, BASLANGIC_TARIHI TEXT NOT NULL, BITIS_TARIHI TEXT NOT NULL, PRIMARY KEY(ID,AD,BASLANGIC_TARIHI,BITIS_TARIHI), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
-        db.execSQL("CREATE TABLE BAGISIKLIKLAR(ID INTEGER, ASI_ADI TEXT, OLUMSUZ_ETKILER TEXT, ALINMA_TARIHI TEXT NOT NULL, PRIMARY KEY(ID,ALINMA_TARIHI), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
+        db.execSQL("CREATE TABLE BAGISIKLIKLAR(ID INTEGER, ASI_ADI TEXT, OLUMSUZ_ETKILER TEXT, ALINMA_TARIHI TEXT NOT NULL, PRIMARY KEY(ID,AD,ALINMA_TARIHI), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
         db.execSQL("CREATE TABLE ALERJILER(ID INTEGER, AD TEXT, BELIRTILER TEXT, TUR TEXT, GOZLEM_TARIHI NOT NULL, PRIMARY KEY(ID,AD,GOZLEM_TARIHI), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
@@ -222,7 +223,7 @@ public class Database extends SQLiteOpenHelper {
     public String sifreGoster(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {USERS_SIFRE};
-        String selection = USERS_EMAIL + "=?";
+        String selection = USERS_EMAIL + " = ?";
         String[] selectionArgs = {email};
         Cursor c = db.query(USERS_TABLE, columns, selection, selectionArgs, null, null, null);
         String sifre = null;
@@ -237,7 +238,7 @@ public class Database extends SQLiteOpenHelper {
     public String isimGoster(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {USERS_ADSOYAD};
-        String selection = USERS_EMAIL + "=?";
+        String selection = USERS_EMAIL + " = ?";
         String[] selectionArgs = {email};
         Cursor c = db.query(USERS_TABLE, columns, selection, selectionArgs, null, null, null);
         String ad = null;
@@ -252,7 +253,7 @@ public class Database extends SQLiteOpenHelper {
     public String idYolla(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {USERS_ID};
-        String selection = USERS_EMAIL + "=?";
+        String selection = USERS_EMAIL + " = ?";
         String[] selectionArgs = {email};
         Cursor c = db.query(USERS_TABLE, columns, selection, selectionArgs, null, null, null);
         String id = null;
@@ -315,7 +316,7 @@ public class Database extends SQLiteOpenHelper {
     public List<String> showBoy(int id) {
         List<String> list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = USERS_ID + " =?";
+        String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
         String[] columns = {USERS_ID, BOY_CM, TARIH};
         Cursor c = db.query(BOY_TABLE, columns, selection, selectionArgs, null, null, null);
@@ -339,7 +340,7 @@ public class Database extends SQLiteOpenHelper {
 
     public void kiloGuncelle(int id, int kilo, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " = ? ";
         String[] selectionArgs = {String.valueOf(id).trim(), eskiTarih, eskiSaat};
         ContentValues contentValues = new ContentValues();
         contentValues.put(USERS_ID, id);
@@ -352,7 +353,7 @@ public class Database extends SQLiteOpenHelper {
 
     public void kiloSil(int id, String tarih, String saat) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " = ? ";
         String[] selectionArgs = {String.valueOf(id).trim(), tarih, saat};
         db.delete(KILO_TABLE, selection, selectionArgs);
         db.close();
@@ -361,7 +362,7 @@ public class Database extends SQLiteOpenHelper {
     public List<String> showKilo(int id) {
         List<String> list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = USERS_ID + " =?";
+        String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
         String[] columns = {USERS_ID, KILO_KG, TARIH, SAAT};
         Cursor c = db.query(KILO_TABLE, columns, selection, selectionArgs, null, null, null);
@@ -389,7 +390,7 @@ public class Database extends SQLiteOpenHelper {
 
     public void egzersizGuncelle(int id, String tur, int sure, int mesafe, int adim, int kalori, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " = ? ";
         String[] selectionArgs = {String.valueOf(id).trim(), eskiTarih, eskiSaat};
         ContentValues contentValues = new ContentValues();
         contentValues.put(USERS_ID, id);
@@ -406,7 +407,7 @@ public class Database extends SQLiteOpenHelper {
 
     public void egzersizSil(int id, String tarih, String saat) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " = ? ";
         String[] selectionArgs = {String.valueOf(id).trim(), tarih, saat};
         db.delete(EGZERSIZ_TABLE, selection, selectionArgs);
         db.close();
@@ -415,7 +416,7 @@ public class Database extends SQLiteOpenHelper {
     public List<String> showEgzersiz(int id) {
         List<String> list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = USERS_ID + " =?";
+        String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
         String[] columns = {USERS_ID, EGZERSIZ_TUR, EGZERSIZ_SURE, EGZERSIZ_KM, EGZERSIZ_ADIM, EGZERSIZ_KALORI, TARIH, SAAT};
         Cursor c = db.query(EGZERSIZ_TABLE, columns, selection, selectionArgs, null, null, null);
@@ -442,7 +443,7 @@ public class Database extends SQLiteOpenHelper {
 
     public void kanBasinciGuncelle(int id, int sistolik, int diyastolik, int nabiz, String duzen, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " = ? ";
         String[] selectionArgs = {String.valueOf(id).trim(), eskiTarih, eskiSaat};
         ContentValues contentValues = new ContentValues();
         contentValues.put(USERS_ID, id);
@@ -458,7 +459,7 @@ public class Database extends SQLiteOpenHelper {
 
     public void kanBasinciSil(int id, String tarih, String saat) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " = ? ";
         String[] selectionArgs = {String.valueOf(id).trim(), tarih, saat};
         db.delete(KAN_BASINCI_TABLE, selection, selectionArgs);
         db.close();
@@ -467,7 +468,7 @@ public class Database extends SQLiteOpenHelper {
     public List<String> showKanBasinci(int id) {
         List<String> list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = USERS_ID + " =?";
+        String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
         String[] columns = {USERS_ID, KAN_BASINCI_SISTOLIK, KAN_BASINCI_DIYASTOLIK, KAN_BASINCI_NABIZ, KAN_BASINCI_DUZEN, TARIH, SAAT};
         Cursor c = db.query(KAN_BASINCI_TABLE, columns, selection, selectionArgs, null, null, null);
@@ -493,7 +494,7 @@ public class Database extends SQLiteOpenHelper {
 
     public void kanSekeriGuncelle(int id, int olcum, String zaman, String tur, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " = ? ";
         String[] selectionArgs = {String.valueOf(id).trim(), eskiTarih, eskiSaat};
         ContentValues contentValues = new ContentValues();
         contentValues.put(USERS_ID, id);
@@ -508,7 +509,7 @@ public class Database extends SQLiteOpenHelper {
 
     public void kanSekeriSil(int id, String tarih, String saat) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " = ? ";
         String[] selectionArgs = {String.valueOf(id).trim(), tarih, saat};
         db.delete(KAN_SEKERI_TABLE, selection, selectionArgs);
         db.close();
@@ -517,7 +518,7 @@ public class Database extends SQLiteOpenHelper {
     public List<String> showKanSekeri(int id) {
         List<String> list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = USERS_ID + " =?";
+        String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
         String[] columns = {USERS_ID, KAN_SEKERI_OLCUM, KAN_SEKERI_ZAMAN, KAN_SEKERI_TUR, TARIH, SAAT};
         Cursor c = db.query(KAN_SEKERI_TABLE, columns, selection, selectionArgs, null, null, null);
@@ -544,7 +545,7 @@ public class Database extends SQLiteOpenHelper {
 
     public void kolesterolGuncelle(int id, int ldl, int hdl, int trigliserit, int toplam, String eskiTarih, String yeniTarih, String eskiSaat, String yeniSaat) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " =? ";
+        String selection = USERS_ID + " = ?" + " AND " + TARIH + " = ?" + " AND " + SAAT + " = ? ";
         String[] selectionArgs = {String.valueOf(id).trim(), eskiTarih, eskiSaat};
         ContentValues contentValues = new ContentValues();
         contentValues.put(USERS_ID, id);
@@ -569,7 +570,7 @@ public class Database extends SQLiteOpenHelper {
     public List<String> showKolesterol(int id) {
         List<String> list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = USERS_ID + " =?";
+        String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
         String[] columns = {USERS_ID, KOLESTEROL_LDL, KOLESTEROL_HDL, KOLESTEROL_TRIGLISERIT, KOLESTEROL_TOPLAM, TARIH, SAAT};
         Cursor c = db.query(KOLESTEROL_TABLE, columns, selection, selectionArgs, null, null, null);
@@ -645,7 +646,7 @@ public class Database extends SQLiteOpenHelper {
 
     public void ilacGuncelle(int id, String eskiAd, String yeniAd, int etkinlik, String dozaj, String sekil, String siklik, String neden, String eskiBaslangic, String yeniBaslangic, String eskiBitis, String yeniBitis) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String selection = USERS_ID + " = ?" + " AND " + ILAC_ADI + " = ?" + " AND " + ILAC_BASLANGIC + " =? " + " AND " + ILAC_BITIS + " =? ";
+        String selection = USERS_ID + " = ?" + " AND " + ILAC_ADI + " = ?" + " AND " + ILAC_BASLANGIC + " = ? " + " AND " + ILAC_BITIS + " = ? ";
         String[] selectionArgs = {String.valueOf(id).trim(), eskiAd, eskiBaslangic, eskiBitis};
         ContentValues contentValues = new ContentValues();
         contentValues.put(USERS_ID, id);
@@ -672,12 +673,58 @@ public class Database extends SQLiteOpenHelper {
     public List<String> showIlac(int id) {
         List<String> list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = USERS_ID + " =?";
+        String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
         String[] columns = {USERS_ID, ILAC_ADI, ILAC_ETKINLIK, ILAC_DOZAJ, ILAC_ALINMA_SEKLI, ILAC_ALINMA_SIKLIGI, ILAC_ALINMA_NEDENI, ILAC_BASLANGIC, ILAC_BITIS};
         Cursor c = db.query(ILACLAR_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
             list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getInt(2) + "mg-" + c.getString(3) + "-" + c.getString(4) + "-" + c.getString(5) + "-" + c.getString(6) + "-" + c.getString(7) + "-" + c.getString(8));
+        }
+        return list;
+    }
+//------------------------------------------------------------------------------------------------------------------------------
+
+    public void bagisiklikEkle(BagisiklikBilgi bb) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, bb.getId());
+        contentValues.put(BAGISIKLIKLAR_AD, bb.getAd());
+        contentValues.put(BAGISIKLIKLAR_ETKI, bb.getEtki());
+        contentValues.put(BAGISIKLIKLAR_TARIH, bb.getTarih());
+        db.insert(BAGISIKLIKLAR_TABLE, null, contentValues);
+        db.close();
+    }
+
+    public void bagisiklikGuncelle(int id, String eskiAd, String yeniAd, String etki, String eskiTarih, String yeniTarih) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + BAGISIKLIKLAR_AD + " = ?" + " AND " + BAGISIKLIKLAR_TARIH + " = ? ";
+        String[] selectionArgs = {String.valueOf(id).trim(), eskiAd, eskiTarih};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, id);
+        contentValues.put(BAGISIKLIKLAR_AD, yeniAd);
+        contentValues.put(BAGISIKLIKLAR_ETKI, etki);
+        contentValues.put(BAGISIKLIKLAR_TARIH, yeniTarih);
+        db.update(BAGISIKLIKLAR_TABLE, contentValues, selection, selectionArgs);
+        db.close();
+    }
+
+    public void bagisiklikSil(int id, String ad, String tarih) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + BAGISIKLIKLAR_AD + " = ?" + " AND " + BAGISIKLIKLAR_TARIH + " = ? ";
+        String[] selectionArgs = {String.valueOf(id).trim(), ad, tarih};
+        db.delete(BAGISIKLIKLAR_TABLE, selection, selectionArgs);
+        db.close();
+    }
+
+    public List<String> showBagisiklik(int id) {
+        List<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
+        String[] columns = {USERS_ID, BAGISIKLIKLAR_AD, BAGISIKLIKLAR_ETKI, BAGISIKLIKLAR_TARIH};
+        Cursor c = db.query(BAGISIKLIKLAR_TABLE, columns, selection, selectionArgs, null, null, null);
+        while (c.moveToNext()) {
+            list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getString(2) + "-" + c.getString(3));
         }
         return list;
     }

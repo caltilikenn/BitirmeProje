@@ -34,7 +34,7 @@ public class SaglikGecmisi extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SaglikGecmisi.class);
+                Intent intent = new Intent(getApplicationContext(),Bagisikliklar.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
             }

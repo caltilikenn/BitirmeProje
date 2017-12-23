@@ -27,8 +27,8 @@
             android:layout_weight="0.07"
             android:ems="10"
             android:fontFamily="serif"
-            android:hint="Kilonuz(kg)"
-            android:inputType="number"
+            android:hint="Aşı Adı"
+            android:inputType="text"
             android:textSize="20dp"
             android:textStyle="italic" />
 
@@ -43,8 +43,8 @@
             android:layout_weight="0.07"
             android:ems="10"
             android:fontFamily="serif"
-            android:hint="Tarih(GG.AA.YYYY)"
-            android:inputType="date"
+            android:hint="Yan Etkileri"
+            android:inputType="text"
             android:textSize="20dp"
             android:textStyle="italic" />
 
@@ -59,8 +59,8 @@
             android:layout_weight="0.07"
             android:ems="10"
             android:fontFamily="serif"
-            android:hint="Saat(SS:DD)"
-            android:inputType="time"
+            android:hint="Alınma Tarihi(GG.AA.YYYY)"
+            android:inputType="date"
             android:textSize="20dp"
             android:textStyle="italic" />
 

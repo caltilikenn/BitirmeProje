@@ -110,12 +110,21 @@
         <activity
             android:name=".VucutOlcuDuzenle"
             android:label="Vücut Ölçüsü Bilgisi Düzenleme" />
-        <activity android:name=".Ilaclar"
-                  android:label="İlaçlar"/>
-        <activity android:name=".IlacList"
-                  android:label="İlaç Bilgisi Listesi"/>
-        <activity android:name=".IlacDuzenle"
-                  android:label="İlaç Bilgisi Düzenleme" />
+        <activity
+            android:name=".Ilaclar"
+            android:label="İlaçlar" />
+        <activity
+            android:name=".IlacList"
+            android:label="İlaç Bilgisi Listesi" />
+        <activity
+            android:name=".IlacDuzenle"
+            android:label="İlaç Bilgisi Düzenleme" />
+        <activity android:name=".Bagisikliklar"
+                  android:label="Bağışıklıklar"/>
+        <activity android:name=".BagisiklikList"
+                  android:label="Bağışıklık Bilgisi Listesi"/>
+        <activity android:name=".BagisiklikDuzenle"
+                  android:label="Bağışıklık Bilgisi Düzenleme"/>
     </application>
 
 </manifest>

@@ -27,7 +27,7 @@
             android:layout_weight="0.07"
             android:ems="10"
             android:fontFamily="serif"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:textSize="20dp"
             android:textStyle="italic" />
 
