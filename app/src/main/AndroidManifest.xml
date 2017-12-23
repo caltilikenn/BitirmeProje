@@ -101,12 +101,21 @@
         <activity
             android:name=".KolesterolDuzenle"
             android:label="Kolestrol Bilgisi Düzenleme" />
-        <activity android:name=".VucutOlcu"
-                  android:label="Vücut Ölçüleri"/>
-        <activity android:name=".VucutOlcuList"
-                  android:label="Vücut Ölçüleri Bilgisi Listesi"/>
-        <activity android:name=".VucutOlcuDuzenle"
-                  android:label="Vücut Ölçüsü Bilgisi Düzenleme"/>
+        <activity
+            android:name=".VucutOlcu"
+            android:label="Vücut Ölçüleri" />
+        <activity
+            android:name=".VucutOlcuList"
+            android:label="Vücut Ölçüleri Bilgisi Listesi" />
+        <activity
+            android:name=".VucutOlcuDuzenle"
+            android:label="Vücut Ölçüsü Bilgisi Düzenleme" />
+        <activity android:name=".Ilaclar"
+                  android:label="İlaçlar"/>
+        <activity android:name=".IlacList"
+                  android:label="İlaç Bilgisi Listesi"/>
+        <activity android:name=".IlacDuzenle"
+                  android:label="İlaç Bilgisi Düzenleme" />
     </application>
 
 </manifest>

@@ -34,8 +34,7 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="LDL(mg/dL)"
-                android:inputType="number"
+                android:inputType="text"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -51,7 +50,6 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="HDL(mg/dL)"
                 android:inputType="number"
                 android:textSize="20dp"
                 android:textStyle="italic" />
@@ -67,8 +65,7 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Trigliserit(mg/dL)"
-                android:inputType="number"
+                android:inputType="text"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -83,9 +80,8 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Toplam Kolesterol(mg/dL)"
-                android:inputType="number"
-                android:textSize="18dp"
+                android:inputType="text"
+                android:textSize="20dp"
                 android:textStyle="italic" />
 
             <EditText
@@ -99,8 +95,7 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Tarih(GG.AA.YYYY)"
-                android:inputType="date"
+                android:inputType="text"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -115,8 +110,37 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Saat(SS:DD)"
-                android:inputType="time"
+                android:inputType="text"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/et7"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/et6"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="75dp"
+                android:layout_weight="0.07"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:inputType="date"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/et8"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/et7"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="75dp"
+                android:layout_weight="0.07"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:inputType="date"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -125,12 +149,12 @@
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/et6"
-                android:layout_alignStart="@+id/et6"
-                android:layout_below="@+id/et6"
+                android:layout_alignLeft="@+id/et7"
+                android:layout_alignStart="@+id/et7"
+                android:layout_below="@+id/et8"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@android:color/holo_green_dark"
-                android:text="Kaydet" />
+                android:text="Güncelle" />
 
             <Button
                 android:id="@+id/btn2"
@@ -141,8 +165,8 @@
                 android:layout_alignBottom="@+id/btn1"
                 android:layout_alignEnd="@+id/et2"
                 android:layout_alignRight="@+id/et2"
-                android:backgroundTint="@color/colorAccent"
-                android:text="Listele" />
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:text="Sil" />
 
             <Button
                 android:id="@+id/btn3"

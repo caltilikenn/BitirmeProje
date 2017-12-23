@@ -35,15 +35,15 @@ public class KanSekeriList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String txt = adapterView.getItemAtPosition(i).toString();
-                String[] array = txt.split(" ");
+                String[] array = txt.split("-");
                 String[] array1 = array[0].split("ID=");
                 String[] array2 = array[1].split("mg/dL");
                 int id = Integer.parseInt(array1[1]);
                 int olcum = Integer.parseInt(array2[0]);
-                String zaman = array[2]+" "+array[3];
-                String tur = array[4];
-                String tarih = array[5];
-                String saat = array[6];
+                String zaman = array[2];
+                String tur = array[3];
+                String tarih = array[4];
+                String saat = array[5];
 
                 Intent intent = new Intent(getApplicationContext(), KanSekeriDuzenle.class);
                 intent.putExtra("id", id);

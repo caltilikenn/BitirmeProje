@@ -14,21 +14,21 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class EgzersizList extends AppCompatActivity {
+public class IlacList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.egzersiz_list);
+        setContentView(R.layout.ilac_list);
         Button btn1 = (Button) findViewById(R.id.btn1);
 
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
 
         final ListView lv = (ListView)findViewById(R.id.lv);
-        Database db = new Database(EgzersizList.this);
-        List<String> list = db.showEgzersiz(id);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(EgzersizList.this,android.R.layout.simple_list_item_1,android.R.id.text1,list);
+        Database db = new Database(IlacList.this);
+        List<String> list = db.showIlac(id);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(IlacList.this,android.R.layout.simple_list_item_1,android.R.id.text1,list);
         lv.setAdapter(adapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -37,28 +37,27 @@ public class EgzersizList extends AppCompatActivity {
                 String txt = adapterView.getItemAtPosition(i).toString();
                 String[] array = txt.split("-");
                 String[] array1 = array[0].split("ID=");
-                String[] array2 = array[2].split("dk");
-                String[] array3 = array[3].split("m");
-                String[] array4 = array[4].split("adım");
-                String[] array5 = array[5].split("cal");
+                String[] array2 = array[2].split("mg");
                 int id = Integer.parseInt(array1[1]);
-                int sure = Integer.parseInt(array2[0]);
-                int mesafe = Integer.parseInt(array3[0]);
-                int adim = Integer.parseInt(array4[0]);
-                int kalori = Integer.parseInt(array5[0]);
-                String tur = array[1];
-                String tarih = array[6];
-                String saat = array[7];
+                int etkinlik = Integer.parseInt(array2[0]);
+                String ad = array[1];
+                String dozaj = array[3];
+                String sekil = array[4];
+                String siklik = array[5];
+                String neden = array[6];
+                String baslangic = array[7];
+                String bitis = array[8];
 
-                Intent intent = new Intent(getApplicationContext(), EgzersizDuzenle.class);
+                Intent intent = new Intent(getApplicationContext(), IlacDuzenle.class);
                 intent.putExtra("id", id);
-                intent.putExtra("tur",tur);
-                intent.putExtra("sure",sure);
-                intent.putExtra("mesafe",mesafe);
-                intent.putExtra("adim",adim);
-                intent.putExtra("kalori",kalori);
-                intent.putExtra("tarih", tarih);
-                intent.putExtra("saat", saat);
+                intent.putExtra("ad",ad);
+                intent.putExtra("etkinlik",etkinlik);
+                intent.putExtra("dozaj",dozaj);
+                intent.putExtra("sekil",sekil);
+                intent.putExtra("siklik",siklik);
+                intent.putExtra("neden", neden);
+                intent.putExtra("baslangic", baslangic);
+                intent.putExtra("bitis", bitis);
                 startActivity(intent);
             }
         });
@@ -66,7 +65,7 @@ public class EgzersizList extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Egzersiz.class);
+                Intent intent = new Intent(getApplicationContext(), Ilaclar.class);
                 intent.putExtra("id", id);
                 startActivity(intent);
             }

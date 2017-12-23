@@ -34,8 +34,8 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="LDL(mg/dL)"
-                android:inputType="number"
+                android:hint="İlacın Adı"
+                android:inputType="text"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -51,7 +51,7 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="HDL(mg/dL)"
+                android:hint="İlacın Etkinliği(örn:500mg)"
                 android:inputType="number"
                 android:textSize="20dp"
                 android:textStyle="italic" />
@@ -67,8 +67,8 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Trigliserit(mg/dL)"
-                android:inputType="number"
+                android:hint="İlacın Dozajı(örn:1 tablet)"
+                android:inputType="text"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -83,8 +83,8 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Toplam Kolesterol(mg/dL)"
-                android:inputType="number"
+                android:hint="İlacın Alınma Şekli(örn:ağızdan)"
+                android:inputType="text"
                 android:textSize="18dp"
                 android:textStyle="italic" />
 
@@ -99,9 +99,9 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Tarih(GG.AA.YYYY)"
-                android:inputType="date"
-                android:textSize="20dp"
+                android:hint="İlacın Alınma Sıklığı(örn:günde 3)"
+                android:inputType="text"
+                android:textSize="18dp"
                 android:textStyle="italic" />
 
             <EditText
@@ -115,8 +115,40 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Saat(SS:DD)"
-                android:inputType="time"
+                android:hint="İlacın Alınma Nedeni"
+                android:inputType="text"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/et7"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/et6"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="75dp"
+                android:layout_weight="0.07"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Başlangıç Tarihi(GG.AA.YYYY)"
+                android:inputType="date"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/et8"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/et7"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="75dp"
+                android:layout_weight="0.07"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Bitiş Tarihi(GG-AA-YYYY)"
+                android:inputType="date"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -125,9 +157,9 @@
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/et6"
-                android:layout_alignStart="@+id/et6"
-                android:layout_below="@+id/et6"
+                android:layout_alignLeft="@+id/et8"
+                android:layout_alignStart="@+id/et8"
+                android:layout_below="@+id/et8"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@android:color/holo_green_dark"
                 android:text="Kaydet" />

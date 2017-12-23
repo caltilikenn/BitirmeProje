@@ -35,7 +35,7 @@ public class KanBasinciList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String txt = adapterView.getItemAtPosition(i).toString();
-                String[] array = txt.split(" ");
+                String[] array = txt.split("-");
                 String[] array1 = array[0].split("ID=");
                 String[] array2 = array[1].split("mmHg");
                 String[] array3 = array[2].split("mmHg");

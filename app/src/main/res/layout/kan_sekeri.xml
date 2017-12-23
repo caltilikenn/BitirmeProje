@@ -83,7 +83,7 @@
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:hint="Tarih(GG/AA/YYYY)"
+                android:hint="Tarih(GG.AA.YYYY)"
                 android:inputType="date"
                 android:textSize="18dp"
                 android:textStyle="italic" />

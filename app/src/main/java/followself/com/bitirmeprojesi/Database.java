@@ -420,7 +420,7 @@ public class Database extends SQLiteOpenHelper {
         String[] columns = {USERS_ID, EGZERSIZ_TUR, EGZERSIZ_SURE, EGZERSIZ_KM, EGZERSIZ_ADIM, EGZERSIZ_KALORI, TARIH, SAAT};
         Cursor c = db.query(EGZERSIZ_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + " " + c.getString(1) + " " + c.getInt(2) + "dk " + c.getInt(3) + "m " + c.getInt(4) + "adım " + c.getInt(5) + "cal " + c.getString(6) + " " + c.getString(7));
+            list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getInt(2) + "dk-" + c.getInt(3) + "m-" + c.getInt(4) + "adım-" + c.getInt(5) + "cal-" + c.getString(6) + "-" + c.getString(7));
         }
         return list;
     }
@@ -472,7 +472,7 @@ public class Database extends SQLiteOpenHelper {
         String[] columns = {USERS_ID, KAN_BASINCI_SISTOLIK, KAN_BASINCI_DIYASTOLIK, KAN_BASINCI_NABIZ, KAN_BASINCI_DUZEN, TARIH, SAAT};
         Cursor c = db.query(KAN_BASINCI_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + " " + c.getInt(1) + "mmHg " + c.getInt(2) + "mmHg " + c.getInt(3) + " " + c.getString(4) + " " + c.getString(5) + " " + c.getString(6));
+            list.add("ID=" + c.getInt(0) + "-" + c.getInt(1) + "mmHg-" + c.getInt(2) + "mmHg-" + c.getInt(3) + "-" + c.getString(4) + "-" + c.getString(5) + "-" + c.getString(6));
         }
         return list;
     }
@@ -522,7 +522,7 @@ public class Database extends SQLiteOpenHelper {
         String[] columns = {USERS_ID, KAN_SEKERI_OLCUM, KAN_SEKERI_ZAMAN, KAN_SEKERI_TUR, TARIH, SAAT};
         Cursor c = db.query(KAN_SEKERI_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + " " + c.getInt(1) + "mg/dL " + c.getString(2) + " " + c.getString(3) + " " + c.getString(4) + " " + c.getString(5));
+            list.add("ID=" + c.getInt(0) + "-" + c.getInt(1) + "mg/dL-" + c.getString(2) + "-" + c.getString(3) + "-" + c.getString(4) + "-" + c.getString(5));
         }
         return list;
     }
@@ -621,6 +621,63 @@ public class Database extends SQLiteOpenHelper {
         Cursor c = db.query(VUCUT_OLCULERI_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
             list.add("ID=" + c.getInt(0) + "          " + c.getString(1) + "          " + c.getInt(2) + "cm          " + c.getString(3));
+        }
+        return list;
+    }
+
+//------------------------------------------------------------------------------------------------------------------------------
+
+    public void ilacEkle(IlacBilgi ib) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, ib.getId());
+        contentValues.put(ILAC_ADI, ib.getAd());
+        contentValues.put(ILAC_ETKINLIK, ib.getEtkinlik());
+        contentValues.put(ILAC_DOZAJ, ib.getDozaj());
+        contentValues.put(ILAC_ALINMA_SEKLI, ib.getSekil());
+        contentValues.put(ILAC_ALINMA_SIKLIGI, ib.getSiklik());
+        contentValues.put(ILAC_ALINMA_NEDENI, ib.getNeden());
+        contentValues.put(ILAC_BASLANGIC, ib.getBaslangic());
+        contentValues.put(ILAC_BITIS, ib.getBitis());
+        db.insert(ILACLAR_TABLE, null, contentValues);
+        db.close();
+    }
+
+    public void ilacGuncelle(int id, String eskiAd, String yeniAd, int etkinlik, String dozaj, String sekil, String siklik, String neden, String eskiBaslangic, String yeniBaslangic, String eskiBitis, String yeniBitis) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + ILAC_ADI + " = ?" + " AND " + ILAC_BASLANGIC + " =? " + " AND " + ILAC_BITIS + " =? ";
+        String[] selectionArgs = {String.valueOf(id).trim(), eskiAd, eskiBaslangic, eskiBitis};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, id);
+        contentValues.put(ILAC_ADI, yeniAd);
+        contentValues.put(ILAC_ETKINLIK, etkinlik);
+        contentValues.put(ILAC_DOZAJ, dozaj);
+        contentValues.put(ILAC_ALINMA_SEKLI, sekil);
+        contentValues.put(ILAC_ALINMA_SIKLIGI, siklik);
+        contentValues.put(ILAC_ALINMA_NEDENI, neden);
+        contentValues.put(ILAC_BASLANGIC, yeniBaslangic);
+        contentValues.put(ILAC_BITIS, yeniBitis);
+        db.update(ILACLAR_TABLE, contentValues, selection, selectionArgs);
+        db.close();
+    }
+
+    public void ilacSil(int id, String ad, String baslangic, String bitis) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + ILAC_ADI + " = ?" + " AND " + ILAC_BASLANGIC + " =? " + " AND " + ILAC_BITIS + " =? ";
+        String[] selectionArgs = {String.valueOf(id).trim(), ad, baslangic, bitis};
+        db.delete(ILACLAR_TABLE, selection, selectionArgs);
+        db.close();
+    }
+
+    public List<String> showIlac(int id) {
+        List<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " =?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
+        String[] columns = {USERS_ID, ILAC_ADI, ILAC_ETKINLIK, ILAC_DOZAJ, ILAC_ALINMA_SEKLI, ILAC_ALINMA_SIKLIGI, ILAC_ALINMA_NEDENI, ILAC_BASLANGIC, ILAC_BITIS};
+        Cursor c = db.query(ILACLAR_TABLE, columns, selection, selectionArgs, null, null, null);
+        while (c.moveToNext()) {
+            list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getInt(2) + "mg-" + c.getString(3) + "-" + c.getString(4) + "-" + c.getString(5) + "-" + c.getString(6) + "-" + c.getString(7) + "-" + c.getString(8));
         }
         return list;
     }
