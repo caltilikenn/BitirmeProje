@@ -8,15 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Kilo extends AppCompatActivity {
+public class Alerjiler extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kilo);
+        setContentView(R.layout.alerjiler);
         final EditText et1 = (EditText) findViewById(R.id.et1);
         final EditText et2 = (EditText) findViewById(R.id.et2);
         final EditText et3 = (EditText) findViewById(R.id.et3);
+        final EditText et4 = (EditText) findViewById(R.id.et4);
         Button btn1 = (Button) findViewById(R.id.btn1);
         Button btn2 = (Button) findViewById(R.id.btn2);
         Button btn3 = (Button) findViewById(R.id.btn3);
@@ -26,26 +27,28 @@ public class Kilo extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int kilo1;
-                final String kilo = et1.getText().toString();
-                String tarih = et2.getText().toString();
-                String saat = et3.getText().toString();
+                String ad = et1.getText().toString();
+                String belirti = et2.getText().toString();
+                String tur = et3.getText().toString();
+                String tarih = et4.getText().toString();
 
-                if (kilo.isEmpty() || tarih.isEmpty() || saat.isEmpty()) {
-                    Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz", Toast.LENGTH_LONG).show();
+                if (ad.isEmpty() || belirti.isEmpty() || tur.isEmpty() || tarih.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
                     return;
-                } else {
-                    kilo1 = Integer.parseInt(kilo.trim());
-                    KiloBilgi k = new KiloBilgi(id, kilo1, tarih, saat);
+                }
+                else {
+                    AlerjiBilgi a = new AlerjiBilgi(id, ad, belirti, tur, tarih);
                     Database db = new Database(getApplicationContext());
-                    db.kiloEkle(k);
+                    db.alerjiEkle(a);
                     Toast.makeText(getApplicationContext(), "Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
                     et3.setText("");
-                    Intent intent = new Intent(getApplicationContext(), Kilo.class);
+                    et4.setText("");
+                    Intent intent = new Intent(getApplicationContext(), Alerjiler.class);
                     intent.putExtra("id", id);
                     startActivity(intent);
+
                 }
             }
         });
@@ -53,7 +56,7 @@ public class Kilo extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), KiloList.class);
+                Intent intent = new Intent(getApplicationContext(), AlerjiList.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
             }
@@ -62,7 +65,7 @@ public class Kilo extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Olcumler.class);
+                Intent intent = new Intent(getApplicationContext(), SaglikGecmisi.class);
                 intent.putExtra("id", id);
                 startActivity(intent);
             }

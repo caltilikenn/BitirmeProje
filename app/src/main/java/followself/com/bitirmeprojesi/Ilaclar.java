@@ -43,14 +43,14 @@ public class Ilaclar extends AppCompatActivity {
                 String bitis = et8.getText().toString();
 
                 if (ad.isEmpty() || etkinlik.isEmpty() || dozaj.isEmpty() || sekil.isEmpty() || siklik.isEmpty() || neden.isEmpty() || baslangic.isEmpty() || bitis.isEmpty()) {
-                    Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
                     return;
-                } else
+                } else {
                     etkinlik1 = Integer.parseInt(etkinlik.trim());
                     IlacBilgi ib = new IlacBilgi(id, ad, etkinlik1, dozaj, sekil, siklik, neden, baslangic, bitis);
                     Database db = new Database(getApplicationContext());
                     db.ilacEkle(ib);
-                    Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
                     et3.setText("");
@@ -60,8 +60,9 @@ public class Ilaclar extends AppCompatActivity {
                     et7.setText("");
                     et8.setText("");
                     Intent intent = new Intent(getApplicationContext(), Ilaclar.class);
-                    intent.putExtra("id",id);
+                    intent.putExtra("id", id);
                     startActivity(intent);
+                }
             }
         });
 

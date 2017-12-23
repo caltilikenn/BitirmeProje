@@ -728,6 +728,55 @@ public class Database extends SQLiteOpenHelper {
         }
         return list;
     }
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+    public void alerjiEkle(AlerjiBilgi a) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, a.getId());
+        contentValues.put(ALERJILER_AD, a.getAd());
+        contentValues.put(ALERJILER_BELIRTI, a.getBelirti());
+        contentValues.put(ALERJILER_TUR, a.getTur());
+        contentValues.put(ALERJILER_TESPIT, a.getTarih());
+        db.insert(ALERJILER_TABLE, null, contentValues);
+        db.close();
+    }
+
+    public void alerjiGuncelle(int id, String eskiAd, String yeniAd, String belirti, String tur, String eskiTarih, String yeniTarih) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + ALERJILER_AD + " = ?" + " AND " + ALERJILER_TESPIT + " = ? ";
+        String[] selectionArgs = {String.valueOf(id).trim(), eskiAd, eskiTarih};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, id);
+        contentValues.put(ALERJILER_AD, yeniAd);
+        contentValues.put(ALERJILER_BELIRTI, belirti);
+        contentValues.put(ALERJILER_TUR, tur);
+        contentValues.put(ALERJILER_TESPIT, yeniTarih);
+        db.update(ALERJILER_TABLE, contentValues, selection, selectionArgs);
+        db.close();
+    }
+
+    public void alerjiSil(int id, String ad, String tarih) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + ALERJILER_AD + " = ?" + " AND " + ALERJILER_TESPIT + " = ? ";
+        String[] selectionArgs = {String.valueOf(id).trim(), ad, tarih};
+        db.delete(ALERJILER_TABLE, selection, selectionArgs);
+        db.close();
+    }
+
+    public List<String> showAlerji(int id) {
+        List<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
+        String[] columns = {USERS_ID, ALERJILER_AD, ALERJILER_BELIRTI, ALERJILER_TUR, ALERJILER_TESPIT};
+        Cursor c = db.query(ALERJILER_TABLE, columns, selection, selectionArgs, null, null, null);
+        while (c.moveToNext()) {
+            list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getString(2) + "-" + c.getString(3) + "-" + c.getString(4));
+        }
+        return list;
+    }
+
 }
 
 

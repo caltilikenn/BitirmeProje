@@ -44,14 +44,14 @@ public class KanBasinci extends AppCompatActivity {
                 if (sistolik.isEmpty() || diyastolik.isEmpty() || nabiz.isEmpty() || duzen.isEmpty() || tarih.isEmpty() || saat.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
                     return;
-                } else
+                } else {
                     sistolik1 = Integer.parseInt(sistolik.trim());
                     diyastolik1 = Integer.parseInt(diyastolik.trim());
                     nabiz1 = Integer.parseInt(nabiz.trim());
                     KanBasinciBilgi kb = new KanBasinciBilgi(id, sistolik1, diyastolik1, nabiz1, duzen, tarih, saat);
                     Database db = new Database(getApplicationContext());
                     db.kanBasinciEkle(kb);
-                    Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
                     et3.setText("");
@@ -59,8 +59,9 @@ public class KanBasinci extends AppCompatActivity {
                     et5.setText("");
                     et6.setText("");
                     Intent intent = new Intent(getApplicationContext(), KanBasinci.class);
-                    intent.putExtra("id",id);
+                    intent.putExtra("id", id);
                     startActivity(intent);
+                }
             }
         });
 

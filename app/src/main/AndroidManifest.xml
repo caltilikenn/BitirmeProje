@@ -119,12 +119,21 @@
         <activity
             android:name=".IlacDuzenle"
             android:label="İlaç Bilgisi Düzenleme" />
-        <activity android:name=".Bagisikliklar"
-                  android:label="Bağışıklıklar"/>
-        <activity android:name=".BagisiklikList"
-                  android:label="Bağışıklık Bilgisi Listesi"/>
-        <activity android:name=".BagisiklikDuzenle"
-                  android:label="Bağışıklık Bilgisi Düzenleme"/>
+        <activity
+            android:name=".Bagisikliklar"
+            android:label="Bağışıklıklar" />
+        <activity
+            android:name=".BagisiklikList"
+            android:label="Bağışıklık Bilgisi Listesi" />
+        <activity
+            android:name=".BagisiklikDuzenle"
+            android:label="Bağışıklık Bilgisi Düzenleme" />
+        <activity android:name=".Alerjiler"
+                  android:label="Alerjiler"/>
+        <activity android:name=".AlerjiList"
+                  android:label="Alerji Bilgisi Listesi"/>
+        <activity android:name=".AlerjiDuzenle"
+                  android:label="Alerji Bilgisi Düzenleme"/>
     </application>
 
 </manifest>

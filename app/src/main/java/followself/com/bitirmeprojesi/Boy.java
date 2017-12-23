@@ -32,17 +32,19 @@ public class Boy extends AppCompatActivity {
                 if (boy.isEmpty() || tarih.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz", Toast.LENGTH_LONG).show();
                     return;
-                } else
+                }
+                else {
                     boy1 = Integer.parseInt(boy.trim());
                     BoyBilgi b = new BoyBilgi(id, boy1, tarih);
                     Database db = new Database(getApplicationContext());
                     db.boyEkle(b);
-                    Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
                     Intent intent = new Intent(getApplicationContext(), Boy.class);
-                    intent.putExtra("id",id);
+                    intent.putExtra("id", id);
                     startActivity(intent);
+                }
             }
         });
 

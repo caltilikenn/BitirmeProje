@@ -34,18 +34,19 @@ public class VucutOlcu extends AppCompatActivity {
                 if (tur.isEmpty() || boyut.isEmpty() || tarih.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz", Toast.LENGTH_LONG).show();
                     return;
-                } else
+                } else {
                     boyut1 = Integer.parseInt(boyut.trim());
                     VucutOlcuBilgi v = new VucutOlcuBilgi(id, tur, boyut1, tarih);
                     Database db = new Database(getApplicationContext());
                     db.vucutOlcuEkle(v);
-                    Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
                     et3.setText("");
                     Intent intent = new Intent(getApplicationContext(), VucutOlcu.class);
-                    intent.putExtra("id",id);
+                    intent.putExtra("id", id);
                     startActivity(intent);
+                }
             }
         });
 

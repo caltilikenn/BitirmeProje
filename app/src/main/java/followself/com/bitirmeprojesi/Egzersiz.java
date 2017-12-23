@@ -46,7 +46,8 @@ public class Egzersiz extends AppCompatActivity {
                 if (tur.isEmpty() || sure.isEmpty() || mesafe.isEmpty() || adim.isEmpty() || kalori.isEmpty() || tarih.isEmpty() || saat.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
                     return;
-                } else
+                }
+                else {
                     sure1 = Integer.parseInt(sure.trim());
                     mesafe1 = Integer.parseInt(mesafe.trim());
                     adim1 = Integer.parseInt(adim.trim());
@@ -54,7 +55,7 @@ public class Egzersiz extends AppCompatActivity {
                     EgzersizBilgi eb = new EgzersizBilgi(id, tur, sure1, mesafe1, adim1, kalori1, tarih, saat);
                     Database db = new Database(getApplicationContext());
                     db.egzersizEkle(eb);
-                    Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
                     et3.setText("");
@@ -63,8 +64,9 @@ public class Egzersiz extends AppCompatActivity {
                     et6.setText("");
                     et7.setText("");
                     Intent intent = new Intent(getApplicationContext(), Egzersiz.class);
-                    intent.putExtra("id",id);
+                    intent.putExtra("id", id);
                     startActivity(intent);
+                }
             }
         });
 

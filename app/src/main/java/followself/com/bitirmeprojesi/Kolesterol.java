@@ -45,7 +45,7 @@ public class Kolesterol extends AppCompatActivity {
                 if (ldl.isEmpty() || hdl.isEmpty() || trigliserit.isEmpty() || toplam.isEmpty() || tarih.isEmpty() || saat.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
                     return;
-                } else
+                } else {
                     ldl1 = Integer.parseInt(ldl.trim());
                     hdl1 = Integer.parseInt(hdl.trim());
                     trigliserit1 = Integer.parseInt(trigliserit.trim());
@@ -53,7 +53,7 @@ public class Kolesterol extends AppCompatActivity {
                     KolesterolBilgi kol = new KolesterolBilgi(id, ldl1, hdl1, trigliserit1, toplam1, tarih, saat);
                     Database db = new Database(getApplicationContext());
                     db.kolesterolEkle(kol);
-                    Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
                     et3.setText("");
@@ -61,8 +61,9 @@ public class Kolesterol extends AppCompatActivity {
                     et5.setText("");
                     et6.setText("");
                     Intent intent = new Intent(getApplicationContext(), Kolesterol.class);
-                    intent.putExtra("id",id);
+                    intent.putExtra("id", id);
                     startActivity(intent);
+                }
             }
         });
 

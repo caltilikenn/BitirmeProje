@@ -37,22 +37,23 @@ public class KanSekeri extends AppCompatActivity {
                 String saat = et5.getText().toString();
 
                 if (olcum.isEmpty() || zaman.isEmpty() || tur.isEmpty() || tarih.isEmpty() || saat.isEmpty()) {
-                    Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
                     return;
-                } else
+                } else {
                     olcum1 = Integer.parseInt(olcum.trim());
                     KanSekeriBilgi ks = new KanSekeriBilgi(id, olcum1, zaman, tur, tarih, saat);
                     Database db = new Database(getApplicationContext());
                     db.kanSekeriEkle(ks);
-                    Toast.makeText(getApplicationContext(),"Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
                     et3.setText("");
                     et4.setText("");
                     et5.setText("");
                     Intent intent = new Intent(getApplicationContext(), KanSekeri.class);
-                    intent.putExtra("id",id);
+                    intent.putExtra("id", id);
                     startActivity(intent);
+                }
             }
         });
 
