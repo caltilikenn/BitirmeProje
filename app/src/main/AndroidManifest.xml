@@ -128,12 +128,30 @@
         <activity
             android:name=".BagisiklikDuzenle"
             android:label="Bağışıklık Bilgisi Düzenleme" />
-        <activity android:name=".Alerjiler"
-                  android:label="Alerjiler"/>
-        <activity android:name=".AlerjiList"
-                  android:label="Alerji Bilgisi Listesi"/>
-        <activity android:name=".AlerjiDuzenle"
-                  android:label="Alerji Bilgisi Düzenleme"/>
+        <activity
+            android:name=".Alerjiler"
+            android:label="Alerjiler" />
+        <activity
+            android:name=".AlerjiList"
+            android:label="Alerji Bilgisi Listesi" />
+        <activity
+            android:name=".AlerjiDuzenle"
+            android:label="Alerji Bilgisi Düzenleme" />
+        <activity
+            android:name=".Kisiler"
+            android:label="Kişiler" />
+        <activity
+            android:name=".KisilerList"
+            android:label="Kişi Bilgisi Listesi" />
+        <activity
+            android:name=".KisilerDuzenle"
+            android:label="Kişi Bilgisi Düzenleme" />
+        <activity android:name=".TibbiCihazlar"
+                  android:label="Tıbbi Cihazlar"/>
+        <activity android:name=".TibbiCihazList"
+                  android:label="Tıbbi Cihaz Bilgisi Listesi"/>
+        <activity android:name=".TibbiCihazDuzenle"
+                  android:label="Tıbbi Cihaz Bilgisi Düzenleme"/>
     </application>
 
 </manifest>

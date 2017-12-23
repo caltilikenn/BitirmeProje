@@ -88,7 +88,7 @@ public class Database extends SQLiteOpenHelper {
 
     private static final String KISILER_TABLE = "KISILER";
     private static final String KISILER_AD = "AD";
-    private static final String KISLER_UZMANLIK = "UZMANLIKLAR";
+    private static final String KISILER_UZMANLIK = "UZMANLIKLAR";
     private static final String KISILER_ISYERI = "IS_YERI";
 
     private static final String TIBBI_CIHAZLAR_TABLE = "TIBBI_CIHAZLAR";
@@ -527,7 +527,7 @@ public class Database extends SQLiteOpenHelper {
         }
         return list;
     }
-//------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
 
     public void kolesterolEkle(KolesterolBilgi kol) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -579,7 +579,7 @@ public class Database extends SQLiteOpenHelper {
         }
         return list;
     }
-//------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
 
     public void vucutOlcuEkle(VucutOlcuBilgi v) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -626,7 +626,7 @@ public class Database extends SQLiteOpenHelper {
         return list;
     }
 
-//------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
 
     public void ilacEkle(IlacBilgi ib) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -682,7 +682,7 @@ public class Database extends SQLiteOpenHelper {
         }
         return list;
     }
-//------------------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------------------
 
     public void bagisiklikEkle(BagisiklikBilgi bb) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -728,7 +728,7 @@ public class Database extends SQLiteOpenHelper {
         }
         return list;
     }
-//-------------------------------------------------------------------------------------------------------------------------------------
+    //-------------------------------------------------------------------------------------------------------------------------------------
 
     public void alerjiEkle(AlerjiBilgi a) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -776,7 +776,104 @@ public class Database extends SQLiteOpenHelper {
         }
         return list;
     }
+    //-------------------------------------------------------------------------------------------------------------------------------------
 
+    public void kisiEkle(KisilerBilgi kb) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, kb.getId());
+        contentValues.put(KISILER_AD, kb.getAd());
+        contentValues.put(KISILER_UZMANLIK, kb.getUzmanlik());
+        contentValues.put(KISILER_ISYERI, kb.getIsyeri());
+        db.insert(KISILER_TABLE, null, contentValues);
+        db.close();
+    }
+
+    public void kisiGuncelle(int id, String eskiAd, String yeniAd, String yeniUzmanlik, String yeniIsyeri) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + KISILER_AD + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim(), eskiAd};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, id);
+        contentValues.put(KISILER_AD, yeniAd);
+        contentValues.put(KISILER_UZMANLIK, yeniUzmanlik);
+        contentValues.put(KISILER_ISYERI, yeniIsyeri);
+        db.update(KISILER_TABLE, contentValues, selection, selectionArgs);
+        db.close();
+    }
+
+    public void kisiSil(int id, String ad) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + KISILER_AD + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim(), ad};
+        db.delete(KISILER_TABLE, selection, selectionArgs);
+        db.close();
+    }
+
+    public List<String> showKisi(int id) {
+        List<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
+        String[] columns = {USERS_ID, KISILER_AD, KISILER_UZMANLIK, KISILER_ISYERI};
+        Cursor c = db.query(KISILER_TABLE, columns, selection, selectionArgs, null, null, null);
+        while (c.moveToNext()) {
+            list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getString(2) + "-" + c.getString(3));
+        }
+        return list;
+    }
+    //------------------------------------------------------------------------------------------------------------------------------
+
+    public void tibbiCihazEkle(TibbiCihazBilgi tb) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, tb.getId());
+        contentValues.put(TIBBI_CIHAZLAR_TUR, tb.getTur());
+        contentValues.put(TIBBI_CIHAZLAR_URETICI, tb.getUretici());
+        contentValues.put(TIBBI_CIHAZLAR_KONUM, tb.getKonum());
+        contentValues.put(TIBBI_CIHAZLAR_MODEL, tb.getModel());
+        contentValues.put(TIBBI_CIHAZLAR_SERI, tb.getSerino());
+        contentValues.put(TIBBI_CIHAZLAR_BASLANGIC, tb.getTarih());
+        db.insert(TIBBI_CIHAZLAR_TABLE, null, contentValues);
+        db.close();
+    }
+
+    public void tibbiCihazGuncelle(int id, String yeniTur, String uretici, String konum, String model, int eskiSerino, int yeniSerino,  String eskiTarih, String yeniTarih) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TIBBI_CIHAZLAR_SERI + " = ?" + " AND " + TIBBI_CIHAZLAR_BASLANGIC + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim(), String.valueOf(eskiSerino), eskiTarih};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, id);
+        contentValues.put(TIBBI_CIHAZLAR_TUR, yeniTur);
+        contentValues.put(TIBBI_CIHAZLAR_URETICI, uretici);
+        contentValues.put(TIBBI_CIHAZLAR_KONUM, konum);
+        contentValues.put(TIBBI_CIHAZLAR_MODEL, model);
+        contentValues.put(TIBBI_CIHAZLAR_SERI, yeniSerino);
+        contentValues.put(TIBBI_CIHAZLAR_BASLANGIC, yeniTarih);
+        db.update(TIBBI_CIHAZLAR_TABLE, contentValues, selection, selectionArgs);
+        db.close();
+    }
+
+    public void tibbiCihazSil(int id, int serino, String tarih) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + TIBBI_CIHAZLAR_SERI + " = ?" + " AND " + TIBBI_CIHAZLAR_BASLANGIC + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim(), String.valueOf(serino), tarih};
+        db.delete(TIBBI_CIHAZLAR_TABLE, selection, selectionArgs);
+        db.close();
+    }
+
+    public List<String> showTibbiCihaz(int id) {
+        List<String> list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
+        String[] columns = {USERS_ID, TIBBI_CIHAZLAR_TUR, TIBBI_CIHAZLAR_URETICI, TIBBI_CIHAZLAR_KONUM, TIBBI_CIHAZLAR_MODEL, TIBBI_CIHAZLAR_SERI, TIBBI_CIHAZLAR_BASLANGIC};
+        Cursor c = db.query(TIBBI_CIHAZLAR_TABLE, columns, selection, selectionArgs, null, null, null);
+        while (c.moveToNext()) {
+            list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getString(2) + "-" + c.getString(3) + "-" + c.getString(4) + "-" + c.getInt(5) + "-" + c.getString(6));
+        }
+        return list;
+    }
 }
 
 
