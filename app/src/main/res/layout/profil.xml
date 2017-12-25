@@ -4,65 +4,147 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="followself.com.bitirmeprojesi.Profil">
+    tools:context="followself.com.bitirmeprojesi.MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="186dp"
-        android:layout_height="40dp"
-        android:text="Adınız Soyadınız"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="37dp" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="51dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Nickiniz"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="99dp" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="186dp"
-        android:layout_height="40dp"
-        android:text="Doğum Tarihiniz"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="178dp" />
+        <RelativeLayout
+            android:id="@+id/rel1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Ülkeniz"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="241dp" />
+            <EditText
+                android:id="@+id/et1"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/et2"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/et2"
+                android:layout_gravity="center"
+                android:layout_marginTop="18dp"
+                android:layout_weight="0.07"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Adınız Soyadınız"
+                android:inputType="text"
+                android:textSize="20dp"
+                android:textStyle="italic" />
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Yaşadığınız Şehir"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="308dp" />
+            <EditText
+                android:id="@+id/et2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/et3"
+                android:layout_alignStart="@+id/et3"
+                android:layout_below="@+id/et1"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_weight="0.07"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="E-mail Adresiniz"
+                android:inputType="text"
+                android:textSize="20dp"
+                android:textStyle="italic" />
 
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Cinsiyetiniz"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="387dp" />
+            <EditText
+                android:id="@+id/et3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/et2"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="75dp"
+                android:layout_weight="0.07"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Doğum Tarihiniz(GG.AA.YYYY)"
+                android:inputType="date"
+                android:textSize="18dp"
+                android:textStyle="italic" />
 
+            <EditText
+                android:id="@+id/et4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/et3"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="75dp"
+                android:layout_weight="0.07"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Yaşadığınız Ülke"
+                android:inputType="text"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/et5"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/et4"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="75dp"
+                android:layout_weight="0.07"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Yaşadığınız Şehir"
+                android:inputType="text"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/et6"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/et5"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="75dp"
+                android:layout_weight="0.07"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="Cinsiyetiniz"
+                android:inputType="text"
+                android:textSize="20dp"
+                android:textStyle="italic" />
+
+            <Button
+                android:id="@+id/btn1"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/et6"
+                android:layout_alignStart="@+id/et6"
+                android:layout_below="@+id/et6"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@android:color/holo_green_dark"
+                android:text="Kaydet" />
+
+            <Button
+                android:id="@+id/btn2"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/btn1"
+                android:layout_alignBottom="@+id/btn1"
+                android:layout_alignEnd="@+id/et2"
+                android:layout_alignRight="@+id/et2"
+                android:backgroundTint="@android:color/holo_blue_light"
+                android:text="Geri" />
+
+        </RelativeLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

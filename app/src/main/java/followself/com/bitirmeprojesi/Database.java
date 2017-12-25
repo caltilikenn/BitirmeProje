@@ -25,6 +25,9 @@ public class Database extends SQLiteOpenHelper {
     private static final String USERS_SIFRE = "SIFRE";
     private static final String TARIH = "TARIH";
     private static final String SAAT = "SAAT";
+    private static final String USERS_ULKE = "ULKE";
+    private static final String USERS_IL = "IL";
+    private static final String USERS_CINSIYET = "CINSIYET";
 
 //--------------------------------------------------------------------------------------------------
 
@@ -108,7 +111,7 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + USERS_TABLE + "(" + USERS_ID + " INTEGER PRIMARY KEY," + USERS_ADSOYAD + " TEXT NOT NULL," + USERS_DTARIHI + " TEXT NOT NULL,"
-                + USERS_EMAIL + " TEXT NOT NULL," + USERS_SIFRE + " TEXT NOT NULL)");
+                + USERS_EMAIL + " TEXT NOT NULL," + USERS_SIFRE + " TEXT NOT NULL," + USERS_ULKE + " TEXT," + USERS_IL + " TEXT," + USERS_CINSIYET + " TEXT)");
 
         db.execSQL("CREATE TABLE BOY(ID INTEGER, UZUNLUK INTEGER, TARIH TEXT NOT NULL, PRIMARY KEY(ID,TARIH), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
@@ -279,6 +282,39 @@ public class Database extends SQLiteOpenHelper {
             return true;
         } else
             return false;
+    }
+
+    //-----------------------------------------------------------------------------------------------------------------
+
+    public String profil(int id, int i) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {USERS_ADSOYAD,USERS_EMAIL,USERS_DTARIHI,USERS_ULKE,USERS_IL,USERS_CINSIYET};
+        String selection = USERS_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(id)};
+        Cursor c = db.query(USERS_TABLE, columns, selection, selectionArgs, null, null, null);
+        String[] dizi = null;
+        while (c.moveToNext()) {
+            dizi = new String[]{c.getString(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5)};
+        }
+        c.close();
+        db.close();
+        return dizi[i];
+    }
+
+    public void profilGuncelle(int id, String ad, String email, String dtarihi, String ulke, String il, String cinsiyet) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, id);
+        contentValues.put(USERS_ADSOYAD, ad);
+        contentValues.put(USERS_EMAIL, email);
+        contentValues.put(USERS_DTARIHI, dtarihi);
+        contentValues.put(USERS_ULKE, ulke);
+        contentValues.put(USERS_IL, il);
+        contentValues.put(USERS_CINSIYET, cinsiyet);
+        db.update(USERS_TABLE, contentValues, selection, selectionArgs);
+        db.close();
     }
 
     //-----------------------------------------------------------------------------------------------------------------
