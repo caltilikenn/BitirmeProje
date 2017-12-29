@@ -22,7 +22,7 @@ public class Kolesterol extends AppCompatActivity {
         final EditText et6 = (EditText) findViewById(R.id.et6);
         Button btn1 = (Button) findViewById(R.id.btn1);
         Button btn2 = (Button) findViewById(R.id.btn2);
-        Button btn3 = (Button) findViewById(R.id.btn3);
+        Button btn3 = (Button) findViewById(R.id.btn4);
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
 

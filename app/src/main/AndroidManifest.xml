@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -146,12 +149,17 @@
         <activity
             android:name=".KisilerDuzenle"
             android:label="Kişi Bilgisi Düzenleme" />
-        <activity android:name=".TibbiCihazlar"
-                  android:label="Tıbbi Cihazlar"/>
-        <activity android:name=".TibbiCihazList"
-                  android:label="Tıbbi Cihaz Bilgisi Listesi"/>
-        <activity android:name=".TibbiCihazDuzenle"
-                  android:label="Tıbbi Cihaz Bilgisi Düzenleme"/>
+        <activity
+            android:name=".TibbiCihazlar"
+            android:label="Tıbbi Cihazlar" />
+        <activity
+            android:name=".TibbiCihazList"
+            android:label="Tıbbi Cihaz Bilgisi Listesi" />
+        <activity
+            android:name=".TibbiCihazDuzenle"
+            android:label="Tıbbi Cihaz Bilgisi Düzenleme" />
+        <activity android:name=".BelgelerList" />
+        <activity android:name=".BelgelerDuzenle"></activity>
     </application>
 
 </manifest>

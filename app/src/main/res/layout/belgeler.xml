@@ -4,6 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="followself.com.bitirmeprojesi.Belgeler">
+    tools:context="followself.com.bitirmeprojesi.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="12dp"
+            android:src="@mipmap/heart" />
+
+        <EditText
+            android:id="@+id/et1"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/iv1"
+            android:layout_alignStart="@+id/iv1"
+            android:layout_below="@+id/iv1"
+            android:layout_gravity="center"
+            android:layout_weight="0.07"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:hint="Resim Adı"
+            android:inputType="text"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/btn1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv1"
+            android:layout_marginLeft="39dp"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="33dp"
+            android:layout_toEndOf="@+id/iv1"
+            android:layout_toRightOf="@+id/iv1"
+            android:backgroundTint="@android:color/darker_gray"
+            android:text="Resim Seç" />
+
+        <Button
+            android:id="@+id/btn2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/btn1"
+            android:layout_alignStart="@+id/btn1"
+            android:layout_below="@+id/btn1"
+            android:layout_marginTop="22dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Kaydet" />
+
+        <Button
+            android:id="@+id/btn3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="49dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="Verileri Listele" />
+
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@android:color/holo_orange_light"
+            android:text="Google Drive'a Kaydet" />
+
+        <Button
+            android:id="@+id/btn5"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="Geri" />
+
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class KanSekeriDuzenle extends AppCompatActivity {
@@ -22,7 +21,7 @@ public class KanSekeriDuzenle extends AppCompatActivity {
         final EditText et5 = (EditText) findViewById(R.id.et5);
         Button btn1 = (Button) findViewById(R.id.btn1);
         Button btn2 = (Button) findViewById(R.id.btn2);
-        Button btn3 = (Button) findViewById(R.id.btn3);
+        Button btn3 = (Button) findViewById(R.id.btn4);
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
         final int olcum = intent.getIntExtra("olcum",0);

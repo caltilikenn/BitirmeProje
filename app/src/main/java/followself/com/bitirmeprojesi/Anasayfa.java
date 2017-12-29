@@ -17,9 +17,10 @@ public class Anasayfa extends AppCompatActivity {
         TextView txt1=(TextView) findViewById(R.id.txt1);
         Button btn1=(Button) findViewById(R.id.btn1);
         Button btn2=(Button) findViewById(R.id.btn2);
-        Button btn3=(Button) findViewById(R.id.btn3);
+        Button btn3=(Button) findViewById(R.id.btn4);
         Button btn4=(Button) findViewById(R.id.btn4);
         Button btn5=(Button) findViewById(R.id.btn5);
+        Button btn6=(Button) findViewById(R.id.btn6);
 
         Intent intent = getIntent();
         String ad = intent.getStringExtra("ad");
@@ -56,13 +57,21 @@ public class Anasayfa extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),HesapAyarlari.class);
+                Intent intent = new Intent(getApplicationContext(),Belgeler.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
             }
         });
 
         btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),HesapAyarlari.class);
+                startActivity(intent);
+            }
+        });
+
+        btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);

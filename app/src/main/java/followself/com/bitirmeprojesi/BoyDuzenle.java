@@ -18,7 +18,7 @@ public class BoyDuzenle extends AppCompatActivity {
         final EditText et2 = (EditText) findViewById(R.id.et2);
         Button btn1 = (Button) findViewById(R.id.btn1);
         Button btn2 = (Button) findViewById(R.id.btn2);
-        Button btn3 = (Button) findViewById(R.id.btn3);
+        Button btn3 = (Button) findViewById(R.id.btn4);
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id", 0);
         final int boy = intent.getIntExtra("boy", 0);

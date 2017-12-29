@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class TibbiCihazDuzenle extends AppCompatActivity {
@@ -23,7 +22,7 @@ public class TibbiCihazDuzenle extends AppCompatActivity {
         final EditText et6 = (EditText) findViewById(R.id.et6);
         Button btn1 = (Button) findViewById(R.id.btn1);
         Button btn2 = (Button) findViewById(R.id.btn2);
-        Button btn3 = (Button) findViewById(R.id.btn3);
+        Button btn3 = (Button) findViewById(R.id.btn4);
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
         final String tur = intent.getStringExtra("tur");

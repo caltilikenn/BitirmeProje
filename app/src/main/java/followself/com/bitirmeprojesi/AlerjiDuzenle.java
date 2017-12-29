@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class AlerjiDuzenle extends AppCompatActivity {
@@ -21,7 +20,7 @@ public class AlerjiDuzenle extends AppCompatActivity {
         final EditText et4 = (EditText) findViewById(R.id.et4);
         Button btn1 = (Button) findViewById(R.id.btn1);
         Button btn2 = (Button) findViewById(R.id.btn2);
-        Button btn3 = (Button) findViewById(R.id.btn3);
+        Button btn3 = (Button) findViewById(R.id.btn4);
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
         final String ad = intent.getStringExtra("ad");

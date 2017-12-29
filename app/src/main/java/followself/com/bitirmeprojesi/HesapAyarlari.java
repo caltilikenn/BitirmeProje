@@ -2,7 +2,6 @@ package followself.com.bitirmeprojesi;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +17,7 @@ public class HesapAyarlari extends AppCompatActivity {
         setContentView(R.layout.hesap_ayarlari);
         Button btn1=(Button) findViewById(R.id.btn1);
         Button btn2=(Button) findViewById(R.id.btn2);
-        Button btn3=(Button) findViewById(R.id.btn3);
+        Button btn3=(Button) findViewById(R.id.btn4);
 
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);

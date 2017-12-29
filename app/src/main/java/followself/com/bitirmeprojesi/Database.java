@@ -6,9 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +33,9 @@ public class Database extends SQLiteOpenHelper {
     private static final String USERS_IL = "IL";
     private static final String USERS_CINSIYET = "CINSIYET";
 
+    private static final String RESIMLER_TABLE = "RESIMLER";
+    private static final String RESIM_AD = "AD";
+    private static final String RESIM = "RESIM";
 //--------------------------------------------------------------------------------------------------
 
     private static final String BOY_TABLE = "BOY";
@@ -112,6 +119,8 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + USERS_TABLE + "(" + USERS_ID + " INTEGER PRIMARY KEY," + USERS_ADSOYAD + " TEXT NOT NULL," + USERS_DTARIHI + " TEXT NOT NULL,"
                 + USERS_EMAIL + " TEXT NOT NULL," + USERS_SIFRE + " TEXT NOT NULL," + USERS_ULKE + " TEXT," + USERS_IL + " TEXT," + USERS_CINSIYET + " TEXT)");
+
+        db.execSQL("CREATE TABLE RESIMLER(ID INTEGER,AD TEXT NOT NULL, RESIM BLOB, PRIMARY KEY(ID,AD), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
         db.execSQL("CREATE TABLE BOY(ID INTEGER, UZUNLUK INTEGER, TARIH TEXT NOT NULL, PRIMARY KEY(ID,TARIH), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
@@ -282,6 +291,32 @@ public class Database extends SQLiteOpenHelper {
             return true;
         } else
             return false;
+    }
+    //-----------------------------------------------------------------------------------------------------------------
+
+    public void resimEkle(BelgelerBilgi bb)  {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERS_ID, bb.getId());
+        contentValues.put(RESIM_AD, bb.getAd());
+        contentValues.put(RESIM, bb.getResim());
+        db.insert(RESIMLER_TABLE, null, contentValues);
+        db.close();
+    }
+
+    public byte[] resimGoster(int id,String ad) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {RESIM};
+        String selection = USERS_ID + " = ?" + " AND " + RESIM_AD + " = ?";
+        String[] selectionArgs = {String.valueOf(id),ad};
+        Cursor c = db.query(RESIMLER_TABLE, columns, selection, selectionArgs, null, null, null);
+        byte[] resim = new byte[0];
+        while (c.moveToNext()) {
+            resim = c.getBlob(0);
+        }
+        c.close();
+        db.close();
+        return resim;
     }
 
     //-----------------------------------------------------------------------------------------------------------------

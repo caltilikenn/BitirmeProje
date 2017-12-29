@@ -14,7 +14,7 @@ public class SaglikGecmisi extends AppCompatActivity {
         setContentView(R.layout.saglik_gecmisi);
         Button btn1=(Button) findViewById(R.id.btn1);
         Button btn2=(Button) findViewById(R.id.btn2);
-        Button btn3=(Button) findViewById(R.id.btn3);
+        Button btn3=(Button) findViewById(R.id.btn4);
         Button btn4=(Button) findViewById(R.id.btn4);
         Button btn5=(Button) findViewById(R.id.btn5);
         Button btn6=(Button) findViewById(R.id.btn6);
