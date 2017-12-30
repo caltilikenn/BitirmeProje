@@ -158,8 +158,14 @@
         <activity
             android:name=".TibbiCihazDuzenle"
             android:label="Tıbbi Cihaz Bilgisi Düzenleme" />
-        <activity android:name=".BelgelerList" />
-        <activity android:name=".BelgelerDuzenle"></activity>
+        <activity
+            android:name=".BelgelerList"
+            android:label="Belgeler Listesi" />
+        <activity
+            android:name=".BelgelerDuzenle"
+            android:label="Belge Görüntüleme" />
+        <activity android:name=".BelgeBuyut"
+                  android:label="Resim Önizleme"/>
     </application>
 
 </manifest>

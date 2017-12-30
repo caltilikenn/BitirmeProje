@@ -18,7 +18,7 @@ public class Boy extends AppCompatActivity {
         final EditText et2 = (EditText) findViewById(R.id.et2);
         Button btn1 = (Button) findViewById(R.id.btn1);
         Button btn2 = (Button) findViewById(R.id.btn2);
-        Button btn3 = (Button) findViewById(R.id.btn4);
+        Button btn3 = (Button) findViewById(R.id.btn3);
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);
 

@@ -11,8 +11,6 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -317,6 +315,27 @@ public class Database extends SQLiteOpenHelper {
         c.close();
         db.close();
         return resim;
+    }
+
+    public void resimSil(int id, String ad) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = USERS_ID + " = ?" + " AND " + RESIM_AD + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim(), ad};
+        db.delete(RESIMLER_TABLE, selection, selectionArgs);
+        db.close();
+    }
+
+    public List<String> showResimler(int id) {
+        List<String> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = USERS_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(id).trim()};
+        String[] columns = {RESIM_AD};
+        Cursor c = db.query(RESIMLER_TABLE, columns, selection, selectionArgs, null, null, null);
+        while (c.moveToNext()) {
+            list.add(c.getString(0));
+        }
+        return list;
     }
 
     //-----------------------------------------------------------------------------------------------------------------

@@ -17,7 +17,7 @@ public class HesapAyarlari extends AppCompatActivity {
         setContentView(R.layout.hesap_ayarlari);
         Button btn1=(Button) findViewById(R.id.btn1);
         Button btn2=(Button) findViewById(R.id.btn2);
-        Button btn3=(Button) findViewById(R.id.btn4);
+        Button btn3=(Button) findViewById(R.id.btn3);
 
         Intent intent = getIntent();
         final int id = intent.getIntExtra("id",0);

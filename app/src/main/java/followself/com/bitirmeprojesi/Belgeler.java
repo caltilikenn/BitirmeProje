@@ -85,6 +85,15 @@ public class Belgeler extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), BelgelerList.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Database db = new Database(Belgeler.this);
                 String ad = et1.getText().toString();
                 byte[] resim = db.resimGoster(id,ad);
