@@ -71,22 +71,24 @@
             android:layout_alignStart="@+id/et2"
             android:layout_below="@+id/et1"
             android:layout_marginTop="18dp"
-            android:backgroundTint="@android:color/holo_green_dark"
+            android:backgroundTint="@color/pembe"
+            android:drawableLeft="@drawable/ic_yeni_uyelik"
             android:onClick="yeniUyelik"
             android:text="Yeni Üyelik" />
+
 
         <Button
             android:id="@+id/btn2"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="120dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_alignEnd="@+id/et2"
             android:layout_alignRight="@+id/et2"
             android:layout_alignTop="@+id/btn1"
-            android:backgroundTint="@color/colorAccent"
+            android:backgroundTint="@color/mor"
+            android:drawableLeft="@drawable/ic_giris"
             android:text="Giriş Yap"
             android:onClick="anaSayfa"/>
-
         <TextView
             android:id="@+id/txt2"
             android:layout_width="wrap_content"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lavender"
     tools:context="followself.com.bitirmeprojesi.MainActivity">
 
     <RelativeLayout
@@ -24,7 +25,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="53dp"
-            android:backgroundTint="@android:color/black"
+            android:drawableLeft="@drawable/ic_guncelle"
+            android:backgroundTint="@color/mor"
             android:text="Şifre Değiştir" />
 
         <Button
@@ -36,7 +38,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/btn1"
             android:layout_marginTop="29dp"
-            android:backgroundTint="@android:color/black"
+            android:backgroundTint="@color/mor"
+            android:drawableLeft="@drawable/ic_sil"
             android:text="Hesabı Sil" />
 
         <Button
@@ -48,7 +51,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/btn2"
             android:layout_marginTop="29dp"
-            android:backgroundTint="@android:color/holo_blue_light"
+            android:backgroundTint="@color/mor"
+            android:drawableLeft="@drawable/ic_geri"
             android:text="Geri" />
 
 

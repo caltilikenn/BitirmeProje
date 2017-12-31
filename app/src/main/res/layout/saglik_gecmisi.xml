@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lavender"
     tools:context="followself.com.bitirmeprojesi.MainActivity">
 
     <RelativeLayout
@@ -23,7 +24,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:backgroundTint="@android:color/holo_orange_dark"
+            android:backgroundTint="@color/mor"
+            android:drawableLeft="@drawable/ic_geri"
             android:text="İlaçlar" />
 
         <Button
@@ -35,7 +37,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/btn1"
             android:layout_marginTop="13dp"
-            android:backgroundTint="@android:color/holo_orange_dark"
+            android:backgroundTint="@color/mor"
+            android:drawableLeft="@drawable/ic_geri"
             android:text="Bağışıklıklar" />
 
         <Button
@@ -47,7 +50,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/btn2"
             android:layout_marginTop="14dp"
-            android:backgroundTint="@android:color/holo_orange_dark"
+            android:backgroundTint="@color/mor"
+            android:drawableLeft="@drawable/ic_geri"
             android:text="Alerjiler" />
 
         <Button
@@ -59,7 +63,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/btn3"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@android:color/holo_orange_dark"
+            android:backgroundTint="@color/mor"
+            android:drawableLeft="@drawable/ic_geri"
             android:text="Kişiler" />
 
         <Button
@@ -71,7 +76,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/btn4"
             android:layout_marginTop="20dp"
-            android:backgroundTint="@android:color/holo_orange_dark"
+            android:backgroundTint="@color/mor"
+            android:drawableLeft="@drawable/ic_geri"
             android:text="Tıbbi Cihazlar" />
 
 
@@ -85,7 +91,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/btn5"
             android:layout_marginTop="22dp"
-            android:backgroundTint="@android:color/holo_blue_light"
+            android:backgroundTint="@color/mor"
+            android:drawableLeft="@drawable/ic_geri"
             android:text="Geri" />
 
     </RelativeLayout>

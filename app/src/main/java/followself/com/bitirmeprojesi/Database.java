@@ -352,6 +352,7 @@ public class Database extends SQLiteOpenHelper {
         }
         c.close();
         db.close();
+        assert dizi != null;
         return dizi[i];
     }
 

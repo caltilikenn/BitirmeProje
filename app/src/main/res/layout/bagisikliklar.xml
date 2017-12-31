@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lavender"
     tools:context="followself.com.bitirmeprojesi.MainActivity">
 
     <RelativeLayout
@@ -73,7 +74,8 @@
             android:layout_alignStart="@+id/et3"
             android:layout_below="@+id/et3"
             android:layout_marginTop="54dp"
-            android:backgroundTint="@android:color/holo_green_dark"
+            android:backgroundTint="@color/mavi"
+            android:drawableLeft="@drawable/ic_kaydet"
             android:text="Kaydet" />
 
         <Button
@@ -85,7 +87,7 @@
             android:layout_alignBottom="@+id/btn1"
             android:layout_alignEnd="@+id/et2"
             android:layout_alignRight="@+id/et2"
-            android:backgroundTint="@color/colorAccent"
+            android:backgroundTint="@color/pembe"
             android:text="Listele" />
 
         <Button
@@ -96,8 +98,10 @@
             android:layout_below="@+id/btn1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="26dp"
-            android:backgroundTint="@android:color/holo_blue_dark"
+            android:backgroundTint="@color/mor"
+            android:drawableLeft="@drawable/ic_geri"
             android:text="Geri" />
+
 
     </RelativeLayout>
 

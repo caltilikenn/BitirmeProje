@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lavender"
     tools:context="followself.com.bitirmeprojesi.MainActivity">
 
     <RelativeLayout
@@ -33,7 +34,7 @@
             android:layout_marginLeft="31dp"
             android:layout_marginStart="31dp"
             android:layout_marginTop="51dp"
-            android:backgroundTint="@android:color/holo_green_dark"
+            android:backgroundTint="@color/mavi"
             android:text="Görseli Büyüt" />
 
         <Button
@@ -47,7 +48,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginEnd="31dp"
             android:layout_marginRight="31dp"
-            android:backgroundTint="@android:color/holo_red_dark"
+            android:backgroundTint="@color/mavi"
+            android:drawableLeft="@drawable/ic_sil"
             android:text="Sil" />
 
         <Button
@@ -58,7 +60,8 @@
             android:layout_below="@+id/btn1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="17dp"
-            android:backgroundTint="@android:color/holo_blue_dark"
+            android:backgroundTint="@color/mor"
+            android:drawableLeft="@drawable/ic_geri"
             android:text="Geri" />
 
 
