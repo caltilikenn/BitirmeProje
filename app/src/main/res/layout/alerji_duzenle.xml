@@ -5,7 +5,6 @@
     android:background="@color/lavender"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="followself.com.bitirmeprojesi.MainActivity">
 
 

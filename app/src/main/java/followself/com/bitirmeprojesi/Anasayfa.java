@@ -38,6 +38,7 @@ public class Anasayfa extends AppCompatActivity
         ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.openDrawer(GravityCompat.START);
         toggle = new ActionBarDrawerToggle(this, drawer,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -53,26 +54,13 @@ public class Anasayfa extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(Anasayfa.this);
-            builder.setTitle("Çıkış Yap");
-            builder.setMessage("Çıkış yapmak istediğinize emin misiniz?");
-            builder.setNegativeButton("İPTAL", new DialogInterface.OnClickListener(){
-                public void onClick(DialogInterface dialog, int i) {
-
-                }
-            });
-            builder.setPositiveButton("ÇIKIŞ YAP", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int i) {
-                    Intent intent = new Intent(Intent.ACTION_MAIN);
-                    intent.addCategory(Intent.CATEGORY_HOME);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
-                    System.exit(0);
-                }
-            });
-            builder.show();
-            super.onBackPressed();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+        System.exit(0);
+        super.onBackPressed();
         }
     }
 
