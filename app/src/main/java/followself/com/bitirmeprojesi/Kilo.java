@@ -1,6 +1,7 @@
 package followself.com.bitirmeprojesi;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,9 +11,15 @@ import android.widget.Toast;
 
 public class Kilo extends AppCompatActivity {
 
+    int id;
+    String ad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar ab = getSupportActionBar();
+        ab.setIcon(R.drawable.bg);
+        ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
         setContentView(R.layout.kilo);
         final EditText et1 = (EditText) findViewById(R.id.et1);
         final EditText et2 = (EditText) findViewById(R.id.et2);
@@ -21,7 +28,8 @@ public class Kilo extends AppCompatActivity {
         Button btn2 = (Button) findViewById(R.id.btn2);
         Button btn3 = (Button) findViewById(R.id.btn3);
         Intent intent = getIntent();
-        final int id = intent.getIntExtra("id",0);
+        id = intent.getIntExtra("id",0);
+        ad = intent.getStringExtra("ad");
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +53,7 @@ public class Kilo extends AppCompatActivity {
                     et3.setText("");
                     Intent intent = new Intent(getApplicationContext(), Kilo.class);
                     intent.putExtra("id", id);
+                    intent.putExtra("ad", ad);
                     startActivity(intent);
                 }
             }
@@ -55,6 +64,7 @@ public class Kilo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), KiloList.class);
                 intent.putExtra("id",id);
+                intent.putExtra("ad",ad);
                 startActivity(intent);
             }
         });
@@ -64,9 +74,19 @@ public class Kilo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Olcumler.class);
                 intent.putExtra("id", id);
+                intent.putExtra("ad", ad);
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),Olcumler.class);
+        intent.putExtra("id", id);
+        intent.putExtra("ad", ad);
+        startActivity(intent);
     }
 }
 

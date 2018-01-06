@@ -17,155 +17,209 @@
         android:roundIcon="@mipmap/heart"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".YeniUyelik" />
+        <activity
+            android:name=".YeniUyelik"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Anasayfa"
-            android:label="Anasayfa" />
+            android:label="Anasayfa"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".YonetimPaneli"
-            android:label="Üye Listesi" />
-        <activity android:name=".SifremiUnuttum" />
+            android:label="Üye Listesi"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SifremiUnuttum"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Profil"
-            android:label="Profil" />
+            android:label="Profil"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".HesapAyarlari"
-            android:label="Hesap Ayarları" />
+            android:label="Hesap Ayarları"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Olcumler"
-            android:label="Ölçümler" />
+            android:label="Ölçümler"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SaglikGecmisi"
-            android:label="Sağlık Geçmişi" />
+            android:label="Sağlık Geçmişi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Belgeler"
-            android:label="Belgeler" />
+            android:label="Belgeler"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Boy"
-            android:label="Boy" />
+            android:label="Boy"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BoyList"
-            android:label="Boy Bilgisi Listesi" />
+            android:label="Boy Bilgisi Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SifreDegistir"
-            android:label="Şifre Yenileme" />
+            android:label="Şifre Yenileme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BoyDuzenle"
-            android:label="Boy Bilgisi Düzenleme" />
+            android:label="Boy Bilgisi Düzenleme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Kilo"
-            android:label="Kilo" />
+            android:label="Kilo"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".KiloDuzenle"
-            android:label="Kilo Bilgisi Düzenleme" />
+            android:label="Kilo Bilgisi Düzenleme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".KiloList"
-            android:label="Kilo Bilgisi Listesi" />
+            android:label="Kilo Bilgisi Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Egzersiz"
-            android:label="Egzersiz" />
+            android:label="Egzersiz"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".EgzersizDuzenle"
-            android:label="Egzersiz Bilgisi Düzenleme" />
+            android:label="Egzersiz Bilgisi Düzenleme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".EgzersizList"
-            android:label="Egzersiz Bilgisi Listesi" />
+            android:label="Egzersiz Bilgisi Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".KanBasinci"
-            android:label="Kan Basıncı" />
+            android:label="Kan Basıncı"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".KanBasinciList"
-            android:label="Kan Basıncı Bilgisi Listesi" />
+            android:label="Kan Basıncı Bilgisi Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".KanBasinciDuzenle"
-            android:label="Kan Basıncı Bilgisi Düzenleme" />
+            android:label="Kan Basıncı Bilgisi Düzenleme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".KanSekeri"
-            android:label="Kan Şekeri" />
+            android:label="Kan Şekeri"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".KanSekeriList"
-            android:label="Kan Şekeri Bilgisi Listesi" />
+            android:label="Kan Şekeri Bilgisi Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".KanSekeriDuzenle"
-            android:label="Kan Şekeri Bilgisi Düzenleme" />
+            android:label="Kan Şekeri Bilgisi Düzenleme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Kolesterol"
-            android:label="Kolesterol" />
+            android:label="Kolesterol"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".KolesterolList"
-            android:label="Kolesterol Bilgisi Listesi" />
+            android:label="Kolesterol Bilgisi Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".KolesterolDuzenle"
-            android:label="Kolestrol Bilgisi Düzenleme" />
+            android:label="Kolestrol Bilgisi Düzenleme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".VucutOlcu"
-            android:label="Vücut Ölçüleri" />
+            android:label="Vücut Ölçüleri"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".VucutOlcuList"
-            android:label="Vücut Ölçüleri Bilgisi Listesi" />
+            android:label="Vücut Ölçüleri Bilgisi Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".VucutOlcuDuzenle"
-            android:label="Vücut Ölçüsü Bilgisi Düzenleme" />
+            android:label="Vücut Ölçüsü Bilgisi Düzenleme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Ilaclar"
-            android:label="İlaçlar" />
+            android:label="İlaçlar"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".IlacList"
-            android:label="İlaç Bilgisi Listesi" />
+            android:label="İlaç Bilgisi Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".IlacDuzenle"
-            android:label="İlaç Bilgisi Düzenleme" />
+            android:label="İlaç Bilgisi Düzenleme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Bagisikliklar"
-            android:label="Bağışıklıklar" />
+            android:label="Bağışıklıklar"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BagisiklikList"
-            android:label="Bağışıklık Bilgisi Listesi" />
+            android:label="Bağışıklık Bilgisi Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BagisiklikDuzenle"
-            android:label="Bağışıklık Bilgisi Düzenleme" />
+            android:label="Bağışıklık Bilgisi Düzenleme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Alerjiler"
-            android:label="Alerjiler" />
+            android:label="Alerjiler"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AlerjiList"
-            android:label="Alerji Bilgisi Listesi" />
+            android:label="Alerji Bilgisi Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AlerjiDuzenle"
-            android:label="Alerji Bilgisi Düzenleme" />
+            android:label="Alerji Bilgisi Düzenleme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Kisiler"
-            android:label="Kişiler" />
+            android:label="Kişiler"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".KisilerList"
-            android:label="Kişi Bilgisi Listesi" />
+            android:label="Kişi Bilgisi Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".KisilerDuzenle"
-            android:label="Kişi Bilgisi Düzenleme" />
+            android:label="Kişi Bilgisi Düzenleme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TibbiCihazlar"
-            android:label="Tıbbi Cihazlar" />
+            android:label="Tıbbi Cihazlar"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TibbiCihazList"
-            android:label="Tıbbi Cihaz Bilgisi Listesi" />
+            android:label="Tıbbi Cihaz Bilgisi Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TibbiCihazDuzenle"
-            android:label="Tıbbi Cihaz Bilgisi Düzenleme" />
+            android:label="Tıbbi Cihaz Bilgisi Düzenleme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BelgelerList"
-            android:label="Belgeler Listesi" />
+            android:label="Belgeler Listesi"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BelgelerDuzenle"
-            android:label="Belge Görüntüleme" />
-        <activity android:name=".BelgeBuyut"
-                  android:label="Resim Önizleme"/>
+            android:label="Belge Görüntüleme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BelgeBuyut"
+            android:label="Resim Önizleme"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

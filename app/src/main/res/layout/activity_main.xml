@@ -65,30 +65,34 @@
         <Button
             android:id="@+id/btn1"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
             android:layout_alignLeft="@+id/et2"
             android:layout_alignStart="@+id/et2"
             android:layout_below="@+id/et1"
-            android:layout_marginTop="18dp"
-            android:backgroundTint="@color/pembe"
-            android:drawableLeft="@drawable/ic_yeni_uyelik"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/buton_yesil"
+            android:textSize="14dp"
+            android:drawableLeft="@drawable/ic_newmember"
             android:onClick="yeniUyelik"
             android:text="Yeni Üyelik" />
-
 
         <Button
             android:id="@+id/btn2"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
+            android:padding="5dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
             android:layout_alignEnd="@+id/et2"
             android:layout_alignRight="@+id/et2"
             android:layout_alignTop="@+id/btn1"
-            android:backgroundTint="@color/mor"
+            android:background="@drawable/buton_pembe"
             android:drawableLeft="@drawable/ic_giris"
+            android:textSize="14dp"
             android:text="Giriş Yap"
             android:onClick="anaSayfa"/>
+
         <TextView
             android:id="@+id/txt2"
             android:layout_width="wrap_content"

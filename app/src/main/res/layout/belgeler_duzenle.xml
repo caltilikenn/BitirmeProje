@@ -26,44 +26,51 @@
         <Button
             android:id="@+id/btn1"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/iv1"
             android:layout_marginLeft="31dp"
             android:layout_marginStart="31dp"
             android:layout_marginTop="51dp"
-            android:backgroundTint="@color/mavi"
-            android:text="Görseli Büyüt" />
+            android:drawableLeft="@drawable/ic_zoom"
+            android:background="@drawable/buton_yesil"
+            android:text="Görseli Büyüt"
+            android:textSize="14dp"/>
 
         <Button
             android:id="@+id/btn2"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/btn1"
-            android:layout_alignBottom="@+id/btn1"
+            android:padding="5dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/btn3"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="31dp"
             android:layout_marginRight="31dp"
-            android:backgroundTint="@color/mavi"
-            android:drawableLeft="@drawable/ic_sil"
-            android:text="Sil" />
+            android:background="@drawable/buton_kirmizi"
+            android:drawableLeft="@drawable/ic_delete"
+            android:text="Sil"
+            android:textSize="14dp" />
+
 
         <Button
             android:id="@+id/btn3"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Geri"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:background="@drawable/buton_mavi"
+            android:drawableLeft="@drawable/ic_geri"
+            android:textSize="14dp"
+            android:layout_marginTop="13dp"
             android:layout_below="@+id/btn1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="17dp"
-            android:backgroundTint="@color/mor"
-            android:drawableLeft="@drawable/ic_geri"
-            android:text="Geri" />
-
+            />
 
     </RelativeLayout>
 

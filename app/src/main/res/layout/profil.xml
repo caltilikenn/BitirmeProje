@@ -124,38 +124,37 @@
             <Button
                 android:id="@+id/btn1"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="120dp"
-                android:layout_height="60dp"
+                android:padding="5dp"
+                android:text="Kaydet"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/buton_yesil"
+                android:drawableLeft="@drawable/ic_kayitt"
                 android:layout_weight="1"
                 android:drawablePadding="6dp"
-                android:drawableLeft="@drawable/ic_kaydet"
                 android:layout_alignLeft="@+id/et6"
                 android:layout_alignStart="@+id/et6"
                 android:layout_below="@+id/et6"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="@color/pembe"
-                android:text="Kaydet"
-                android:textColor="#000"
-                android:textStyle="bold" />
+                android:textSize="14dp"/>
 
             <Button
                 android:id="@+id/btn2"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="120dp"
-                android:layout_height="60dp"
+                android:padding="5dp"
+                android:text="Geri"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:background="@drawable/buton_mavi"
+                android:drawableLeft="@drawable/ic_geri"
+                android:textSize="14dp"
+                android:layout_marginTop="13dp"
                 android:layout_weight="1"
                 android:drawablePadding="6dp"
                 android:layout_alignBaseline="@+id/btn1"
                 android:layout_alignBottom="@+id/btn1"
                 android:layout_alignEnd="@+id/et2"
-                android:layout_alignRight="@+id/et2"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="@color/mor"
-                android:drawableLeft="@drawable/ic_geri"
-                android:text="Geri"
-                android:textColor="#000"
-                android:textSize="15dp"
-                android:textStyle="bold"/>
+                android:layout_alignRight="@+id/et2" />
 
         </RelativeLayout>
     </ScrollView>

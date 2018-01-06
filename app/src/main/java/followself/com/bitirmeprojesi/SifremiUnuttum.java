@@ -1,6 +1,7 @@
 package followself.com.bitirmeprojesi;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,9 @@ public class SifremiUnuttum extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sifremi_unuttum);
-
+        ActionBar ab = getSupportActionBar();
+        ab.setIcon(R.drawable.bg);
+        ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
         TextView txt1 = (TextView) findViewById(R.id.txt1);
         final TextView txt2 = (TextView) findViewById(R.id.txt2);
         final EditText et1 = (EditText) findViewById(R.id.et1);
@@ -49,12 +52,11 @@ public class SifremiUnuttum extends AppCompatActivity {
 
                         /* Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
                         emailIntent.setType("plain/text");
-                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Followself şifre hatırlatma");
-                        emailIntent.putExtra(Intent.EXTRA_TEXT, "Güvenliğiniz için şifrenizi kimseyle paylaşmayınız");
-                        String emailList[] = {email};
+                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Followself şifre talebi");
+                        emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+                        String emailList[] = {info.followself@gmail.com};
                         emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, emailList);
                         startActivity(emailIntent);
-
                         et1.setText(""); */
                     }
                     else {
@@ -64,5 +66,12 @@ public class SifremiUnuttum extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent);
     }
 }

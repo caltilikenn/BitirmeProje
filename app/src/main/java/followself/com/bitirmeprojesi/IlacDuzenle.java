@@ -1,6 +1,7 @@
 package followself.com.bitirmeprojesi;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +11,16 @@ import android.widget.Toast;
 
 public class IlacDuzenle extends AppCompatActivity {
 
+    int id;
+    String ad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ilac_duzenle);
+        ActionBar ab = getSupportActionBar();
+        ab.setIcon(R.drawable.bg);
+        ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
         final EditText et1 = (EditText) findViewById(R.id.et1);
         final EditText et2 = (EditText) findViewById(R.id.et2);
         final EditText et3 = (EditText) findViewById(R.id.et3);
@@ -26,8 +33,9 @@ public class IlacDuzenle extends AppCompatActivity {
         Button btn2 = (Button) findViewById(R.id.btn2);
         Button btn3 = (Button) findViewById(R.id.btn3);
         Intent intent = getIntent();
-        final int id = intent.getIntExtra("id",0);
-        final String ad = intent.getStringExtra("ad");
+        id = intent.getIntExtra("id",0);
+        ad = intent.getStringExtra("ad");
+        final String ilacAd = intent.getStringExtra("ilacAd");
         final int etkinlik = intent.getIntExtra("etkinlik",0);
         final String dozaj = intent.getStringExtra("dozaj");
         final String sekil = intent.getStringExtra("sekil");
@@ -35,7 +43,7 @@ public class IlacDuzenle extends AppCompatActivity {
         final String neden = intent.getStringExtra("neden");
         final String baslangic = intent.getStringExtra("baslangic");
         final String bitis = intent.getStringExtra("bitis");
-        et1.setText(ad);
+        et1.setText(ilacAd);
         et2.setText(String.valueOf(etkinlik));
         et3.setText(dozaj);
         et4.setText(sekil);
@@ -62,7 +70,7 @@ public class IlacDuzenle extends AppCompatActivity {
                 }
                 else{
                     int yeniEtkinlik1 = Integer.parseInt(yeniEtkinlik);
-                    db.ilacGuncelle(id,ad,yeniAd,yeniEtkinlik1,yeniDozaj,yeniSekil,yeniSiklik,yeniNeden,baslangic,yeniBaslangic,bitis,yeniBitis);
+                    db.ilacGuncelle(id,ilacAd,yeniAd,yeniEtkinlik1,yeniDozaj,yeniSekil,yeniSiklik,yeniNeden,baslangic,yeniBaslangic,bitis,yeniBitis);
                     Toast.makeText(getApplicationContext(),"Kaydınız Güncellendi",Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
@@ -74,6 +82,7 @@ public class IlacDuzenle extends AppCompatActivity {
                     et8.setText("");
                     Intent intent = new Intent(getApplicationContext(),Ilaclar.class);
                     intent.putExtra("id",id);
+                    intent.putExtra("ad",ad);
                     startActivity(intent);
                 }
             }
@@ -83,7 +92,7 @@ public class IlacDuzenle extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Database db = new Database(IlacDuzenle.this);
-                db.ilacSil(id,ad,baslangic,bitis);
+                db.ilacSil(id,ilacAd,baslangic,bitis);
                 Toast.makeText(getApplicationContext(),"Kaydınız Silindi",Toast.LENGTH_LONG).show();
                 et1.setText("");
                 et2.setText("");
@@ -95,6 +104,7 @@ public class IlacDuzenle extends AppCompatActivity {
                 et8.setText("");
                 Intent intent = new Intent(getApplicationContext(),Ilaclar.class);
                 intent.putExtra("id",id);
+                intent.putExtra("ad",ad);
                 startActivity(intent);
             }
         });
@@ -104,9 +114,19 @@ public class IlacDuzenle extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), IlacList.class);
                 intent.putExtra("id", id);
+                intent.putExtra("ad", ad);
                 startActivity(intent);
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),IlacList.class);
+        intent.putExtra("id", id);
+        intent.putExtra("ad", ad);
+        startActivity(intent);
     }
 }

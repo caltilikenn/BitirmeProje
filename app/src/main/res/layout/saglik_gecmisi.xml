@@ -1,100 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lavender"
-    tools:context="followself.com.bitirmeprojesi.MainActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <RelativeLayout
-        android:id="@+id/rel1"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_drawer"
+        app:menu="@menu/menu3" >
 
+        <include
+            layout="@layout/app_bar_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-        <Button
-            android:id="@+id/btn1"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:backgroundTint="@color/mor"
-            android:drawableLeft="@drawable/ic_geri"
-            android:text="İlaçlar" />
+    </android.support.design.widget.NavigationView>
 
-        <Button
-            android:id="@+id/btn2"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/btn1"
-            android:layout_marginTop="13dp"
-            android:backgroundTint="@color/mor"
-            android:drawableLeft="@drawable/ic_geri"
-            android:text="Bağışıklıklar" />
-
-        <Button
-            android:id="@+id/btn3"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/btn2"
-            android:layout_marginTop="14dp"
-            android:backgroundTint="@color/mor"
-            android:drawableLeft="@drawable/ic_geri"
-            android:text="Alerjiler" />
-
-        <Button
-            android:id="@+id/btn4"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/btn3"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/mor"
-            android:drawableLeft="@drawable/ic_geri"
-            android:text="Kişiler" />
-
-        <Button
-            android:id="@+id/btn5"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/btn4"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/mor"
-            android:drawableLeft="@drawable/ic_geri"
-            android:text="Tıbbi Cihazlar" />
-
-
-
-        <Button
-            android:id="@+id/btn6"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/btn5"
-            android:layout_marginTop="22dp"
-            android:backgroundTint="@color/mor"
-            android:drawableLeft="@drawable/ic_geri"
-            android:text="Geri" />
-
-    </RelativeLayout>
-
-</android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.DrawerLayout>

@@ -16,121 +16,121 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
 
-        <RelativeLayout
-            android:id="@+id/rel1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp">
-
-            <EditText
-                android:id="@+id/et1"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/et2"
-                android:layout_alignParentTop="true"
-                android:layout_alignStart="@+id/et2"
-                android:layout_gravity="center"
-                android:layout_marginTop="18dp"
-                android:layout_weight="0.07"
-                android:ems="10"
-                android:fontFamily="serif"
-                android:inputType="text"
-                android:textSize="20dp"
-                android:textStyle="italic" />
-
-            <EditText
-                android:id="@+id/et2"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/et3"
-                android:layout_alignStart="@+id/et3"
-                android:layout_below="@+id/et1"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:layout_weight="0.07"
-                android:ems="10"
-                android:fontFamily="serif"
-                android:inputType="text"
-                android:textSize="20dp"
-                android:textStyle="italic" />
-
-            <EditText
-                android:id="@+id/et3"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/et2"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="75dp"
-                android:layout_weight="0.07"
-                android:ems="10"
-                android:fontFamily="serif"
-                android:inputType="text"
-                android:textSize="20dp"
-                android:textStyle="italic" />
-
-            <EditText
-                android:id="@+id/et4"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/et3"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="75dp"
-                android:layout_weight="0.07"
-                android:ems="10"
-                android:fontFamily="serif"
-                android:inputType="date"
-                android:textSize="20dp"
-                android:textStyle="italic" />
-
-            <Button
-                android:id="@+id/btn1"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/et4"
-                android:layout_alignStart="@+id/et4"
-                android:layout_below="@+id/et4"
-                android:layout_marginTop="20dp"
-                android:drawableLeft="@drawable/ic_guncelle"
-                android:backgroundTint="@color/mavi"
-                android:textColor="#000"
-                android:text="Güncelle" />
-
-            <Button
-                android:id="@+id/btn2"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/btn1"
-                android:layout_alignBottom="@+id/btn1"
-                android:layout_alignEnd="@+id/et2"
-                android:layout_alignRight="@+id/et2"
-                android:backgroundTint="@color/mor"
-                android:textColor="#000"
-                android:drawableLeft="@drawable/ic_sil"
-                android:text="Sil" />
-
-            <Button
-                android:id="@+id/btn3"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/btn1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="26dp"
-                android:drawableLeft="@drawable/ic_geri"
-                android:backgroundTint="@color/pembe"
-                android:textColor="#000"
-                android:text="Geri" />
-
-
-
-
-        </RelativeLayout>
     </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="339dp">
+
+        <EditText
+            android:id="@+id/et1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/et2"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/et2"
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp"
+            android:layout_weight="0.07"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:inputType="text"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+        <EditText
+            android:id="@+id/et2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/et3"
+            android:layout_alignStart="@+id/et3"
+            android:layout_below="@+id/et1"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:layout_weight="0.07"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:inputType="text"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+        <EditText
+            android:id="@+id/et3"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/et2"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="75dp"
+            android:layout_weight="0.07"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:inputType="text"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+        <EditText
+            android:id="@+id/et4"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/et3"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="75dp"
+            android:layout_weight="0.07"
+            android:ems="10"
+            android:fontFamily="serif"
+            android:inputType="date"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/btn1"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:padding="5dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_alignLeft="@+id/et4"
+            android:layout_alignStart="@+id/et4"
+            android:layout_below="@+id/et4"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/buton_yesil"
+            android:drawableLeft="@drawable/ic_guncellle"
+            android:text="Güncelle"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/btn2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:padding="5dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/btn3"
+            android:layout_alignEnd="@+id/et4"
+            android:layout_alignRight="@+id/et4"
+            android:background="@drawable/buton_kirmizi"
+            android:drawableLeft="@drawable/ic_delete"
+            android:text="Sil"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/btn3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:padding="5dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/btn1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/buton_mavi"
+            android:drawableLeft="@drawable/ic_geri"
+            android:text="Geri"
+            android:textSize="14dp" />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

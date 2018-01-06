@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/anasayfa"
+
+            android:title="Anasayfa" />
+        <item
+            android:id="@+id/profil"
+
+            android:title="Profil" />
+        <item
+            android:id="@+id/olcumler"
+
+            android:title="Ölçümler" />
+
+        <item
+            android:id="@+id/saglik_gecmisi"
+
+            android:title="Sağlık Geçmişi" />
+
+        <item
+            android:id="@+id/belgeler"
+
+            android:title="Belgeler" />
+
+        <item
+            android:id="@+id/hesap_ayarlari"
+
+            android:title="Hesap Ayarları" />
+        <item
+            android:id="@+id/cikis_yap"
+
+            android:title="Çıkış Yap" />
+
+    </group>
 
 </menu>

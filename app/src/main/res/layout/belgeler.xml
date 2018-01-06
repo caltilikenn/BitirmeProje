@@ -46,62 +46,75 @@
         <Button
             android:id="@+id/btn1"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
             android:layout_alignTop="@+id/iv1"
             android:layout_marginLeft="39dp"
             android:layout_marginStart="39dp"
             android:layout_marginTop="33dp"
             android:layout_toEndOf="@+id/iv1"
             android:layout_toRightOf="@+id/iv1"
-            android:backgroundTint="@android:color/darker_gray"
-            android:text="Resim Seç" />
+            android:drawableLeft="@drawable/ic_resim"
+            android:background="@drawable/buton_gri"
+            android:text="Resim Seç"
+            android:textSize="14dp"/>
 
         <Button
             android:id="@+id/btn2"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
             android:layout_alignLeft="@+id/btn1"
             android:layout_alignStart="@+id/btn1"
             android:layout_below="@+id/btn1"
             android:layout_marginTop="22dp"
-            android:backgroundTint="@color/pembe"
-            android:drawableLeft="@drawable/ic_kaydet"
-            android:text="Kaydet" />
+            android:background="@drawable/buton_yesil"
+            android:drawableLeft="@drawable/ic_kayitt"
+            android:text="Kaydet"
+            android:textSize="14dp"/>
 
         <Button
             android:id="@+id/btn3"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
             android:layout_below="@+id/et1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="49dp"
-            android:backgroundTint="@color/mavi"
-            android:text="Verileri Listele" />
+            android:background="@drawable/buton_pembe"
+            android:drawableLeft="@drawable/ic_listele"
+            android:text="Verileri Listele"
+            android:textSize="14dp"/>
 
         <Button
             android:id="@+id/btn4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:padding="5dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
             android:layout_below="@+id/btn3"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:backgroundTint="@color/mor"
-            android:text="Google Drive'a Kaydet" />
+            android:background="@drawable/buton_mor"
+            android:text="Google Drive'a Kaydet"
+            android:textSize="14dp"/>
 
         <Button
             android:id="@+id/btn5"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
             android:layout_below="@+id/btn4"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="26dp"
-            android:backgroundTint="@color/pembe"
+            android:background="@drawable/buton_mavi"
             android:drawableLeft="@drawable/ic_geri"
-            android:text="Geri" />
+            android:text="Geri"
+            android:textSize="14dp"/>
 
 
     </RelativeLayout>

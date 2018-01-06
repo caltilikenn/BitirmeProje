@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/anasayfa"
+
+            android:title="Anasayfa" />
+        <item
+            android:id="@+id/sifre_degistir"
+
+            android:title="Şifre Değiştir" />
+        <item
+            android:id="@+id/hesabi_sil"
+
+            android:title="Hesabı Sil" />
+
+        <item
+            android:id="@+id/cikis_yap"
+
+            android:title="Çıkış Yap" />
+
+    </group>
+
+</menu>

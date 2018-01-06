@@ -12,6 +12,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,8 @@ import java.io.InputStream;
 
 public class Belgeler extends AppCompatActivity {
 
+    int id;
+    String ad;
     final int REQUEST_CODE_GALLERY = 999;
     Button btn1;
     Button btn2;
@@ -39,6 +42,9 @@ public class Belgeler extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.belgeler);
+        ActionBar ab = getSupportActionBar();
+        ab.setIcon(R.drawable.bg);
+        ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
         iv1 = (ImageView) findViewById(R.id.iv1);
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
@@ -46,8 +52,9 @@ public class Belgeler extends AppCompatActivity {
         btn4 = (Button) findViewById(R.id.btn4);
         btn5 = (Button) findViewById(R.id.btn5);
         et1 = (EditText) findViewById(R.id.et1);
-        Intent intent1 = getIntent();
-        final int id = intent1.getIntExtra("id",0);
+        Intent intent = getIntent();
+        id = intent.getIntExtra("id",0);
+        ad = intent.getStringExtra("ad");
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -61,8 +68,8 @@ public class Belgeler extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ad = et1.getText().toString();
-                if (ad.isEmpty()) {
+                String resimAd = et1.getText().toString();
+                if (resimAd.isEmpty()) {
                     Toast.makeText(getApplicationContext(),"Lütfen resim için bir ad giriniz", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -73,7 +80,7 @@ public class Belgeler extends AppCompatActivity {
                 else{
                     Database db = new Database(Belgeler.this);
                     byte[] resim1 = ivToByte(iv1);
-                    BelgelerBilgi bb = new BelgelerBilgi(id,ad,resim1);
+                    BelgelerBilgi bb = new BelgelerBilgi(id,resimAd,resim1);
                     db.resimEkle(bb);
                     Toast.makeText(getApplicationContext(),"Resim başarıyla eklendi", Toast.LENGTH_LONG).show();
                     et1.setText("");
@@ -87,6 +94,7 @@ public class Belgeler extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), BelgelerList.class);
                 intent.putExtra("id",id);
+                intent.putExtra("ad",ad);
                 startActivity(intent);
             }
         });
@@ -105,9 +113,19 @@ public class Belgeler extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Belgeler.this,Anasayfa.class);
                 intent.putExtra("id",id);
+                intent.putExtra("ad",ad);
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),Anasayfa.class);
+        intent.putExtra("id", id);
+        intent.putExtra("ad", ad);
+        startActivity(intent);
     }
 
     private byte[] ivToByte(ImageView iv1){

@@ -2,6 +2,7 @@ package followself.com.bitirmeprojesi;
 
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,9 @@ public class YeniUyelik extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.yeni_uyelik);
-
+        ActionBar ab = getSupportActionBar();
+        ab.setIcon(R.drawable.bg);
+        ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
         TextView txt1 = (TextView) findViewById(R.id.txt1);
         final TextView txt2 = (TextView) findViewById(R.id.txt2);
         final EditText et1 = (EditText) findViewById(R.id.et1);
@@ -47,6 +50,7 @@ public class YeniUyelik extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz",Toast.LENGTH_LONG).show();
                     et4.setText("");
                     et5.setText("");
+                    txt2.setText("");
                     return;
                 }
 
@@ -54,6 +58,7 @@ public class YeniUyelik extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Lütfen Geçerli bir email adresi giriniz", Toast.LENGTH_LONG).show();
                     et4.setText("");
                     et5.setText("");
+                    txt2.setText("");
                     return;
                 }
 
@@ -61,6 +66,7 @@ public class YeniUyelik extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Şifreniz en az 6 en fazla 10 karakter içerebilir", Toast.LENGTH_LONG).show();
                     et4.setText("");
                     et5.setText("");
+                    txt2.setText("");
                     return;
                 }
 
@@ -79,6 +85,7 @@ public class YeniUyelik extends AppCompatActivity {
                         et3.setText("");
                         et4.setText("");
                         et5.setText("");
+                        txt2.setText("");
                     }
                     else {
                         Toast.makeText(getApplicationContext(), "Sistemde bu e-mail adresi zaten kayıtlı", Toast.LENGTH_LONG).show();
@@ -87,9 +94,17 @@ public class YeniUyelik extends AppCompatActivity {
                         et3.setText("");
                         et4.setText("");
                         et5.setText("");
+                        txt2.setText("");
                     }
                 }
                     }
             });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent);
     }
 }

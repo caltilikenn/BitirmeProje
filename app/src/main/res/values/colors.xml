@@ -6,6 +6,8 @@
     <color name="mor">#6A5ACD</color>
     <color name="pembe">#EE82EE</color>
     <color name="mavi">#00BFFF</color>
-    <color name="lavender">#E6E6FA</color>
+    <color name="lavender">#e6e6fa</color>
+    <color name="kirmizi">#DC143C</color>
+    <color name="yesil">#32CD32</color>
     <color name="black_overlay">#66000000</color>
 </resources>

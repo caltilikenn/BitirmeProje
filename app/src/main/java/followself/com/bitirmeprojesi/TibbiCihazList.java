@@ -2,6 +2,7 @@ package followself.com.bitirmeprojesi;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,14 +17,20 @@ import java.util.List;
 
 public class TibbiCihazList extends AppCompatActivity {
 
+    int id;
+    String ad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tibbi_cihaz_list);
         Button btn1 = (Button) findViewById(R.id.btn1);
-
+        ActionBar ab = getSupportActionBar();
+        ab.setIcon(R.drawable.bg);
+        ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
         Intent intent = getIntent();
-        final int id = intent.getIntExtra("id",0);
+        id = intent.getIntExtra("id",0);
+        ad = intent.getStringExtra("ad");
 
         final ListView lv = (ListView)findViewById(R.id.lv);
         Database db = new Database(TibbiCihazList.this);
@@ -47,6 +54,7 @@ public class TibbiCihazList extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), TibbiCihazDuzenle.class);
                 intent.putExtra("id", id);
+                intent.putExtra("ad", ad);
                 intent.putExtra("tur",tur);
                 intent.putExtra("uretici",uretici);
                 intent.putExtra("konum",konum);
@@ -62,8 +70,18 @@ public class TibbiCihazList extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), TibbiCihazlar.class);
                 intent.putExtra("id", id);
+                intent.putExtra("ad", ad);
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),TibbiCihazlar.class);
+        intent.putExtra("id", id);
+        intent.putExtra("ad", ad);
+        startActivity(intent);
     }
 }

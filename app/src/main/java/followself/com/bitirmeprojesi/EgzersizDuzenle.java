@@ -1,6 +1,7 @@
 package followself.com.bitirmeprojesi;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,10 +12,16 @@ import android.widget.Toast;
 
 public class EgzersizDuzenle extends AppCompatActivity {
 
+    int id;
+    String ad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.egzersiz_duzenle);
+        ActionBar ab = getSupportActionBar();
+        ab.setIcon(R.drawable.bg);
+        ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
         final EditText et1 = (EditText) findViewById(R.id.et1);
         final EditText et2 = (EditText) findViewById(R.id.et2);
         final EditText et3 = (EditText) findViewById(R.id.et3);
@@ -30,7 +37,8 @@ public class EgzersizDuzenle extends AppCompatActivity {
         TextView txt3 = (TextView) findViewById(R.id.txt3);
         TextView txt4 = (TextView) findViewById(R.id.txt4);
         Intent intent = getIntent();
-        final int id = intent.getIntExtra("id",0);
+        id = intent.getIntExtra("id",0);
+        ad = intent.getStringExtra("ad");
         final String tur = intent.getStringExtra("tur");
         final int sure = intent.getIntExtra("sure",0);
         final int mesafe = intent.getIntExtra("mesafe",0);
@@ -77,6 +85,7 @@ public class EgzersizDuzenle extends AppCompatActivity {
                     et7.setText("");
                     Intent intent = new Intent(getApplicationContext(),Egzersiz.class);
                     intent.putExtra("id",id);
+                    intent.putExtra("ad",ad);
                     startActivity(intent);
                 }
             }
@@ -97,6 +106,7 @@ public class EgzersizDuzenle extends AppCompatActivity {
                 et7.setText("");
                 Intent intent = new Intent(getApplicationContext(),Egzersiz.class);
                 intent.putExtra("id",id);
+                intent.putExtra("ad",ad);
                 startActivity(intent);
             }
         });
@@ -106,9 +116,19 @@ public class EgzersizDuzenle extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EgzersizList.class);
                 intent.putExtra("id", id);
+                intent.putExtra("ad", ad);
                 startActivity(intent);
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),EgzersizList.class);
+        intent.putExtra("id", id);
+        intent.putExtra("ad", ad);
+        startActivity(intent);
     }
 }

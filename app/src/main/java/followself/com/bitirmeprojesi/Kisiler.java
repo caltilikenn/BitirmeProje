@@ -1,6 +1,7 @@
 package followself.com.bitirmeprojesi;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +11,16 @@ import android.widget.Toast;
 
 public class Kisiler extends AppCompatActivity {
 
+    int id;
+    String ad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kisiler);
+        ActionBar ab = getSupportActionBar();
+        ab.setIcon(R.drawable.bg);
+        ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
         final EditText et1 = (EditText) findViewById(R.id.et1);
         final EditText et2 = (EditText) findViewById(R.id.et2);
         final EditText et3 = (EditText) findViewById(R.id.et3);
@@ -21,20 +28,21 @@ public class Kisiler extends AppCompatActivity {
         Button btn2 = (Button) findViewById(R.id.btn2);
         Button btn3 = (Button) findViewById(R.id.btn3);
         Intent intent = getIntent();
-        final int id = intent.getIntExtra("id",0);
+        id = intent.getIntExtra("id",0);
+        ad = intent.getStringExtra("ad");
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String ad = et1.getText().toString();
+                String kisiAd = et1.getText().toString();
                 String uzmanlik = et2.getText().toString();
                 String isyeri = et3.getText().toString();
 
-                if (ad.isEmpty() || uzmanlik.isEmpty() || isyeri.isEmpty()) {
+                if (kisiAd.isEmpty() || uzmanlik.isEmpty() || isyeri.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Alanların tamamını doldurunuz", Toast.LENGTH_LONG).show();
                     return;
                 } else {
-                    KisilerBilgi kb = new KisilerBilgi(id, ad, uzmanlik, isyeri);
+                    KisilerBilgi kb = new KisilerBilgi(id, kisiAd, uzmanlik, isyeri);
                     Database db = new Database(getApplicationContext());
                     db.kisiEkle(kb);
                     Toast.makeText(getApplicationContext(), "Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();
@@ -43,6 +51,7 @@ public class Kisiler extends AppCompatActivity {
                     et3.setText("");
                     Intent intent = new Intent(getApplicationContext(), Kisiler.class);
                     intent.putExtra("id", id);
+                    intent.putExtra("ad", ad);
                     startActivity(intent);
                 }
             }
@@ -53,6 +62,7 @@ public class Kisiler extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), KisilerList.class);
                 intent.putExtra("id",id);
+                intent.putExtra("ad",ad);
                 startActivity(intent);
             }
         });
@@ -62,9 +72,19 @@ public class Kisiler extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SaglikGecmisi.class);
                 intent.putExtra("id", id);
+                intent.putExtra("ad", ad);
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),SaglikGecmisi.class);
+        intent.putExtra("id", id);
+        intent.putExtra("ad", ad);
+        startActivity(intent);
     }
 }
 

@@ -140,39 +140,47 @@
             <Button
                 android:id="@+id/btn1"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Kaydet"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/buton_yesil"
+                android:drawableLeft="@drawable/ic_kayitt"
                 android:layout_alignLeft="@+id/et7"
                 android:layout_alignStart="@+id/et7"
                 android:layout_below="@+id/et7"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="@color/mor"
-                android:drawableLeft="@drawable/ic_kaydet"
-                android:text="Kaydet" />
+                android:textSize="14dp" />
 
             <Button
                 android:id="@+id/btn2"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Listele"
+                android:background="@drawable/buton_pembe"
+                android:drawableLeft="@drawable/ic_listele"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
                 android:layout_alignBaseline="@+id/btn1"
                 android:layout_alignBottom="@+id/btn1"
                 android:layout_alignEnd="@+id/et2"
                 android:layout_alignRight="@+id/et2"
-                android:backgroundTint="@color/pembe"
-                android:text="Listele" />
+                android:textSize="14dp"/>
 
             <Button
                 android:id="@+id/btn3"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Geri"
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:background="@drawable/buton_mavi"
+                android:drawableLeft="@drawable/ic_geri"
+                android:textSize="14dp"
+                android:layout_marginTop="13dp"
                 android:layout_below="@+id/btn1"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="26dp"
-                android:backgroundTint="@color/mavi"
-                android:drawableLeft="@drawable/ic_geri"
-                android:text="Geri" />
+                />
 
         </RelativeLayout>
     </ScrollView>

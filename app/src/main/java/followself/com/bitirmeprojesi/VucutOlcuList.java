@@ -2,6 +2,7 @@ package followself.com.bitirmeprojesi;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,14 +17,20 @@ import java.util.List;
 
 public class VucutOlcuList extends AppCompatActivity {
 
+    int id;
+    String ad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vucut_olcu_list);
+        ActionBar ab = getSupportActionBar();
+        ab.setIcon(R.drawable.bg);
+        ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
         Button btn1 = (Button) findViewById(R.id.btn1);
         Intent intent = getIntent();
-        final int id = intent.getIntExtra("id",0);
-
+        id = intent.getIntExtra("id",0);
+        ad = intent.getStringExtra("ad");
         final ListView lv = (ListView)findViewById(R.id.lv);
         Database db = new Database(VucutOlcuList.this);
         List<String> list = db.showVucutOlcu(id);
@@ -44,6 +51,7 @@ public class VucutOlcuList extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), VucutOlcuDuzenle.class);
                 intent.putExtra("id", id);
+                intent.putExtra("ad", ad);
                 intent.putExtra("tur",tur);
                 intent.putExtra("boyut",boyut);
                 intent.putExtra("tarih", tarih);
@@ -56,8 +64,18 @@ public class VucutOlcuList extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), VucutOlcu.class);
                 intent.putExtra("id", id);
+                intent.putExtra("ad", ad);
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),VucutOlcu.class);
+        intent.putExtra("id", id);
+        intent.putExtra("ad", ad);
+        startActivity(intent);
     }
 }

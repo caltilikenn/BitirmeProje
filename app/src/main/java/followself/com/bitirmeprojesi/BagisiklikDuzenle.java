@@ -1,6 +1,7 @@
 package followself.com.bitirmeprojesi;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +11,16 @@ import android.widget.Toast;
 
 public class BagisiklikDuzenle extends AppCompatActivity {
 
+    int id;
+    String ad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bagisiklik_duzenle);
+        ActionBar ab = getSupportActionBar();
+        ab.setIcon(R.drawable.bg);
+        ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
         final EditText et1 = (EditText) findViewById(R.id.et1);
         final EditText et2 = (EditText) findViewById(R.id.et2);
         final EditText et3 = (EditText) findViewById(R.id.et3);
@@ -21,8 +28,8 @@ public class BagisiklikDuzenle extends AppCompatActivity {
         Button btn2 = (Button) findViewById(R.id.btn2);
         Button btn3 = (Button) findViewById(R.id.btn3);
         Intent intent = getIntent();
-        final int id = intent.getIntExtra("id",0);
-        final String ad = intent.getStringExtra("ad");
+        id = intent.getIntExtra("id",0);
+        ad = intent.getStringExtra("ad");
         final String etki = intent.getStringExtra("etki");
         final String tarih = intent.getStringExtra("tarih");
         et1.setText(ad);
@@ -48,6 +55,7 @@ public class BagisiklikDuzenle extends AppCompatActivity {
                     et3.setText("");
                     Intent intent = new Intent(getApplicationContext(),Bagisikliklar.class);
                     intent.putExtra("id",id);
+                    intent.putExtra("ad",ad);
                     startActivity(intent);
                 }
             }
@@ -64,6 +72,7 @@ public class BagisiklikDuzenle extends AppCompatActivity {
                 et3.setText("");
                 Intent intent = new Intent(getApplicationContext(),Bagisikliklar.class);
                 intent.putExtra("id",id);
+                intent.putExtra("ad",ad);
                 startActivity(intent);
             }
         });
@@ -73,9 +82,19 @@ public class BagisiklikDuzenle extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), BagisiklikList.class);
                 intent.putExtra("id", id);
+                intent.putExtra("ad", ad);
                 startActivity(intent);
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),BagisiklikList.class);
+        intent.putExtra("id", id);
+        intent.putExtra("ad", ad);
+        startActivity(intent);
     }
 }
