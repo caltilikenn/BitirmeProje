@@ -221,5 +221,4 @@
             android:label="Resim Önizleme"
             android:screenOrientation="portrait" />
     </application>
-
 </manifest>
