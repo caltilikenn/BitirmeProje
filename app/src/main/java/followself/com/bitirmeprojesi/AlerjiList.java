@@ -41,17 +41,17 @@ public class AlerjiList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String txt = adapterView.getItemAtPosition(i).toString();
-                String[] array = txt.split("-");
-                String[] array1 = array[0].split("ID=");
-                int id = Integer.parseInt(array1[1]);
-                String ad = array[1];
-                String belirti = array[2];
-                String tur = array[3];
-                String tarih = array[4];
+                String[] array = txt.split("  -  ");
+
+                String alerjiAd = array[0];
+                String belirti = array[1];
+                String tur = array[2];
+                String tarih = array[3];
 
                 Intent intent = new Intent(getApplicationContext(), AlerjiDuzenle.class);
                 intent.putExtra("id", id);
                 intent.putExtra("ad",ad);
+                intent.putExtra("alerjiAd",alerjiAd);
                 intent.putExtra("belirti",belirti);
                 intent.putExtra("tur",tur);
                 intent.putExtra("tarih",tarih);

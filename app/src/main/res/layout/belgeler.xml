@@ -11,6 +11,7 @@
         android:id="@+id/rel1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:paddingRight="10dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">

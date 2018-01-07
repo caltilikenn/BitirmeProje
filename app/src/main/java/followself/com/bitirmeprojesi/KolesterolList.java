@@ -42,19 +42,18 @@ public class KolesterolList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String txt = adapterView.getItemAtPosition(i).toString();
-                String[] array = txt.split(" ");
-                String[] array1 = array[0].split("ID=");
+                String[] array = txt.split(" - ");
+
+                String[] array1 = array[0].split("mg/dL");
                 String[] array2 = array[1].split("mg/dL");
                 String[] array3 = array[2].split("mg/dL");
                 String[] array4 = array[3].split("mg/dL");
-                String[] array5 = array[4].split("mg/dL");
-                int id = Integer.parseInt(array1[1]);
-                int ldl = Integer.parseInt(array2[0]);
-                int hdl = Integer.parseInt(array3[0]);
-                int trigliserit = Integer.parseInt(array4[0]);
-                int toplam = Integer.parseInt(array5[0]);
-                String tarih = array[5];
-                String saat = array[6];
+                int ldl = Integer.parseInt(array1[0]);
+                int hdl = Integer.parseInt(array2[0]);
+                int trigliserit = Integer.parseInt(array3[0]);
+                int toplam = Integer.parseInt(array4[0]);
+                String tarih = array[4];
+                String saat = array[5];
 
                 Intent intent = new Intent(getApplicationContext(), KolesterolDuzenle.class);
                 intent.putExtra("id", id);

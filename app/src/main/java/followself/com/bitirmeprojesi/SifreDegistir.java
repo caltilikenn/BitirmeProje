@@ -62,27 +62,25 @@ public class SifreDegistir extends AppCompatActivity {
                     return;
                 }
 
-                else{
-                    if(db.checkPassword(id,eskiSifre)){
-                        db.sifreDegistir(id,yeniSifre);
-                        Toast.makeText(getApplicationContext(),"Şifreniz başarıyla değiştirildi",Toast.LENGTH_LONG).show();
+                else {
+                    if (db.checkPassword(id, eskiSifre)) {
+                        db.sifreDegistir(id, yeniSifre);
+                        Toast.makeText(getApplicationContext(), "Şifreniz başarıyla değiştirildi", Toast.LENGTH_LONG).show();
                         et1.setText("");
                         et2.setText("");
                         et3.setText("");
-                        Intent intent = new Intent(getApplicationContext(),Anasayfa.class);
-                        intent.putExtra("id",id);
-                        intent.putExtra("ad",ad);
+                        Intent intent = new Intent(getApplicationContext(), Anasayfa.class);
+                        intent.putExtra("id", id);
+                        intent.putExtra("ad", ad);
                         startActivity(intent);
-                    }
-
-                    else
-                        Toast.makeText(getApplicationContext(),"Mevcut şifrenizi hatalı girdiniz",Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Mevcut şifrenizi hatalı girdiniz", Toast.LENGTH_LONG).show();
                         et1.setText("");
                         et2.setText("");
                         et3.setText("");
                         return;
+                    }
                 }
-
             }
         });
 

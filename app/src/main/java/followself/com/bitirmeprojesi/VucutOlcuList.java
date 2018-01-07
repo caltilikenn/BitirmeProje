@@ -42,12 +42,11 @@ public class VucutOlcuList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String txt = adapterView.getItemAtPosition(i).toString();
                 String[] array = txt.split("          ");
-                String array1[] = array[0].split("ID=");
-                int id = Integer.parseInt(array1[1]);
-                String tur = array[1];
-                String[] array2 = array[2].split("cm");
-                int boyut = Integer.parseInt(array2[0]);
-                String tarih = array[3];
+
+                String tur = array[0];
+                String[] array1 = array[1].split("cm");
+                int boyut = Integer.parseInt(array1[0]);
+                String tarih = array[2];
 
                 Intent intent = new Intent(getApplicationContext(), VucutOlcuDuzenle.class);
                 intent.putExtra("id", id);

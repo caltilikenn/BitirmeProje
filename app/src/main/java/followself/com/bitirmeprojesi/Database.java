@@ -142,7 +142,7 @@ public class Database extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE KISILER(ID INTEGER, AD TEXT, UZMANLIKLAR TEXT, IS_YERI TEXT, PRIMARY KEY(ID,AD), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
 
-        db.execSQL("CREATE TABLE TIBBI_CIHAZLAR(ID INTEGER, TUR TEXT, URETICI TEXT, VUCUTTAKI_KONUMU TEXT, MODEL TEXT, SERI_NO INTEGER NOT NULL, BASLANGIC_TARIHI TEXT NOT NULL, PRIMARY KEY(ID,SERI_NO,BASLANGIC_TARIHI), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
+        db.execSQL("CREATE TABLE TIBBI_CIHAZLAR(ID INTEGER, TUR TEXT, URETICI TEXT, VUCUTTAKI_KONUMU TEXT, MODEL TEXT, SERI_NO TEXT NOT NULL, BASLANGIC_TARIHI TEXT NOT NULL, PRIMARY KEY(ID,SERI_NO,BASLANGIC_TARIHI), FOREIGN KEY(ID) REFERENCES KULLANICILAR(ID) ON DELETE CASCADE)");
     }
 
     @Override
@@ -409,10 +409,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {USERS_ID, BOY_CM, TARIH};
+        String[] columns = {BOY_CM, TARIH};
         Cursor c = db.query(BOY_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + "                    " + c.getInt(1) + "cm                    " + c.getString(2));
+            list.add(c.getInt(0) + "cm     -     " + c.getString(1));
         }
         return list;
     }
@@ -455,10 +455,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {USERS_ID, KILO_KG, TARIH, SAAT};
+        String[] columns = {KILO_KG, TARIH, SAAT};
         Cursor c = db.query(KILO_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + "            " + c.getInt(1) + "kg            " + c.getString(2) + "            " + c.getString(3));
+            list.add(c.getInt(0) + "kg   -   " + c.getString(1) + "   -   " + c.getString(2));
         }
         return list;
     }
@@ -509,10 +509,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {USERS_ID, EGZERSIZ_TUR, EGZERSIZ_SURE, EGZERSIZ_KM, EGZERSIZ_ADIM, EGZERSIZ_KALORI, TARIH, SAAT};
+        String[] columns = {EGZERSIZ_TUR, EGZERSIZ_SURE, EGZERSIZ_KM, EGZERSIZ_ADIM, EGZERSIZ_KALORI, TARIH, SAAT};
         Cursor c = db.query(EGZERSIZ_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getInt(2) + "dk-" + c.getInt(3) + "m-" + c.getInt(4) + "adım-" + c.getInt(5) + "cal-" + c.getString(6) + "-" + c.getString(7));
+            list.add(c.getString(0) + " - " + c.getInt(1) + "dk - " + c.getInt(2) + "m - " + c.getInt(3) + "adım - " + c.getInt(4) + "cal - " + c.getString(5) + " - " + c.getString(6));
         }
         return list;
     }
@@ -561,10 +561,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {USERS_ID, KAN_BASINCI_SISTOLIK, KAN_BASINCI_DIYASTOLIK, KAN_BASINCI_NABIZ, KAN_BASINCI_DUZEN, TARIH, SAAT};
+        String[] columns = {KAN_BASINCI_SISTOLIK, KAN_BASINCI_DIYASTOLIK, KAN_BASINCI_NABIZ, KAN_BASINCI_DUZEN, TARIH, SAAT};
         Cursor c = db.query(KAN_BASINCI_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + "-" + c.getInt(1) + "mmHg-" + c.getInt(2) + "mmHg-" + c.getInt(3) + "-" + c.getString(4) + "-" + c.getString(5) + "-" + c.getString(6));
+            list.add(c.getInt(0) + "mmHg - " + c.getInt(1) + "mmHg - " + c.getInt(2) + " - " + c.getString(3) + " - " + c.getString(4) + " - " + c.getString(5));
         }
         return list;
     }
@@ -611,10 +611,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {USERS_ID, KAN_SEKERI_OLCUM, KAN_SEKERI_ZAMAN, KAN_SEKERI_TUR, TARIH, SAAT};
+        String[] columns = {KAN_SEKERI_OLCUM, KAN_SEKERI_ZAMAN, KAN_SEKERI_TUR, TARIH, SAAT};
         Cursor c = db.query(KAN_SEKERI_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + "-" + c.getInt(1) + "mg/dL-" + c.getString(2) + "-" + c.getString(3) + "-" + c.getString(4) + "-" + c.getString(5));
+            list.add(c.getInt(0) + "mg/dL - " + c.getString(1) + " - " + c.getString(2) + " - " + c.getString(3) + " - " + c.getString(4));
         }
         return list;
     }
@@ -663,10 +663,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {USERS_ID, KOLESTEROL_LDL, KOLESTEROL_HDL, KOLESTEROL_TRIGLISERIT, KOLESTEROL_TOPLAM, TARIH, SAAT};
+        String[] columns = {KOLESTEROL_LDL, KOLESTEROL_HDL, KOLESTEROL_TRIGLISERIT, KOLESTEROL_TOPLAM, TARIH, SAAT};
         Cursor c = db.query(KOLESTEROL_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + " " + c.getInt(1) + "mg/dL " + c.getInt(2) + "mg/dL " + c.getInt(3) + "mg/dL " + c.getInt(4) + "mg/dL " + c.getString(5) + " " + c.getString(6));
+            list.add(c.getInt(0) + "mg/dL - " + c.getInt(1) + "mg/dL - " + c.getInt(2) + "mg/dL - " + c.getInt(3) + "mg/dL - " + c.getString(4) + " - " + c.getString(5));
         }
         return list;
     }
@@ -709,10 +709,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " =?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {USERS_ID, VUCUT_OLCULERI_TUR,VUCUT_OLCULERI_CM, TARIH};
+        String[] columns = {VUCUT_OLCULERI_TUR,VUCUT_OLCULERI_CM, TARIH};
         Cursor c = db.query(VUCUT_OLCULERI_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + "          " + c.getString(1) + "          " + c.getInt(2) + "cm          " + c.getString(3));
+            list.add(c.getString(0) + "          " + c.getInt(1) + "cm          " + c.getString(2));
         }
         return list;
     }
@@ -766,10 +766,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {USERS_ID, ILAC_ADI, ILAC_ETKINLIK, ILAC_DOZAJ, ILAC_ALINMA_SEKLI, ILAC_ALINMA_SIKLIGI, ILAC_ALINMA_NEDENI, ILAC_BASLANGIC, ILAC_BITIS};
+        String[] columns = {ILAC_ADI, ILAC_ETKINLIK, ILAC_DOZAJ, ILAC_ALINMA_SEKLI, ILAC_ALINMA_SIKLIGI, ILAC_ALINMA_NEDENI, ILAC_BASLANGIC, ILAC_BITIS};
         Cursor c = db.query(ILACLAR_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getInt(2) + "mg-" + c.getString(3) + "-" + c.getString(4) + "-" + c.getString(5) + "-" + c.getString(6) + "-" + c.getString(7) + "-" + c.getString(8));
+            list.add(c.getString(0) + " - " + c.getInt(1) + "mg - " + c.getString(2) + " - " + c.getString(3) + " - " + c.getString(4) + " - " + c.getString(5) + " - " + c.getString(6) + " - " + c.getString(7));
         }
         return list;
     }
@@ -812,10 +812,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {USERS_ID, BAGISIKLIKLAR_AD, BAGISIKLIKLAR_ETKI, BAGISIKLIKLAR_TARIH};
+        String[] columns = {BAGISIKLIKLAR_AD, BAGISIKLIKLAR_ETKI, BAGISIKLIKLAR_TARIH};
         Cursor c = db.query(BAGISIKLIKLAR_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getString(2) + "-" + c.getString(3));
+            list.add(c.getString(0) + "   -   " + c.getString(1) + "   -   " + c.getString(2));
         }
         return list;
     }
@@ -860,10 +860,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {USERS_ID, ALERJILER_AD, ALERJILER_BELIRTI, ALERJILER_TUR, ALERJILER_TESPIT};
+        String[] columns = {ALERJILER_AD, ALERJILER_BELIRTI, ALERJILER_TUR, ALERJILER_TESPIT};
         Cursor c = db.query(ALERJILER_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getString(2) + "-" + c.getString(3) + "-" + c.getString(4));
+            list.add(c.getString(0) + "  -  " + c.getString(1) + "  -  " + c.getString(2) + "  -  " + c.getString(3));
         }
         return list;
     }
@@ -906,10 +906,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {USERS_ID, KISILER_AD, KISILER_UZMANLIK, KISILER_ISYERI};
+        String[] columns = {KISILER_AD, KISILER_UZMANLIK, KISILER_ISYERI};
         Cursor c = db.query(KISILER_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getString(2) + "-" + c.getString(3));
+            list.add(c.getString(0) + "   -   " + c.getString(1) + "   -   " + c.getString(2));
         }
         return list;
     }
@@ -929,10 +929,10 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void tibbiCihazGuncelle(int id, String yeniTur, String uretici, String konum, String model, int eskiSerino, int yeniSerino,  String eskiTarih, String yeniTarih) {
+    public void tibbiCihazGuncelle(int id, String yeniTur, String uretici, String konum, String model, String eskiSerino, String yeniSerino,  String eskiTarih, String yeniTarih) {
         SQLiteDatabase db = this.getWritableDatabase();
         String selection = USERS_ID + " = ?" + " AND " + TIBBI_CIHAZLAR_SERI + " = ?" + " AND " + TIBBI_CIHAZLAR_BASLANGIC + " = ?";
-        String[] selectionArgs = {String.valueOf(id).trim(), String.valueOf(eskiSerino), eskiTarih};
+        String[] selectionArgs = {String.valueOf(id).trim(), eskiSerino, eskiTarih};
         ContentValues contentValues = new ContentValues();
         contentValues.put(USERS_ID, id);
         contentValues.put(TIBBI_CIHAZLAR_TUR, yeniTur);
@@ -945,10 +945,10 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void tibbiCihazSil(int id, int serino, String tarih) {
+    public void tibbiCihazSil(int id, String serino, String tarih) {
         SQLiteDatabase db = this.getWritableDatabase();
         String selection = USERS_ID + " = ?" + " AND " + TIBBI_CIHAZLAR_SERI + " = ?" + " AND " + TIBBI_CIHAZLAR_BASLANGIC + " = ?";
-        String[] selectionArgs = {String.valueOf(id).trim(), String.valueOf(serino), tarih};
+        String[] selectionArgs = {String.valueOf(id).trim(), serino, tarih};
         db.delete(TIBBI_CIHAZLAR_TABLE, selection, selectionArgs);
         db.close();
     }
@@ -958,10 +958,10 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = USERS_ID + " = ?";
         String[] selectionArgs = {String.valueOf(id).trim()};
-        String[] columns = {USERS_ID, TIBBI_CIHAZLAR_TUR, TIBBI_CIHAZLAR_URETICI, TIBBI_CIHAZLAR_KONUM, TIBBI_CIHAZLAR_MODEL, TIBBI_CIHAZLAR_SERI, TIBBI_CIHAZLAR_BASLANGIC};
+        String[] columns = {TIBBI_CIHAZLAR_TUR, TIBBI_CIHAZLAR_URETICI, TIBBI_CIHAZLAR_KONUM, TIBBI_CIHAZLAR_MODEL, TIBBI_CIHAZLAR_SERI, TIBBI_CIHAZLAR_BASLANGIC};
         Cursor c = db.query(TIBBI_CIHAZLAR_TABLE, columns, selection, selectionArgs, null, null, null);
         while (c.moveToNext()) {
-            list.add("ID=" + c.getInt(0) + "-" + c.getString(1) + "-" + c.getString(2) + "-" + c.getString(3) + "-" + c.getString(4) + "-" + c.getInt(5) + "-" + c.getString(6));
+            list.add(c.getString(0) + " - " + c.getString(1) + " - " + c.getString(2) + " - " + c.getString(3) + " - " + c.getString(4) + " - " + c.getString(5));
         }
         return list;
     }

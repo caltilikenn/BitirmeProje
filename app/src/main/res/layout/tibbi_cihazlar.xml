@@ -19,6 +19,7 @@
             android:id="@+id/rel1"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:paddingBottom="10dp"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp">
@@ -101,7 +102,7 @@
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="Cihazın Seri Numarası"
-                android:inputType="number"
+                android:inputType="text"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -117,7 +118,7 @@
                 android:ems="10"
                 android:fontFamily="serif"
                 android:hint="Başlangıç Tarihi(GG.AA.YYYY)"
-                android:inputType="text"
+                android:inputType="date"
                 android:textSize="18dp"
                 android:textStyle="italic" />
 

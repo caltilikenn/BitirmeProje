@@ -42,18 +42,16 @@ public class IlacList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String txt = adapterView.getItemAtPosition(i).toString();
-                String[] array = txt.split("-");
-                String[] array1 = array[0].split("ID=");
-                String[] array2 = array[2].split("mg");
-                int id = Integer.parseInt(array1[1]);
-                int etkinlik = Integer.parseInt(array2[0]);
-                String ilacAd = array[1];
-                String dozaj = array[3];
-                String sekil = array[4];
-                String siklik = array[5];
-                String neden = array[6];
-                String baslangic = array[7];
-                String bitis = array[8];
+                String[] array = txt.split(" - ");
+                String[] array1 = array[1].split("mg");
+                int etkinlik = Integer.parseInt(array1[0]);
+                String ilacAd = array[0];
+                String dozaj = array[2];
+                String sekil = array[3];
+                String siklik = array[4];
+                String neden = array[5];
+                String baslangic = array[6];
+                String bitis = array[7];
 
                 Intent intent = new Intent(getApplicationContext(), IlacDuzenle.class);
                 intent.putExtra("id", id);

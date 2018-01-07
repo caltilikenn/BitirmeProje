@@ -42,17 +42,16 @@ public class KanBasinciList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String txt = adapterView.getItemAtPosition(i).toString();
-                String[] array = txt.split("-");
-                String[] array1 = array[0].split("ID=");
+                String[] array = txt.split(" - ");
+
+                String[] array1 = array[0].split("mmHg");
                 String[] array2 = array[1].split("mmHg");
-                String[] array3 = array[2].split("mmHg");
-                int id = Integer.parseInt(array1[1]);
-                int sistolik = Integer.parseInt(array2[0]);
-                int diyastolik = Integer.parseInt(array3[0]);
-                int nabiz = Integer.parseInt(array[3]);
-                String duzen = array[4];
-                String tarih = array[5];
-                String saat = array[6];
+                int sistolik = Integer.parseInt(array1[0]);
+                int diyastolik = Integer.parseInt(array2[0]);
+                int nabiz = Integer.parseInt(array[2]);
+                String duzen = array[3];
+                String tarih = array[4];
+                String saat = array[5];
 
                 Intent intent = new Intent(getApplicationContext(), KanBasinciDuzenle.class);
                 intent.putExtra("id", id);

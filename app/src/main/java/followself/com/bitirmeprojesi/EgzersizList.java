@@ -41,20 +41,19 @@ public class EgzersizList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String txt = adapterView.getItemAtPosition(i).toString();
-                String[] array = txt.split("-");
-                String[] array1 = array[0].split("ID=");
-                String[] array2 = array[2].split("dk");
-                String[] array3 = array[3].split("m");
-                String[] array4 = array[4].split("adım");
-                String[] array5 = array[5].split("cal");
-                int id = Integer.parseInt(array1[1]);
-                int sure = Integer.parseInt(array2[0]);
-                int mesafe = Integer.parseInt(array3[0]);
-                int adim = Integer.parseInt(array4[0]);
-                int kalori = Integer.parseInt(array5[0]);
-                String tur = array[1];
-                String tarih = array[6];
-                String saat = array[7];
+                String[] array = txt.split(" - ");
+
+                String[] array1 = array[1].split("dk");
+                String[] array2 = array[2].split("m");
+                String[] array3 = array[3].split("adım");
+                String[] array4 = array[4].split("cal");
+                int sure = Integer.parseInt(array1[0]);
+                int mesafe = Integer.parseInt(array2[0]);
+                int adim = Integer.parseInt(array3[0]);
+                int kalori = Integer.parseInt(array4[0]);
+                String tur = array[0];
+                String tarih = array[5];
+                String saat = array[6];
 
                 Intent intent = new Intent(getApplicationContext(), EgzersizDuzenle.class);
                 intent.putExtra("id", id);

@@ -47,12 +47,13 @@
         <Button
             android:id="@+id/btn1"
             style="@style/Widget.AppCompat.Button.Colored"
+            android:padding="5dp"
             android:layout_width="130dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_below="@+id/et1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="27dp"
-            android:backgroundTint="@color/mor"
+            android:background="@drawable/buton_mor"
             android:text="YOLLA" />
 
         <TextView

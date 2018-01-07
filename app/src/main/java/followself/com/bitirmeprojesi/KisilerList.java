@@ -41,12 +41,11 @@ public class KisilerList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String txt = adapterView.getItemAtPosition(i).toString();
-                String[] array = txt.split("-");
-                String[] array1 = array[0].split("ID=");
-                int id = Integer.parseInt(array1[1]);
-                String kisiAd = array[1];
-                String uzmanlik = array[2];
-                String isyeri = array[3];
+                String[] array = txt.split("   -   ");
+
+                String kisiAd = array[0];
+                String uzmanlik = array[1];
+                String isyeri = array[2];
 
                 Intent intent = new Intent(getApplicationContext(), KisilerDuzenle.class);
                 intent.putExtra("id", id);

@@ -42,15 +42,14 @@ public class TibbiCihazList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String txt = adapterView.getItemAtPosition(i).toString();
-                String[] array = txt.split("-");
-                String[] array1 = array[0].split("ID=");
-                int id = Integer.parseInt(array1[1]);
-                String tur = array[1];
-                String uretici = array[2];
-                String konum = array[3];
-                String model = array[4];
-                int serino = Integer.parseInt(array[5]);
-                String tarih = array[6];
+                String[] array = txt.split(" - ");
+
+                String tur = array[0];
+                String uretici = array[1];
+                String konum = array[2];
+                String model = array[3];
+                String serino = array[4];
+                String tarih = array[5];
 
                 Intent intent = new Intent(getApplicationContext(), TibbiCihazDuzenle.class);
                 intent.putExtra("id", id);

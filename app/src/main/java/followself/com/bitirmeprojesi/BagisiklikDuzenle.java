@@ -30,9 +30,10 @@ public class BagisiklikDuzenle extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getIntExtra("id",0);
         ad = intent.getStringExtra("ad");
+        final String asiAd = intent.getStringExtra("asiAd");
         final String etki = intent.getStringExtra("etki");
         final String tarih = intent.getStringExtra("tarih");
-        et1.setText(ad);
+        et1.setText(asiAd);
         et2.setText(etki);
         et3.setText(tarih);
 
@@ -48,7 +49,7 @@ public class BagisiklikDuzenle extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    db.bagisiklikGuncelle(id,ad,yeniAd,etki,tarih,yeniTarih);
+                    db.bagisiklikGuncelle(id,asiAd,yeniAd,etki,tarih,yeniTarih);
                     Toast.makeText(getApplicationContext(),"Kaydınız Güncellendi",Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
@@ -65,7 +66,7 @@ public class BagisiklikDuzenle extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Database db = new Database(BagisiklikDuzenle.this);
-                db.bagisiklikSil(id,ad,tarih);
+                db.bagisiklikSil(id,asiAd,tarih);
                 Toast.makeText(getApplicationContext(),"Kaydınız Silindi",Toast.LENGTH_LONG).show();
                 et1.setText("");
                 et2.setText("");

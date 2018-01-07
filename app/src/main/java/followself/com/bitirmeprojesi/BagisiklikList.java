@@ -41,16 +41,16 @@ public class BagisiklikList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String txt = adapterView.getItemAtPosition(i).toString();
-                String[] array = txt.split("-");
-                String[] array1 = array[0].split("ID=");
-                int id = Integer.parseInt(array1[1]);
-                String ad = array[1];
-                String etki = array[2];
-                String tarih = array[3];
+                String[] array = txt.split("   -   ");
+
+                String asiAd = array[0];
+                String etki = array[1];
+                String tarih = array[2];
 
                 Intent intent = new Intent(getApplicationContext(), BagisiklikDuzenle.class);
                 intent.putExtra("id", id);
                 intent.putExtra("ad",ad);
+                intent.putExtra("asiAd",asiAd);
                 intent.putExtra("etki", etki);
                 intent.putExtra("tarih", tarih);
                 startActivity(intent);

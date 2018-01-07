@@ -37,14 +37,14 @@ public class TibbiCihazDuzenle extends AppCompatActivity {
         final String uretici = intent.getStringExtra("uretici");
         final String konum = intent.getStringExtra("konum");
         final String model = intent.getStringExtra("model");
-        final int serino = intent.getIntExtra("serino",0);
+        final String serino = intent.getStringExtra("serino");
         final String tarih = intent.getStringExtra("tarih");
 
         et1.setText(tur);
         et2.setText(uretici);
         et3.setText(konum);
         et4.setText(model);
-        et5.setText(String.valueOf(serino));
+        et5.setText(serino);
         et6.setText(tarih);
 
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -62,8 +62,7 @@ public class TibbiCihazDuzenle extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    int yeniSerino1 = Integer.parseInt(yeniSerino);
-                    db.tibbiCihazGuncelle(id,yeniTur,yeniUretici,yeniKonum,yeniModel,serino,yeniSerino1,tarih,yeniTarih);
+                    db.tibbiCihazGuncelle(id,yeniTur,yeniUretici,yeniKonum,yeniModel,serino,yeniSerino,tarih,yeniTarih);
                     Toast.makeText(getApplicationContext(),"Kaydınız Güncellendi",Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");

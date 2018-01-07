@@ -33,7 +33,7 @@ public class KisilerDuzenle extends AppCompatActivity {
         final String kisiAd = intent.getStringExtra("kisiAd");
         final String uzmanlik = intent.getStringExtra("uzmanlik");
         final String isyeri = intent.getStringExtra("isyeri");
-        et1.setText(ad);
+        et1.setText(kisiAd);
         et2.setText(uzmanlik);
         et3.setText(isyeri);
 

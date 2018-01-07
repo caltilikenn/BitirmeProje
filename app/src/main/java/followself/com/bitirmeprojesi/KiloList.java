@@ -41,13 +41,12 @@ public class KiloList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String txt = adapterView.getItemAtPosition(i).toString();
-                String[] array = txt.split("            ");
-                String[] array1 = array[0].split("ID=");
-                int id = Integer.parseInt(array1[1]);
-                String[] array2 = array[1].split("kg");
-                int kilo = Integer.parseInt(array2[0]);
-                String tarih = array[2];
-                String saat = array[3];
+                String[] array = txt.split("   -   ");
+
+                String[] array1 = array[0].split("kg");
+                int kilo = Integer.parseInt(array1[0]);
+                String tarih = array[1];
+                String saat = array[2];
 
                 Intent intent = new Intent(getApplicationContext(), KiloDuzenle.class);
                 intent.putExtra("id", id);

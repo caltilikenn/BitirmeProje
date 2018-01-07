@@ -31,10 +31,11 @@ public class AlerjiDuzenle extends AppCompatActivity {
         Intent intent = getIntent();
         id=intent.getIntExtra("id",0);
         ad=intent.getStringExtra("ad");
+        final String alerjiAd = intent.getStringExtra("alerjiAd");
         final String belirti = intent.getStringExtra("belirti");
         final String tur = intent.getStringExtra("tur");
         final String tarih = intent.getStringExtra("tarih");
-        et1.setText(ad);
+        et1.setText(alerjiAd);
         et2.setText(belirti);
         et3.setText(tur);
         et4.setText(tarih);
@@ -52,7 +53,7 @@ public class AlerjiDuzenle extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    db.alerjiGuncelle(id,ad,yeniAd,yeniBelirti,yeniTur,tarih,yeniTarih);
+                    db.alerjiGuncelle(id,alerjiAd,yeniAd,yeniBelirti,yeniTur,tarih,yeniTarih);
                     Toast.makeText(getApplicationContext(),"Kaydınız Güncellendi",Toast.LENGTH_LONG).show();
                     et1.setText("");
                     et2.setText("");
@@ -70,7 +71,7 @@ public class AlerjiDuzenle extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Database db = new Database(AlerjiDuzenle.this);
-                db.alerjiSil(id,ad,tarih);
+                db.alerjiSil(id,alerjiAd,tarih);
                 Toast.makeText(getApplicationContext(),"Kaydınız Silindi",Toast.LENGTH_LONG).show();
                 et1.setText("");
                 et2.setText("");

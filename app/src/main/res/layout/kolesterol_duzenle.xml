@@ -19,6 +19,7 @@
             android:id="@+id/rel1"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:paddingBottom="10dp"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp">
@@ -27,42 +28,39 @@
                 android:id="@+id/et1"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/et2"
                 android:layout_alignParentTop="true"
-                android:layout_alignStart="@+id/et2"
                 android:layout_gravity="center"
                 android:layout_marginTop="18dp"
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:inputType="text"
+                android:inputType="number"
                 android:textSize="20dp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:layout_marginLeft="50dp"/>
 
             <EditText
                 android:id="@+id/et2"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/et3"
-                android:layout_alignStart="@+id/et3"
                 android:layout_below="@+id/et1"
-                android:layout_gravity="center"
                 android:layout_marginTop="25dp"
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
                 android:inputType="number"
                 android:textSize="20dp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                android:layout_marginLeft="50dp"/>
 
             <EditText
                 android:id="@+id/et3"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/et2"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="75dp"
+                android:layout_alignLeft="@+id/et2"
+                android:layout_alignStart="@+id/et2"
+                android:layout_below="@+id/et2"
+                android:layout_marginTop="28dp"
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
@@ -74,10 +72,11 @@
                 android:id="@+id/et4"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/et3"
-                android:layout_centerHorizontal="true"
+                android:layout_alignLeft="@+id/et3"
+                android:layout_alignStart="@+id/et3"
+                android:layout_below="@+id/et3"
                 android:layout_gravity="center"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="27dp"
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
@@ -89,14 +88,15 @@
                 android:id="@+id/et5"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/et4"
-                android:layout_centerHorizontal="true"
+                android:layout_alignLeft="@+id/et4"
+                android:layout_alignStart="@+id/et4"
+                android:layout_below="@+id/et4"
                 android:layout_gravity="center"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="27dp"
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:inputType="number"
+                android:inputType="date"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -104,14 +104,15 @@
                 android:id="@+id/et6"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/et5"
-                android:layout_centerHorizontal="true"
+                android:layout_alignLeft="@+id/et5"
+                android:layout_alignStart="@+id/et5"
+                android:layout_below="@+id/et5"
                 android:layout_gravity="center"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="27dp"
                 android:layout_weight="0.07"
                 android:ems="10"
                 android:fontFamily="serif"
-                android:inputType="date"
+                android:inputType="time"
                 android:textSize="20dp"
                 android:textStyle="italic" />
 
@@ -129,7 +130,6 @@
                 android:layout_alignLeft="@+id/et6"
                 android:layout_alignStart="@+id/et6"
                 android:layout_below="@+id/et6" />
-
 
             <Button
                 android:id="@+id/btn2"
@@ -161,45 +161,43 @@
 
             <TextView
                 android:id="@+id/txt1"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/et1"
-                android:layout_alignBottom="@+id/et1"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/et1"
+                android:layout_marginTop="13dp"
                 android:text="LDL:"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:layout_marginLeft="10dp"/>
 
             <TextView
                 android:id="@+id/txt2"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/et2"
-                android:layout_alignBottom="@+id/et2"
+                android:layout_alignTop="@+id/et2"
+                android:layout_marginTop="13dp"
                 android:text="HDL:"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:layout_marginLeft="10dp" />
 
             <TextView
                 android:id="@+id/txt3"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/et3"
-                android:layout_alignBottom="@+id/et3"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/et3"
+                android:layout_marginTop="13dp"
                 android:text="Trigliserit:"
-                android:textSize="10sp" />
+                android:textSize="8sp"
+                android:layout_marginLeft="10dp"/>
 
             <TextView
                 android:id="@+id/txt4"
-                android:layout_width="wrap_content"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/et4"
-                android:layout_alignBottom="@+id/et4"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/et4"
+                android:layout_marginTop="13dp"
                 android:text="Toplam:"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:layout_marginLeft="10dp"/>
 
 
         </RelativeLayout>

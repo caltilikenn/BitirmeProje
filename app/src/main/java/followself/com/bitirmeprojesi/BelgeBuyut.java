@@ -12,6 +12,7 @@ public class BelgeBuyut extends AppCompatActivity {
 
     int id;
     String ad;
+    String resimAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class BelgeBuyut extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getIntExtra("id",0);
         ad = intent.getStringExtra("ad");
-        final String resimAd = intent.getStringExtra("resimAd");
+        resimAd = intent.getStringExtra("resimAd");
         Database db = new Database(BelgeBuyut.this);
         byte[] resim = db.resimGoster(id,resimAd);
         Bitmap bmp = BitmapFactory.decodeByteArray(resim,0,resim.length);
@@ -34,9 +35,10 @@ public class BelgeBuyut extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(getApplicationContext(),BelgelerDuzenle.class);
+        Intent intent = new Intent(BelgeBuyut.this,BelgelerDuzenle.class);
         intent.putExtra("id", id);
         intent.putExtra("ad", ad);
+        intent.putExtra("resimAd", resimAd);
         startActivity(intent);
     }
 }

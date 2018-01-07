@@ -36,7 +36,6 @@ public class HesapAyarlari extends AppCompatActivity
         ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.openDrawer(GravityCompat.START);
         toggle = new ActionBarDrawerToggle(
                 this, drawer,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);

@@ -50,8 +50,7 @@ public class TibbiCihazlar extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Alanların tamamını doldurunuz. Boş bırakmak istediğiniz yere 0 giriniz", Toast.LENGTH_LONG).show();
                     return;
                 } else {
-                    serino1 = Integer.parseInt(serino.trim());
-                    TibbiCihazBilgi tb = new TibbiCihazBilgi(id, tur, uretici, konum, model, serino1, tarih);
+                    TibbiCihazBilgi tb = new TibbiCihazBilgi(id, tur, uretici, konum, model, serino, tarih);
                     Database db = new Database(getApplicationContext());
                     db.tibbiCihazEkle(tb);
                     Toast.makeText(getApplicationContext(), "Kayıt başarıyla eklendi", Toast.LENGTH_LONG).show();

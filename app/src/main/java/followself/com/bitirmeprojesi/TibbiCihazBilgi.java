@@ -6,10 +6,10 @@ public class TibbiCihazBilgi {
     private String uretici;
     private String konum;
     private String model;
-    private int serino;
+    private String serino;
     private String tarih;
 
-    public TibbiCihazBilgi(int id, String tur, String uretici, String konum, String model, int serino, String tarih){
+    public TibbiCihazBilgi(int id, String tur, String uretici, String konum, String model, String serino, String tarih){
         this.id=id;
         this.tur=tur;
         this.uretici=uretici;
@@ -29,7 +29,7 @@ public class TibbiCihazBilgi {
 
     public String getModel() { return model; }
 
-    public int getSerino() { return serino; }
+    public String getSerino() { return serino; }
 
     public String getTarih() { return tarih; }
 
@@ -43,7 +43,7 @@ public class TibbiCihazBilgi {
 
     public void setModel(String model) { this.model = model; }
 
-    public void setSerino(int serino) { this.serino = serino; }
+    public void setSerino(String serino) { this.serino = serino; }
 
     public void setTarih(String tarih) { this.tarih = tarih; }
 
