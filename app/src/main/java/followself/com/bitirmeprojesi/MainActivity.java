@@ -29,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
         ab.setIcon(R.drawable.bg);
         ab.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_renk));
 
+        if( getIntent().getBooleanExtra("Exit", false)){
+            finish();
+            return;
+        }
+
         //tanımlanan değişkenlere görsel öğeleri ata
         txt1 = (TextView) findViewById(R.id.txt1);
         et1 = (EditText) findViewById(R.id.et1);

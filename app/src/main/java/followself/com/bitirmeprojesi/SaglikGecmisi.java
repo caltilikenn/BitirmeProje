@@ -110,6 +110,7 @@ public class SaglikGecmisi extends AppCompatActivity
             intent.putExtra("ad",ad);
             startActivity(intent);
         }
+
         else if (itemId == R.id.cikis_yap) {
             AlertDialog.Builder builder = new AlertDialog.Builder(SaglikGecmisi.this);
             builder.setTitle("Çıkış Yap");
@@ -121,12 +122,11 @@ public class SaglikGecmisi extends AppCompatActivity
             });
             builder.setPositiveButton("ÇIKIŞ YAP", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int i) {
-                    Intent intent = new Intent(Intent.ACTION_MAIN);
-                    intent.addCategory(Intent.CATEGORY_HOME);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Intent intent = new Intent(SaglikGecmisi.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("Exit", true);
                     startActivity(intent);
                     finish();
-                    System.exit(0);
                 }
             });
             builder.show();

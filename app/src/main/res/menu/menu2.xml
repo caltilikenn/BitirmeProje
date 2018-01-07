@@ -41,10 +41,12 @@
             android:id="@+id/vucut_olculeri"
 
             android:title="Vücut Ölçüleri" />
+
         <item
             android:id="@+id/cikis_yap"
 
             android:title="Çıkış Yap" />
+
 
     </group>
 

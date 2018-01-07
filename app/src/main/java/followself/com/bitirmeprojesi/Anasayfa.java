@@ -53,12 +53,11 @@ public class Anasayfa extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
-        System.exit(0);
+            Intent intent = new Intent(Anasayfa.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("Exit", true);
+            startActivity(intent);
+            finish();
         super.onBackPressed();
         }
     }
@@ -126,12 +125,11 @@ public class Anasayfa extends AppCompatActivity
             });
             builder.setPositiveButton("ÇIKIŞ YAP", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int i) {
-                    Intent intent = new Intent(Intent.ACTION_MAIN);
-                    intent.addCategory(Intent.CATEGORY_HOME);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Intent intent = new Intent(Anasayfa.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("Exit", true);
                     startActivity(intent);
                     finish();
-                    System.exit(0);
                 }
             });
             builder.show();

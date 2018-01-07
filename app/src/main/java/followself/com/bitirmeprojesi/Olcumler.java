@@ -136,12 +136,11 @@ public class Olcumler extends AppCompatActivity
             });
             builder.setPositiveButton("ÇIKIŞ YAP", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int i) {
-                    Intent intent = new Intent(Intent.ACTION_MAIN);
-                    intent.addCategory(Intent.CATEGORY_HOME);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Intent intent = new Intent(Olcumler.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("Exit", true);
                     startActivity(intent);
                     finish();
-                    System.exit(0);
                 }
             });
             builder.show();
